@@ -1,0 +1,1 @@
+# VIM_bash_color_profile
