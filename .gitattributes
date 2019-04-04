@@ -1,3 +1,2 @@
 * linguist-vendored
 *.vim linguist-vendored=false
-*.sh linguist-vendored=true
