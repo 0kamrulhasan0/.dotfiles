@@ -1,8 +1,8 @@
 ## Windows Installtion
 * Software List
 
-## Installation Process For Linux WSL
-The Installation Process is very Easy. Paste the bellow code into the terminal and run it. 
+## Linux WSL
+The Installation Process for Linux is very Easy. Paste the bellow code into the terminal and run it. 
 ```bash
 wget -o init.sh https://raw.githubusercontent.com/0hasankamrul0/My-Default-Settings/install.sh
 ./init.sh
