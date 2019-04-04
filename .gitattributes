@@ -1,1 +1,3 @@
-*.sh linguist-language=Bash
+# *.sh linguist-language=Bash
+vim_colorscheme/* linguist-vendored
+*.vim linguist-vendored=false
