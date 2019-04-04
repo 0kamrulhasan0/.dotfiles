@@ -13,7 +13,7 @@ echo "System : WSL in Windows 10"
 #		echo "Enter as Root :"
 #fi
 		
-sudo apt autoremove
+#sudo apt autoremove
 
 # Adding necessary Repository
 sudo add-apt-repository ppa:webupd8team/java 
