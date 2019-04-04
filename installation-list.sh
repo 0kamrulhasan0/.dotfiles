@@ -6,7 +6,6 @@ clear
 echo "Package Install Script:"
 echo "Machine : ThinkPad E460"
 echo "System : WSL in Windows 10"
-echo -e "\n"
 
 # Checking if the user is root or not and if not then ask for password 
 if [ "$(whoami)" != 'root' ]; then
