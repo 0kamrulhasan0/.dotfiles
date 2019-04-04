@@ -14,7 +14,7 @@ fi
 clean
 echo "___________________________________Configuring Bash_________________________________________"
 sudo wget -O .bash_logout https://raw.githubusercontent.com/0hasankamrul0/My-Default-Settings/master/.bash_logout
-sudo wget -O .bashrc https://raw.githubusercontent.com/0hasankamrul0/My-Default-Settings/master/.bashrc
+sudo wget -O .bash_login https://raw.githubusercontent.com/0hasankamrul0/My-Default-Settings/master/.bash_login
 
 clean
 echo "___________________________________Configureing VIM Editor_________________________________________"
