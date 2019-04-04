@@ -1,0 +1,32 @@
+Windows App Store App:
+  Ubuntu
+
+Lanugage: 
+  Python 
+  Java
+  C Compiler 
+
+IDE and Editor:
+  Sublime
+  VS Code
+  Anaconda
+  PyCharm IntelliJ Idea
+  Andriod Studio
+  Eclips
+  
+Utility:
+  µTorrent
+  WinRAR
+  Lenovo
+  CDisplayEx
+  Avro Keyboard
+  
+Browser:
+  Chrome
+  Opera
+
+Media:
+  VLC
+  Adobe Photoshop
+  Adobe Illustrator
+  Adobe Lightroom
