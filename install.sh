@@ -11,12 +11,12 @@ if [ "$(whoami)" != 'root' ]; then
   sudo sh ./installation-list.sh && rm installation-list.sh
 fi
 
-clean
+clear
 echo "___________________________________Configuring Bash_________________________________________"
 sudo wget -O .bash_logout https://raw.githubusercontent.com/0hasankamrul0/My-Default-Settings/master/.bash_logout
 sudo wget -O .bash_login https://raw.githubusercontent.com/0hasankamrul0/My-Default-Settings/master/.bash_login
 
-clean
+clear
 echo "___________________________________Configureing VIM Editor_________________________________________"
 sudo wget -O.vimrc https://raw.githubusercontent.com/0hasankamrul0/My-Default-Settings/master/.vimrc
 cd //usr/share/vim/vim80/colors
