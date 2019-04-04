@@ -1,4 +1,0 @@
-*.sh linguist-language=Bash
-vim_colorscheme/* linguist-vendored
-*.vim linguist-vendored=false
-install.sh linguist-generated=true
