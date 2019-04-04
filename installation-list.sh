@@ -11,11 +11,9 @@ echo "System : WSL in Windows 10"
 if [ "$(whoami)" != 'root' ]; then
 	        echo "You have no permission to run as non-root user."
 		echo "Enter as Root :"
-    sudo -s
-		sudo apt autoremove
 fi
-
-
+		
+sudo apt autoremove
 
 # Adding necessary Repository
 sudo add-apt-repository ppa:webupd8team/java 
