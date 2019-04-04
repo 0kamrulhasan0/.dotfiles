@@ -1,1 +1,1 @@
-*.sh            text
+*.sh linguist-language=Bash
