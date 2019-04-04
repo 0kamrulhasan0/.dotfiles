@@ -8,10 +8,10 @@ echo "Machine : ThinkPad E460"
 echo "System : WSL in Windows 10"
 
 # Checking if the user is root or not and if not then ask for password 
-if [ "$(whoami)" != 'root' ]; then
-	        echo "You have no permission to run as non-root user."
-		echo "Enter as Root :"
-fi
+#if [ "$(whoami)" != 'root' ]; then
+#	        echo "You have no permission to run as non-root user."
+#		echo "Enter as Root :"
+#fi
 		
 sudo apt autoremove
 
