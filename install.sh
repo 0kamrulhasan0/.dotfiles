@@ -7,19 +7,20 @@ if [ "$(whoami)" != 'root' ]; then
   echo "Enter as Root :"
 
   echo "___________________________________Installing packages_________________________________________"
-  sudo wget -o installation-list.sh https://raw.githubusercontent.com/0hasankamrul0/My-Default-Settings/master/installation-list.sh
+  sudo wget -O installation-list.sh https://raw.githubusercontent.com/0hasankamrul0/My-Default-Settings/master/installation-list.sh
   sudo ./installation-list.sh && rm installation-list.sh
 fi
 
-
+clean
 echo "___________________________________Configuring Bash_________________________________________"
-sudo wget -o .bash_logout https://raw.githubusercontent.com/0hasankamrul0/My-Default-Settings/master/.bash_logout
-sudo wget -o .bashrc https://raw.githubusercontent.com/0hasankamrul0/My-Default-Settings/master/.bashrc
+sudo wget -O .bash_logout https://raw.githubusercontent.com/0hasankamrul0/My-Default-Settings/master/.bash_logout
+sudo wget -O .bashrc https://raw.githubusercontent.com/0hasankamrul0/My-Default-Settings/master/.bashrc
 
+clean
 echo "___________________________________Configureing VIM Editor_________________________________________"
-sudo wget -o .vimrc https://raw.githubusercontent.com/0hasankamrul0/My-Default-Settings/master/.vimrc
+sudo wget -O.vimrc https://raw.githubusercontent.com/0hasankamrul0/My-Default-Settings/master/.vimrc
 cd //usr/share/vim/vim80/colors
-sudo wget -o molokai.vim https://raw.githubusercontent.com/0hasankamrul0/My-Default-Settings/master/vim_colorscheme/molokai.vim
-sudo wget -o slate.vim https://raw.githubusercontent.com/0hasankamrul0/My-Default-Settings/master/vim_colorscheme/slate.vim
-sudo wget -o professional.vim https://raw.githubusercontent.com/0hasankamrul0/My-Default-Settings/master/vim_colorscheme/professional.vim
+sudo wget -O molokai.vim https://raw.githubusercontent.com/0hasankamrul0/My-Default-Settings/master/vim_colorscheme/molokai.vim
+sudo wget -O slate.vim https://raw.githubusercontent.com/0hasankamrul0/My-Default-Settings/master/vim_colorscheme/slate.vim
+sudo wget -O professional.vim https://raw.githubusercontent.com/0hasankamrul0/My-Default-Settings/master/vim_colorscheme/professional.vim
 cd ~/
