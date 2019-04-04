@@ -20,7 +20,7 @@ Utility:
   Lenovo
   CDisplayEx
   Avro Keyboard
-  
+  Battery.vbs (from here)  
 Browser:
   Chrome
   Opera
