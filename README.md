@@ -4,7 +4,7 @@
 ## Linux WSL
 The Installation Process for Linux is very Easy. Paste the bellow code into the terminal and run it. 
 ```bash
-wget https://raw.githubusercontent.com/0hasankamrul0/My-Default-Settings/install.sh
+wget https://raw.githubusercontent.com/0hasankamrul0/My-Default-Settings/master/install.sh
 sudo sh./install.sh
 ```
 
