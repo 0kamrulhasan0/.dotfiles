@@ -1,14 +1,17 @@
-## Installation Process
+## Windows Installtion
+* Software List
+
+## Installation Process For Linux WSL
 The Installation Process is very Easy. Paste the bellow code into the terminal and run it. 
-
-  wget -o init.sh https://raw.githubusercontent.com/0hasankamrul0/My-Default-Settings/install.sh
-  ./init.sh
-
+```bash
+wget -o init.sh https://raw.githubusercontent.com/0hasankamrul0/My-Default-Settings/install.sh
+./init.sh
+```
 
 #### VIm Color Scheme
-> Molokai
-> Professional
-> Slate
+* Molokai
+* Professional
+* Slate
  
  This is totally for personal use. But others can use it.
  A word of caution check the scripts before running them
