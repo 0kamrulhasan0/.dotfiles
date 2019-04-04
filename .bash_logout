@@ -1,9 +1,18 @@
-#leaving the console clear the screen to increase privacy
+# when leaving the console clear the screen to increase privacy
+sudo clear
 
+USERSQLH=~/.mysql_history
+USERBH=~/.bash_history
+ROOTSQLH=//root/.mysql_history
+ROOTBH=//root/.bash_history
 
-if [ "$SHLVL" = 1 ]; then
-	    [ -x /usr/bin/clear ] && /usr/bin/clear -q
-    fi
-    >~/.bash_history
-    >~/.mysql_history
-    sync;
+[ -f "$USERSQLH" ] && sudo rm $USERSQLH
+[ -f "$USERBH" ] && sudo rm $USERBH
+[ -f "$ROOTSQLH" ] && sudo rm $ROOTSQLH
+[ -f "$ROOTBH" ] && sudo rm $ROOTBH
+
+sudo history -c
+sync;
+
+exit 
+exit
