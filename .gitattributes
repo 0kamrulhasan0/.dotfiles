@@ -1,2 +1,1 @@
-* linguist-vendored
-*.vim linguist-vendored=false
+*.sh            text
