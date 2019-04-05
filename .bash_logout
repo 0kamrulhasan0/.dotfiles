@@ -11,7 +11,7 @@ ROOTBH=//root/.bash_history
 [ -f "$ROOTSQLH" ] && sudo rm $ROOTSQLH
 [ -f "$ROOTBH" ] && sudo rm $ROOTBH
 
-sudo history -c
+history -c
 sync;
 
 exit 
