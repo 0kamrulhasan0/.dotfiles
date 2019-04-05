@@ -6,7 +6,7 @@ clear
 echo "Package Install Script:"
 echo "Machine : ThinkPad E460"
 echo "System : WSL in Windows 10"
-echo -e "\n\n\n"
+
 
 # Checking if the user is root or not and if not then ask for password 
 if [ "$(whoami)" != 'root' ]; then
@@ -14,7 +14,7 @@ if [ "$(whoami)" != 'root' ]; then
 		echo "Enter as Root :"
 fi
 		
-#sudo apt autoremove
+sudo apt autoremove
 
 # Adding necessary Repository
 sudo add-apt-repository ppa:webupd8team/java 
@@ -27,7 +27,7 @@ sudo apt-get --assume-yes upgrade
 sudo apt --asume-yes install man tree zip unzip 
 
 # Programming languages and Similar
-sudo apt --assume-yes install essesential-build python3 python3-pip php7.2-cli nodejs mysql-server g++ sqlite3 golang default-jre opendjdk-8-jdk
+sudo apt --assume-yes install build-essesential python3 python3-pip php7.2-cli nodejs mysql-server g++ sqlite3 golang default-jre opendjdk-8-jdk
 
 # Editor 
 sudo apt --assume-yes vim
