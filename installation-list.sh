@@ -1,4 +1,4 @@
-#!/bin/bash
+	#!/bin/bash
 # VERSION=1.0
 clear
 
@@ -17,7 +17,7 @@ fi
 sudo apt autoremove
 
 # Adding necessary Repository
-sudo add-apt-repository ppa:webupd8team/java 
+sudo add-apt-repository --assume-yes ppa:webupd8team/java 
 
 # Update, Ungrade.
 sudo apt-get --assume-yes update
@@ -27,13 +27,14 @@ sudo apt-get --assume-yes upgrade
 sudo apt --assume-yes install man tree zip unzip 
 
 # Programming languages and Similar
-sudo apt --assume-yes install build-essesential python3 python3-pip php7.2-cli nodejs mysql-server g++ sqlite3 golang default-jre opendjdk-8-jdk
-
-# Editor 
-sudo apt --assume-yes vim
+sudo apt --assume-yes install essesential-build python3 python3-pip php7.2-cli nodejs mysql-server g++ sqlite3 golang
+# default-jre opendjdk-8-jdk
 
 # Other Packages
-sudo apt --assume-yes install virtualevn tmux vim openssh-server git gdb valgrind curl net-tools snap wget make libx11-dev
+sudo apt --assume-yes install tmux vim openssh-server git gdb valgrind curl net-tools snap wget make libx11-dev
+
+# Python Packages
+sudo python3-pip virtualenv
 
 # Making shortcut for python 
 # Accessing it with py instead of python3
