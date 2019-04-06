@@ -24,7 +24,7 @@ sudo apt-get --assume-yes update
 sudo apt-get --assume-yes upgrade
 
 # Basic Tool
-sudo apt --asume-yes install man tree zip unzip 
+sudo apt --assume-yes install man tree zip unzip 
 
 # Programming languages and Similar
 sudo apt --assume-yes install build-essesential python3 python3-pip php7.2-cli nodejs mysql-server g++ sqlite3 golang default-jre opendjdk-8-jdk
