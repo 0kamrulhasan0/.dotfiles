@@ -32,9 +32,10 @@ sudo apt --assume-yes install essesential-build python3 python3-pip php7.2-cli n
 
 # Other Packages
 sudo apt --assume-yes install tmux vim openssh-server git gdb valgrind curl net-tools snap wget make libx11-dev
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 # Python Packages
-sudo python3-pip virtualenv
+sudo pip3 install virtualenv
 
 # Making shortcut for python 
 # Accessing it with py instead of python3
