@@ -12,10 +12,10 @@ sudo wget -O installation-list.sh https://raw.githubusercontent.com/0hasankamrul
 sudo sh ./installation-list.sh
 echo "___________________________________Deleting packages_________________________________________"
 sudo rm installation-list.sh
+
 clear
 echo "___________________________________Configuring Bash_________________________________________"
-sudo wget -O .bash_logout hinstallation-list.shttps://raw.githubusercontent.com/0hasankamrul0/My-Default-Settings/master/.bash_logout
-sudo wget -O .bash_login https://raw.githubusercontent.com/0hasankamrul0/My-Default-Settings/master/.bash_login
+sudo wget -O .bashrc https://raw.githubusercontent.com/0hasankamrul0/My-Default-Settings/master/.bashrc
 
 clear
 echo "___________________________________Configureing VIM Editor_________________________________________"
