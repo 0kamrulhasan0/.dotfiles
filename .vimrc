@@ -1,3 +1,10 @@
+"" Enable filetype plugins
+set nocompatible                " don't bother with vi compatibility
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+
 inoremap {<cr> {<cr>}<c-o><s-o>
 inoremap [<cr> [<cr>]<c-o><s-o>
 inoremap (<cr> (<cr>)<c-o><s-o>
@@ -15,7 +22,7 @@ inoremap (<cr> (<cr>)<c-o><s-o>
 colo molokai
 syntax on 
 
-set nocompatible                " don't bother with vi compatibility
+set enc=utf-8
 set autoread                    " reload files when changed on disk, i.e. via git checkout
 set history=2000                " VIM history limit
 set magic                       " For regular expressions turn magic on
@@ -27,9 +34,3 @@ set smartindent
 set tabstop=2
 set shiftwidth=2
 set expandtab
-
-"" Enable filetype plugins
-filetype on 
-filetype plugin on 
-filetype indent on
-
