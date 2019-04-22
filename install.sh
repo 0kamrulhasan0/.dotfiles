@@ -1,3 +1,5 @@
+# Author : Kamrul
+
 # Moving to home directory
 cd ~/
 
