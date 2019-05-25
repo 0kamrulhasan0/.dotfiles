@@ -17,7 +17,7 @@ fi
 sudo apt autoremove
 
 # Adding necessary Repository
-sudo add-apt-repository --assume-yes ppa:webupd8team/java 
+ 
 
 # Update, Ungrade.
 sudo apt-get --assume-yes update
