@@ -24,7 +24,7 @@ sudo apt-get --assume-yes update
 sudo apt-get --assume-yes upgrade
 
 # Basic Tool
-sudo apt --assume-yes install man tree zip unzip 
+sudo apt --assume-yes install man tree zip unzip ranger neofeth
 
 # Programming languages and Similar
 sudo apt --assume-yes install essesential-build python3 python3-pip php7.2-cli nodejs mysql-server g++ sqlite3 golang
