@@ -17,10 +17,10 @@ sudo apt-get --assume-yes update
 sudo apt-get --assume-yes upgrade
 
 # Basic Tool
-sudo apt --assume-yes install man tree zip unzip ranger neofetch conky tint2
+sudo apt --assume-yes install man tree zip unzip ranger neofetch conky tint2 tlp
 
 # Programming languages and Similar
-sudo apt --assume-yes install essesential-build python3 python3-pip php7.2-cli nodejs mysql-server g++ sqlite3 golang
+#sudo apt --assume-yes install essesential-build python3 python3-pip php7.2-cli nodejs mysql-server g++ sqlite3 golang
 # default-jre opendjdk-8-jdk
 
 # Other Packages
