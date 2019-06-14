@@ -1,4 +1,4 @@
-	#!/bin/bash
+#!/bin/bash
 # VERSION=1.0
 clear
 
@@ -11,7 +11,7 @@ echo "System : WSL in Windows 10"
 # Checking if the user is root or not and if not then ask for password 
 if [ "$(whoami)" != 'root' ]; then
 	        echo "You have no permission to run as non-root user."
-		echo "Enter as Root :"
+		sudo -s
 fi
 		
 sudo apt autoremove
@@ -24,7 +24,7 @@ sudo apt-get --assume-yes update
 sudo apt-get --assume-yes upgrade
 
 # Basic Tool
-sudo apt --assume-yes install man tree zip unzip ranger neofetch
+sudo apt --assume-yes install man tree zip unzip ranger neofetch conky tint2
 
 # Programming languages and Similar
 sudo apt --assume-yes install essesential-build python3 python3-pip php7.2-cli nodejs mysql-server g++ sqlite3 golang
