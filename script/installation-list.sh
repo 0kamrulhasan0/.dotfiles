@@ -3,7 +3,7 @@
 
 
 # Printing Some Detail
-sudo apt --assume-yes -quiet install neofetch cmatrix
+sudo apt --assume-yes --quiet install neofetch cmatrix
 clear
 neofetch
 
@@ -17,14 +17,14 @@ LoL
 
 
 # Basic Tool
-sudo apt --assume-yes -quiet install man tree zip unzip ranger conky tint2 tlp
+sudo apt --assume-yes --quiet install man tree zip unzip ranger conky tint2 tlp
 
 # Programming languages and Similar
-#sudo apt --assume-yes -quiet install essesential-build python3 python3-pip php7.2-cli nodejs 
+#sudo apt --assume-yes --quiet install essesential-build python3 python3-pip php7.2-cli nodejs 
 # default-jre opendjdk-8-jdk
 
 # Other Packages
-sudo apt --assume-yes -quiet install tmux vim openssh-server git gdb valgrind curl net-tools snap wget make libx11-dev
+sudo apt --assume-yes --quiet install tmux vim openssh-server git gdb valgrind curl net-tools snap wget make libx11-dev
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 # Python Packages
