@@ -1,12 +1,12 @@
 #!/bin/bash
 # VERSION=1.0
-clear
+
 
 # Printing Some Detail
-echo "Package Install Script:"
-echo "Machine : ThinkPad E460"
-echo "System : WSL Ubuntu in Windows 10"
-	
+sudo apt --assume-yes install neofetch cmatrix
+clear
+neofetch
+
 sudo apt autoremove
 
 # Adding necessary Repository
@@ -17,7 +17,7 @@ LoL
 
 
 # Basic Tool
-sudo apt --assume-yes install man tree zip unzip ranger neofetch conky tint2 tlp
+sudo apt --assume-yes install man tree zip unzip ranger conky tint2 tlp
 
 # Programming languages and Similar
 #sudo apt --assume-yes install essesential-build python3 python3-pip php7.2-cli nodejs 
