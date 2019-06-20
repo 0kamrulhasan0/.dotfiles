@@ -21,6 +21,7 @@ sudo wget --quiet -O $HOME/.script/installation-list.sh https://raw.githubuserco
 sudo chmod +x $HOME/.script/installation-list.sh
 installation-list.sh
 sudo mv $HOME/install.sh $HOME/.script/install.sh 
-echo "Done"
 
-export PATH="$PATH:$HOME/.script"
+echo "Done"
+export -v PATH="$PATH:$HOME/.script"
+echo "====================================================="
