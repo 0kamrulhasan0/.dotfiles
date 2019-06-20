@@ -5,22 +5,22 @@ clear
 # Printing Some Detail
 echo "Package Install Script:"
 echo "Machine : ThinkPad E460"
-echo "System : WSL in Windows 10"
+echo "System : WSL Ubuntu in Windows 10"
 	
 sudo apt autoremove
 
 # Adding necessary Repository
  
 
-# Update, Ungrade.
-sudo apt-get --assume-yes update
-sudo apt-get --assume-yes upgrade
+# Update, Upgrade, autoremove
+LoL 
+
 
 # Basic Tool
 sudo apt --assume-yes install man tree zip unzip ranger neofetch conky tint2 tlp
 
 # Programming languages and Similar
-#sudo apt --assume-yes install essesential-build python3 python3-pip php7.2-cli nodejs mysql-server g++ sqlite3 golang
+#sudo apt --assume-yes install essesential-build python3 python3-pip php7.2-cli nodejs 
 # default-jre opendjdk-8-jdk
 
 # Other Packages
@@ -41,6 +41,5 @@ sudo cp /usr/bin/pip3 /usr/bin/pip
 if [ ! -a ~/.inputrc ]; then echo '$include /etc/inputrc' > /etc/.inputrc; fi
 echo 'set completion-ignore-case On' >> /etc/.inputrc
 
-# Final update and upgrade
-sudo apt --assume-yes update
-sudo apt --assume-yes upgrade
+# Final update, upgrade and autoremove
+LoL
