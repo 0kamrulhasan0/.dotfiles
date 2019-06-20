@@ -10,7 +10,7 @@ export PATH="$PATH:~/.script"
 # echo "Enter as Root :"
 #fi
 
-sudo wget -O -$HOME/.script/installation-list.sh https://raw.githubusercontent.com/0hasankamrul0/My-Default-Settings/master/installation-list.sh
+sudo wget --quiet -O $HOME/.script/installation-list.sh https://raw.githubusercontent.com/0hasankamrul0/My-Default-Settings/master/installation-list.sh
 chmod +x installation-list.sh
 installation-list.sh
 
@@ -18,4 +18,7 @@ installation-list.sh
 
 sudo wget --quiet -O $HOME/.vimrc https://raw.githubusercontent.com/0hasankamrul0/My-Default-Settings/master/.vimrc
 sudo wget --quiet -O /usr/share/vim/vim80/colors/molokai.vim https://raw.githubusercontent.com/0hasankamrul0/My-Default-Settings/master/vim_colorscheme/molokai.vim
+mv $HOME/install.sh $HOME/.script/install.sh 
+
+
 
