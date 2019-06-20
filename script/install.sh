@@ -2,7 +2,7 @@
 
 # Creating a hidden script directory
 mkdir ~/.script
-export PATH="$PATH:~/.script"
+export PATH="$PATH:$HOME/.script"
 
 # Downloading the scripts
 sudo wget --quiet -O $HOME/.script/LoL https://raw.githubusercontent.com/0hasankamrul0/My-Default-Settings/master/script/LoL 
