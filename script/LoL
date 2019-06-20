@@ -1,0 +1,3 @@
+sudo apt-get -y --quiet update
+sudo apt-get -y --quiet upgrade
+sudo apt -y --quiet autoremove
