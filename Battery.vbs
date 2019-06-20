@@ -4,7 +4,8 @@ set oResults = oServices.ExecQuery("select * from batteryfullchargedcapacity")
 for each oResult in oResults
 iFull = oResult.FullChargedCapacity
 next
-
+    
+    
 while (1)
 set oResults = oServices.ExecQuery("select * from batterystatus")
 for each oResult in oResults
