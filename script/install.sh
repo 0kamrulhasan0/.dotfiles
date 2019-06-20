@@ -23,5 +23,5 @@ installation-list.sh
 sudo mv $HOME/install.sh $HOME/.script/install.sh 
 
 echo "Done"
-export -v PATH="$PATH:$HOME/.script"
+export PATH="$PATH:$HOME/.script"
 echo "====================================================="
