@@ -1,0 +1,14 @@
+#!/bin/bash
+###########################################
+#      1. Create a directory in Home as .script
+#             mkdik .script
+#      2. Add this directory in Envirnment variable
+#             export PATH="$PATH:~/.script"
+#      3. Run the file like
+#             python3 test.py < EOD
+#             X
+#             Y
+#             Z
+#             EOD
+#
+#       Like this X Y Z can be counted as vaild input for test.py file
