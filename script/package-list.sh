@@ -11,14 +11,18 @@ neofetch
  
 
 # Update, Upgrade, autoremove
-LoL 
+sudo apt-get update
+sudo apt-get upgrade
 
 # Basic Tool
-sudo apt-get --assume-yes --quiet install man tree zip unzip ranger conky tint2 tlp
+sudo apt-get --assume-yes --quiet install ranger conky tint2 tlp
 
 # Programming languages and Similar
-#sudo apt-get --assume-yes --quiet install essesential-build python3 python3-pip php7.2-cli nodejs 
-# default-jre opendjdk-8-jdk
+sudo apt-get --assume-yes --quiet install essesential-build python3 python3-pip nodejs 
+
+# Scientific Tool
+sudo apt-get --assume-yes --quiet install octave octave-gsl gsl-doc-info octave-doc gnuplot
+if [ ! -a ~/.octaverc ]; then echo 'graphics_toolkit("gnuplot")' > ~/.octaverc; fi
 
 # Other Packages
 sudo apt-get --assume-yes --quiet install tmux vim openssh-server git gdb valgrind curl net-tools snap wget make libx11-dev
@@ -39,4 +43,5 @@ if [ ! -a ~/.inputrc ]; then echo '$include /etc/inputrc' > /etc/.inputrc; fi
 echo 'set completion-ignore-case On' >> /etc/.inputrc
 
 # Final update, upgrade and autoremove
-LoL
+sudo apt-get update
+sudo apt-get upgrade
