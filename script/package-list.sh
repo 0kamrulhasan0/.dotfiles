@@ -45,3 +45,4 @@ echo 'set completion-ignore-case On' >> /etc/.inputrc
 # Final update, upgrade and autoremove
 sudo apt-get update
 sudo apt-get upgrade
+sudo apt autoremove 
