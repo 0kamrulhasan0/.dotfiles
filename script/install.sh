@@ -17,7 +17,7 @@ sudo wget --quiet -O /usr/share/vim/vim80/colors/molokai.vim https://raw.githubu
 # Downloading Packages
 sudo wget --quiet -O $HOME/.script/package-list.sh https://raw.githubusercontent.com/0hasankamrul0/My-Default-Settings/master/script/package-list.sh
 sudo chmod +x $HOME/.script/package-list.sh
-package-list-list.sh
+package-list.sh
 sudo mv $HOME/install.sh $HOME/.script/install.sh 
 
 echo "Done"
