@@ -27,7 +27,10 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 pip3 install virtualenv
 pip3 install jupyter
 pip3 install requests
-pip3 install flask
+pip3 install Flask
+pip3 install Flask-Session
+pip3 install tqdm
+pip3 install PyPDF2
 
 # Making shortcut for python 
 # Accessing it with py instead of python3
