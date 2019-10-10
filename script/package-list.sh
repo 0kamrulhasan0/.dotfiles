@@ -11,31 +11,54 @@ sudo apt-get update upgrade
 # Basic Tool
 #sudo apt-get --assume-yes --quiet install ranger conky tint2 tlp
 
-# Programming languages and Similar
-sudo apt-get --assume-yes --quiet install essesential-build python3 python3-pip nodejs 
+# Other Programming languages Tools
+sudo apt-get --assume-yes --quiet install essesential-build make cmake postgresql
+
+#Node.js
+#sudo apt-get --assume-yes --quiet install nodejs npm
+#npm install -g coffee-script
+#npm install -g grunt-cli
+#npm install -g jshint
+#npm install -g less
+
+#Python 3
+sudo apt-get --assume-yes --quiet install python3 python3-pip python3-setuptools python3-dev
+
+# Python 3 Packages
+pip3 install virtualenv
+pip3 install ipython[notebook]
+pip3 install requests
+
+# Python 3 Web Development
+pip3 install Flask
+pip3 install Flask-Session
+
+# Python 3 Data Science Tools
+pip3 install numpy
+pip3 install pandas
+pip3 install matplotlib
+pip3 install seaborn
+pip3 install scikit-learn
+pip3 install scipy
+pip3 install bokeh
 
 # Scientific Tool
 #sudo apt-get --assume-yes --quiet install octave octave-gsl gsl-doc-info octave-doc gnuplot
 #if [ ! -a ~/.octaverc ]; then echo 'graphics_toolkit("gnuplot")' > ~/.octaverc; fi
 
-# Other Packages
-sudo apt-get --assume-yes --quiet install tmux vim openssh-server git gdb wget make 
-#valgrind curl net-tools snap libx11-dev
+# IDE
+sudo apt-get --assume-yes --quiet install tmux vim git gdb
+sudo snap install --classic code # or vscode
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
-# Python Packages
-pip3 install virtualenv
-pip3 install jupyter
-pip3 install requests
-pip3 install Flask
-pip3 install Flask-Session
-pip3 install tqdm
-pip3 install PyPDF2
+# Network Packages
+sudo apt-get --assume-yes --quiet install penssh-server wget curl
+#valgrind net-tools snap libx11-dev
 
 # Making shortcut for python 
 # Accessing it with py instead of python3
 sudo cp /usr/bin/python3 /usr/bin/py
-sudo cp /usr/bin/pip3 /usr/bin/pip
+sudo cp /usr/bin/pip3 /usr/bin/pp
 
 # Color Scheme
 
@@ -43,7 +66,11 @@ sudo cp /usr/bin/pip3 /usr/bin/pip
 if [ ! -a ~/.inputrc ]; then echo '$include /etc/inputrc' > /etc/.inputrc; fi
 echo 'set completion-ignore-case On' >> /etc/.inputrc
 
+# Git Info Setting up
+git config --global user.name "Kamrul Hasan"
+git config --global user.email "hasankamrul2097@gmail.com"
+
 # Final update, upgrade and autoremove
-sudo apt-get update
-sudo apt-get upgrade
+sudo apt-get update upgrade
 sudo apt autoremove 
+clean
