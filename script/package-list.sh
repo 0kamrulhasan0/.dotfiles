@@ -47,13 +47,16 @@ pip3 install bokeh
 #if [ ! -a ~/.octaverc ]; then echo 'graphics_toolkit("gnuplot")' > ~/.octaverc; fi
 
 # IDE
-sudo apt-get --assume-yes --quiet install tmux vim git gdb
+sudo apt-get --assume-yes --quiet install tmux vim git gdb 
 sudo snap install --classic code # or vscode
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 # Network Packages
 sudo apt-get --assume-yes --quiet install penssh-server wget curl
 #valgrind net-tools snap libx11-dev
+
+# Project Base Package
+sudo apt-get --assume-yes --quiet install mercurial
 
 # Making shortcut for python 
 # Accessing it with py instead of python3
