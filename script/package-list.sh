@@ -47,7 +47,7 @@ pip3 install bokeh
 #if [ ! -a ~/.octaverc ]; then echo 'graphics_toolkit("gnuplot")' > ~/.octaverc; fi
 
 # IDE
-sudo apt-get --assume-yes --quiet install tmux vim git gdb 
+sudo apt-get --assume-yes --quiet install tmux vim git git-extras gdb 
 sudo snap install --classic code # or vscode
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
