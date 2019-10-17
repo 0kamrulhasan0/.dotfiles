@@ -3,11 +3,22 @@
 # In contest, we are required to write, compile , run the code and pass the given test cases.
 # This code will automate the whole process and requires only one inital setup.
 # Run the file like:
-#                   python3 test.py < EOD
-#                   X
-#                   Y
-#                   Z
-#                   EOD
-#
+
+# First Test_Case
+python3 python_testing.py > output.txt << !  #python_testing adds 4 number taking input from commandline
+1
+2
+3
+4
+!
+actual_answer=10
+result=$(cat output.txt)
+if [ $result == $actual_answer ]; then
+    echo "Pass-Test 1"
+fi
+
+
+
+rm output.txt
 # Like this X Y Z can be counted as vaild input for test.py file
 # If inital output matches the given output, in terminal "Test-Case 1 Passed" will be shown
