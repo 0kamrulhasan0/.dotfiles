@@ -25,22 +25,13 @@ sudo apt-get --assume-yes --quiet install essesential-build make cmake postgresq
 sudo apt-get --assume-yes --quiet install python3 python3-pip python3-setuptools python3-dev
 
 # Python 3 Packages
-pip3 install virtualenv
-pip3 install ipython[notebook]
-pip3 install requests
+pip3 install virtualenv ipython[notebook] requests flake8 isort yapf
 
 # Python 3 Web Development
-pip3 install Flask
-pip3 install Flask-Session
+pip3 install Flask Flask-Session
 
 # Python 3 Data Science Tools
-pip3 install numpy
-pip3 install pandas
-pip3 install matplotlib
-pip3 install seaborn
-pip3 install scikit-learn
-pip3 install scipy
-pip3 install bokeh
+pip3 install numpy pandas matplotlib seaborn scikit-learn scipy bokeh
 
 # Scientific Tool
 #sudo apt-get --assume-yes --quiet install octave octave-gsl gsl-doc-info octave-doc gnuplot
