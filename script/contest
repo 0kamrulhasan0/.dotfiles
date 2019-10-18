@@ -3,21 +3,32 @@
 # In contest, we are required to write, compile , run the code and pass the given test cases.
 # This code will automate the whole process and requires only one inital setup.
 # Run the file like:
-
+#_______________________________________________________________________________
 # First Test_Case
-python3 python_testing.py > output.txt << !  #python_testing adds 4 number taking input from commandline
+python3 python_testing.py > output.txt << !
 1
 2
 3
 4
 !
-actual_answer=10
+actual_answer="10
+2.5"
 result=$(cat output.txt)
-if [ $result == $actual_answer ]; then
-    echo "Pass-Test 1"
-fi
-
-
+[ "$result" == "$actual_answer" ] && echo Test 1:   Passed || echo Test 1:   Failed
+#______________________________________________________________________________
+#______________________________________________________________________________
+# Second Test Case
+python3 python_testing.py > output.txt << !
+3
+3
+3
+3
+!
+actual_answer="12
+3.0"
+result=$(cat output.txt)
+[ "$result" == "$actual_answer" ] && echo Test 2:   Passed || echo Test 1:   Failed
+#______________________________________________________________________________
 
 rm output.txt
 # Like this X Y Z can be counted as vaild input for test.py file
