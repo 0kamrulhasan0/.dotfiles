@@ -54,12 +54,6 @@ sudo apt-get --assume-yes --quiet install mercurial
 sudo cp /usr/bin/python3 /usr/bin/py
 sudo cp /usr/bin/pip3 /usr/bin/pp
 
-# Color Scheme
-
-# Case insensitive tab complete
-if [ ! -a ~/.inputrc ]; then echo '$include /etc/inputrc' > /etc/.inputrc; fi
-echo 'set completion-ignore-case On' >> /etc/.inputrc
-
 # Git Info Setting up
 git config --global user.name "Kamrul Hasan"
 git config --global user.email "hasankamrul2097@gmail.com"
