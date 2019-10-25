@@ -12,7 +12,7 @@ sudo apt-get update upgrade
 #sudo apt-get --assume-yes --quiet install ranger conky tint2 tlp
 
 # Other Programming languages Tools
-sudo apt-get --assume-yes --quiet install essesential-build make cmake postgresql
+sudo apt-get --assume-yes --quiet install essesential-build make cmake postgresql golang 
 
 #Node.js
 #sudo apt-get --assume-yes --quiet install nodejs npm
