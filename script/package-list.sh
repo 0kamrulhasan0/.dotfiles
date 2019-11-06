@@ -6,7 +6,8 @@ clear
  
 
 # Update, Upgrade, autoremove
-sudo apt-get update upgrade
+sudo apt-get update 
+sudo apt-get upgrade
 
 # Basic Tool
 #sudo apt-get --assume-yes --quiet install ranger conky tint2 tlp
@@ -43,7 +44,7 @@ sudo snap install --classic code # or vscode
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 # Network Packages
-sudo apt-get --assume-yes --quiet install penssh-server wget curl
+sudo apt-get --assume-yes --quiet install penssh-server wget curl proxychains4
 #valgrind net-tools snap libx11-dev
 
 # Project Base Package
