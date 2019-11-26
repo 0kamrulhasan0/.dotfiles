@@ -6,9 +6,9 @@ wget --quiet -O setup-script.sh https://raw.githubusercontent.com/0hasankamrul0/
 chmod +x setup-script.sh
 ./setup-script.sh 2> Error-Log
 ```
-# LUKS Ex4
-# Time Zone Set
-# WriteCacheEnabled True
-# Install Firewall and Configure it to enable SSH
-# System snapshot (Backup)
-# Docker
+### LUKS Ex4
+### Time Zone Set
+### WriteCacheEnabled True
+### Install Firewall and Configure it to enable SSH
+### System snapshot (Backup)
+### Docker
