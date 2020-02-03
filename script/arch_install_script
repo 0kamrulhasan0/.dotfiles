@@ -32,5 +32,6 @@ echo "kamrul" >> /etc/hostname
 echo -e"127.0.0.1	kamrul\n::1		kamrul\n127.0.1.1	kamrul.arch	kamrul" >> /etc/hosts
 pacman -Syy
 pacman -S grub 
+grub-install /dev/sdb1
 passwd
 rm /bash actual_pc_script
