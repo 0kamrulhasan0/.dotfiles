@@ -1,0 +1,36 @@
+# This is for Asus laptop 300GB 
+timedatectl set-ntp true
+timedatectl set-timezone Asia/Dhaka
+timedatectl status
+ 
+# Partitioin
+# 3 Partion . 1)bios_grub 2)HDD 3swap
+echo -e "d\n1\nd\n2\nd\ng\nn\n\n\n+500M\nn\n\n\n+290G\nY\nn\n\n\n\nY\nw" | fdisk /dev/sdb
+echo -e "set 1 bios_grub on\nset 3 swap on\nquit"| parted /dev/sdb
+ 
+
+mkfs.ext4 -F /dev/sdb1
+mkfs.ext4 -F /dev/sdb2
+mkswap /dev/sdb3
+swapon /dev/sdb3
+mount /dev/sdb2 /mnt
+
+pacstrap /mnt base linux-lts linux-firmware zsh vim netctl wget git man-db man-pages 
+genfstab -U /mnt >> /mnt/etc/fstab
+cp /etc/netctl/wlan0-EDITH /mnt/etc/netctl/
+cat arch_install_script | tail -n 11 >> /mnt/actual_pc_script
+arch-chroot /mnt bash actual_pc_script
+umount -R /mnt
+reboot
+
+ln -sf /usr/share/zoneinfo/Asia/Dacca /etc/localtime
+hwclock --systohc
+echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+locale-gen
+echo "LANG=en_US.UTF-8" >> /etc/locale.conf
+echo "kamrul" >> /etc/hostname
+echo -e"127.0.0.1	kamrul\n::1		kamrul\n127.0.1.1	kamrul.arch	kamrul" >> /etc/hosts
+pacman -Syy
+pacman -S grub 
+passwd
+rm /bash actual_pc_script
