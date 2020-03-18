@@ -10,7 +10,7 @@ sudo apt-get update
 sudo apt-get upgrade
 
 # Basic Tool
-#sudo apt-get --assume-yes --quiet install ranger conky tint2 tlp
+sudo apt-get --assume-yes --quiet install tldr tlp #ranger conky tint2 
 
 # Other Programming languages Tools
 sudo apt-get --assume-yes --quiet install essesential-build make cmake postgresql golang 
