@@ -4,7 +4,7 @@
 
 # Run as Vi
 set -o vi
-bind ^L:clear-screen #for clearing screen
+bind -m vi-insert "\C-l":clear-screen #for clearing screen
 
 # If not running interactively, don't do anything
 case $- in
