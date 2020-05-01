@@ -4,6 +4,9 @@ set history=2000                " VIM history limit
 set path+=**
 set wildmenu
 
+set pastetoggle=<F2>
+set clipboard=unnamed
+
 "" Tab , Indent, Number
 set number
 set relativenumber
@@ -27,10 +30,6 @@ set laststatus=2  "Always show the status line at the bottom, even if you only h
 set backspace=indent,eol,start
 
 
-" open new split panes to right and bottom, which feels more natural
-set splitbelow
-set splitright
-
 set shortmess+=I "Disable default Vim startup message.
 set noerrorbells visualbell t_vb=
 set background=dark
@@ -42,18 +41,22 @@ set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'powerline/powerline'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'ycm-core/YouCompleteMe'
 Plugin 'preservim/nerdtree'
-Plugin 'mileszs/ack.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'nvie/vim-flake8'
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 call vundle#end()
 filetype plugin indent on
 
 "" Vim Compile and Run Shortcut
 autocmd filetype python nnoremap <F4> :w <bar> exec '!python3 '.shellescape('%')<CR>
-autocmd filetype c nnoremap <F4> :w <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
-autocmd filetype cpp nnoremap <F4> :w <bar> exec '!g++ -std=c++11'.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
+autocmd filetype c nnoremap <F4> :w <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r.out').' && ./'.shellescape('%:r.out')<CR>
+autocmd filetype cpp nnoremap <F4> :w <bar> exec '!g++ -std=c++11 '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
 autocmd filetype sh nnoremap <F4> :w <bar> exec '!bash '.shellescape('%')<CR>
 
 
@@ -83,16 +86,30 @@ vno <down> <Nop>
 vno <right> <Nop>
 vno <left> <Nop>
 
+" open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
 " quicker window movement
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
+nnoremap <C-H> <C-W>h
+nnoremap <C-L> <C-W>l
+nnoremap <C-J> <C-W>j 
+nnoremap <C-K> <C-W>k
 
-"" Vim Escape With alt+space
-inoremap <alt+space> <esc>
-nnoremap <alt+space> <esc>
-vnoremap <alt+space> <esc>
 
-"" NerdTree Open
+
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
+" Enable folding with the spacebar
+nnoremap <space> za
+
+" mark extra whitespace as bad and color it red
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+"auto-complete window goes away when you’re done
+let g:ycm_autoclose_preview_window_after_completion=1   
+"shortcut for goto definition
+map <space>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>  
+
+
+" NerdTree Open
 map <C-n> :NERDTreeToggle<CR>
