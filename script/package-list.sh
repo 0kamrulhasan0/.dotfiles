@@ -32,7 +32,7 @@ pip3 install ipython[notebook] requests #virtualenv flake8 isort yapf
 # pip3 install Flask Flask-Session
 
 # Python 3 Data Science Tools
-pip3 install numpy pandas scikit-learn scipy matplotlib seaborn bokeh
+pip3 install numpy pandas scikit-learn scipy # matplotlib seaborn bokeh
 
 # Scientific Tool
 #sudo apt-get --assume-yes --quiet install octave octave-gsl gsl-doc-info octave-doc gnuplot
