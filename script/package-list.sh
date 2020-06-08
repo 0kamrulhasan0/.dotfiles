@@ -10,10 +10,10 @@ sudo apt-get update
 sudo apt-get upgrade
 
 # Basic Tool
-sudo apt-get --assume-yes --quiet install tldr tlp #ranger conky tint2 
+sudo apt-get --assume-yes --quiet install tldr #tlp ranger conky tint2 
 
 # Other Programming languages Tools
-sudo apt-get --assume-yes --quiet install essesential-build make cmake postgresql golang 
+sudo apt-get --assume-yes --quiet install essesential-build make cmake #postgresql golang 
 
 #Node.js
 #sudo apt-get --assume-yes --quiet install nodejs npm
@@ -26,29 +26,29 @@ sudo apt-get --assume-yes --quiet install essesential-build make cmake postgresq
 sudo apt-get --assume-yes --quiet install python3 python3-pip python3-setuptools python3-dev
 
 # Python 3 Packages
-pip3 install virtualenv ipython[notebook] requests flake8 isort yapf
+pip3 install ipython[notebook] requests #virtualenv flake8 isort yapf
 
 # Python 3 Web Development
-pip3 install Flask Flask-Session
+# pip3 install Flask Flask-Session
 
 # Python 3 Data Science Tools
-pip3 install numpy pandas matplotlib seaborn scikit-learn scipy bokeh
+pip3 install numpy pandas scikit-learn scipy matplotlib seaborn bokeh
 
 # Scientific Tool
 #sudo apt-get --assume-yes --quiet install octave octave-gsl gsl-doc-info octave-doc gnuplot
 #if [ ! -a ~/.octaverc ]; then echo 'graphics_toolkit("gnuplot")' > ~/.octaverc; fi
 
 # IDE
-sudo apt-get --assume-yes --quiet install tmux vim git git-extras gdb 
-sudo snap install --classic code # or vscode
+sudo apt-get --assume-yes --quiet install tmux vim git gdb #git-extras 
+# sudo snap install --classic code # or vscode
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 # Network Packages
-sudo apt-get --assume-yes --quiet install penssh-server wget curl proxychains4
+sudo apt-get --assume-yes --quiet install wget curl # penssh-server proxychains4
 #valgrind net-tools snap libx11-dev
 
 # Project Base Package
-sudo apt-get --assume-yes --quiet install mercurial
+# sudo apt-get --assume-yes --quiet install mercurial
 
 # Making shortcut for python 
 # Accessing it with py instead of python3
