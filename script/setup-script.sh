@@ -16,7 +16,7 @@ sudo mv $HOME/setup-script.sh $HOME/.script/setup-script.sh
 
 # Downloading Profile and Theme
 sudo wget --quiet -O $HOME/.vimrc https://raw.githubusercontent.com/0hasankamrul0/My-Default-Settings/master/profile/.vimrc 
-sudo wget --quiet -O /usr/share/vim/vim80/colors/molokai.vim https://raw.githubusercontent.com/0hasankamrul0/My-Default-Settings/master/profile/molokai.vim
+sudo wget --quiet -O /usr/share/vim/vim81/colors/molokai.vim https://raw.githubusercontent.com/0hasankamrul0/My-Default-Settings/master/profile/molokai.vim
 sudo vim +PluginInstall +qall
 python3 ~/.vim/bundle/YouCompleteMe/install.py
 
