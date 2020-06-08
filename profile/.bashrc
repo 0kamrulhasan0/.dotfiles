@@ -120,5 +120,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
-tmux source ~/.tmux.conf
-tmux
+# Starting Terminal in Tmux
+case $- in *i*)
+    tmux source ~/.tmux.conf
+    [ -z "$TMUX" ] && exec tmux
+esac
