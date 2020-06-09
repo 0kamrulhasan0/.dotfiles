@@ -39,7 +39,7 @@ pip3 install numpy pandas scikit-learn scipy # matplotlib seaborn bokeh
 #if [ ! -a ~/.octaverc ]; then echo 'graphics_toolkit("gnuplot")' > ~/.octaverc; fi
 
 # IDE
-sudo apt-get --assume-yes --quiet install tmux vim git gdb #git-extras 
+sudo apt-get --assume-yes --quiet install tmux vim git gdb html-xml-utils #git-extras 
 # sudo snap install --classic code # or vscode
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
