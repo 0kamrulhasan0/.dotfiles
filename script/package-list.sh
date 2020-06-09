@@ -13,7 +13,7 @@ sudo apt-get upgrade
 sudo apt-get --assume-yes --quiet install tldr #tlp ranger conky tint2 
 
 # Other Programming languages Tools
-sudo apt-get --assume-yes --quiet install build-essential make cmake #postgresql golang 
+sudo apt-get --assume-yes --quiet install build-essential make cmake clang #postgresql golang 
 
 #Node.js
 #sudo apt-get --assume-yes --quiet install nodejs npm
