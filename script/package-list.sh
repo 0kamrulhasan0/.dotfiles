@@ -44,7 +44,7 @@ sudo apt-get --assume-yes --quiet install tmux vim git gdb #git-extras
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 # Network Packages
-sudo apt-get --assume-yes --quiet install wget curl # penssh-server proxychains4
+sudo apt-get --assume-yes --quiet install wget curl youtube-dl# penssh-server proxychains4
 #valgrind net-tools snap libx11-dev
 
 # Project Base Package
@@ -60,6 +60,7 @@ git config --global user.name "Kamrul Hasan"
 git config --global user.email "hasankamrul2097@gmail.com"
 
 # Final update, upgrade and autoremove
-sudo apt-get update upgrade
+sudo apt-get update 
+sudo apt-get upgrade
 sudo apt autoremove 
 clean
