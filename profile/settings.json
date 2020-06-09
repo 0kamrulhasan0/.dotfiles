@@ -31,10 +31,10 @@
 		// Clone repository : https://github.com/powerline/fonts 
 		// Run install.ps1
 		"fontFace" : "Noto Mono for Powerline",
-		"fontSize" : 11,
+		"fontSize" : 11
 
-		"useAcrylic" : true,
-		"acrylicOpacity" : 0.9
+		// "useAcrylic" : true,
+		// "acrylicOpacity" : 0.9
         },
         "list":
         [
