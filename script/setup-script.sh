@@ -24,4 +24,5 @@ git submodule sync --recursive
 git submodule update --init --recursive
 python3 install.py
 
+echo 'set completion-ignore-case on' | sudo tee -a /etc/inputrc
 echo "Done...!"
