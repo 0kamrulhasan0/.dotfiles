@@ -10,7 +10,7 @@ sudo apt-get update
 sudo apt-get upgrade
 
 # Basic Tool
-sudo apt-get --assume-yes --quiet install tldr xclip #tlp ranger conky tint2 
+sudo apt-get --assume-yes --quiet install tldr xclip bsdgames #tlp ranger conky tint2 
 
 # Other Programming languages Tools
 sudo apt-get --assume-yes --quiet install build-essential make cmake clang #postgresql golang 
