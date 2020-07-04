@@ -1,5 +1,4 @@
 Author = Kamrul Hasan
-Home_Dir = /home/koha
 
 all:
 	make Packages_Install
@@ -40,16 +39,16 @@ Update:
 	apt autoremove 
 		
 Dotfile_Setup:
-	ln -fs $(Home_Dir)/.dotfiles/.bashrc $(Home_Dir)/.bashrc
-	ln -fs $(Home_Dir)/.dotfiles/.vimrc $(Home_Dir)/.vimrc
-	ln -fs $(Home_Dir)/.dotfiles/.tmux.conf $(Home_Dir)/.tmux.conf
-	ln -fs $(Home_Dir)/.dotfiles/.gitconfig $(Home_Dir)/.gitconfig
-	ln -fs $(Home_Dir)/.dotfiles/.molokai.vim /usr/share/vim/vim81/colors/molokai.vim 
+	ln -fs $(Home)/.dotfiles/.bashrc $(Home)/.bashrc
+	ln -fs $(Home)/.dotfiles/.vimrc $(Home)/.vimrc
+	ln -fs $(Home)/.dotfiles/.tmux.conf $(Home)/.tmux.conf
+	ln -fs $(Home)/.dotfiles/.gitconfig $(Home)/.gitconfig
+	ln -fs $(Home)/.dotfiles/.molokai.vim /usr/share/vim/vim81/colors/molokai.vim 
 
 Vim_Additional_Setup:
-	git clone https://github.com/VundleVim/Vundle.vim.git $(Home_Dir)/.vim/bundle/Vundle.vim
+	git clone https://github.com/VundleVim/Vundle.vim.git $(Home)/.vim/bundle/Vundle.vim
 	vim +PluginInstall +qall
-	cd $(Home_Dir)/.vim/bundle/YouCompleteMe
+	cd $(Home)/.vim/bundle/YouCompleteMe
 	git submodule sync --recursive
 	git submodule update --init --recursive
 	python3 install.py

@@ -4,7 +4,7 @@ Clone The Repository. Go to the .dotfiles folder. Run clean_install with $HOME p
 git clone https://github.com/0hasankamrul0/.dotfiles.git
 cd .dotfiles
 sudo apt-get install build-essential
-sudo make 
+sudo make Home=$HOME
 ```
 
 ## Arch Installation Script
