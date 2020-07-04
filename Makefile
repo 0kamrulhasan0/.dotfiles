@@ -1,17 +1,20 @@
 Author = Kamrul Hasan
+Home_Dir = ${HOME}
+
 
 all:
+	echo "Starting..."
+	sudo make Setup Home=$(Home_Dir)
+	# sudo make Vim_Additional_Setup Home=$(Home_Dir)
+	echo "Done...!!!"
+
+Setup:
 	make Packages_Install
 	make Dotfile_Setup
 	make Vim_Additional_Setup
 	make Binary_Setup
 	make Case_insensitive	
 
-test:
-	make Packages_Install
-	make Dotfile_Setup
-	make Binary_Setup
-	make Case_insensitive	
 
 
 
@@ -46,12 +49,15 @@ Dotfile_Setup:
 	ln -fs $(Home)/.dotfiles/.molokai.vim /usr/share/vim/vim81/colors/molokai.vim 
 
 Vim_Additional_Setup:
+ifeq ($([ ! -d $(Home)/.vim/bundle/Vundle.vim ]), true) 
 	git clone https://github.com/VundleVim/Vundle.vim.git $(Home)/.vim/bundle/Vundle.vim
+else
+	git -C "$(Home)/.vim/bundle/Vundle.vim" pull
+endif
 	vim +PluginInstall +qall
-	cd $(Home)/.vim/bundle/YouCompleteMe
-	git submodule sync --recursive
-	git submodule update --init --recursive
-	python3 install.py
+	git -C "$(Home)/.vim/bundle/YouCompleteMe/" submodule sync --recursive
+	git -C "$(Home)/.vim/bundle/YouCompleteMe/" submodule update --init --recursive
+	python3 $(Home)/.vim/bundle/YouCompleteMe/install.py
 
 Binary_Setup:
 	ln -fs /usr/bin/python3.8 /usr/bin/py

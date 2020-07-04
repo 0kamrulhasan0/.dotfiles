@@ -1,10 +1,11 @@
-## Linux Settings
-Clone The Repository. Go to the .dotfiles folder. Run clean_install with $HOME parameter
+## Linux Default Setup
+
 ```bash
+sudo apt-get update
+sudo apt-get install git build-essential 
 git clone https://github.com/0hasankamrul0/.dotfiles.git
 cd .dotfiles
-sudo apt-get install build-essential
-sudo make Home=$HOME
+make
 ```
 
 ## Arch Installation Script
