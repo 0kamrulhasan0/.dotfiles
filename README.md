@@ -7,7 +7,7 @@ cd .dotfiles
 make
 ```
 
-## Arch Installation Script
+## Arch Install Script
 Not Prepared Yet
 
 ### LUKS Ex4
