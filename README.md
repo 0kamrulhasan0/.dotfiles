@@ -1,9 +1,8 @@
 ## Linux Default Setup
 
 ```bash
-sudo apt-get update
-sudo apt-get install git build-essential 
 git clone https://github.com/0hasankamrul0/.dotfiles.git
+sudo apt-get update && apt-get install build-essential 
 cd .dotfiles
 make
 ```

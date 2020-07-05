@@ -4,11 +4,11 @@ Home_Dir = ${HOME}
 
 all:
 	echo "Starting..."
-	sudo make Setup Home=$(Home_Dir)
-	# sudo make Vim_Additional_Setup Home=$(Home_Dir)
+	sudo make ubuntu Where_Home=$(Home_Dir)
 	echo "Done...!!!"
 
-Setup:
+# Installs Packages For Ubuntu
+buntu:
 	make Packages_Install
 	make Dotfile_Setup
 	make Vim_Additional_Setup
@@ -42,22 +42,23 @@ Update:
 	apt autoremove 
 		
 Dotfile_Setup:
-	ln -fs $(Home)/.dotfiles/.bashrc $(Home)/.bashrc
-	ln -fs $(Home)/.dotfiles/.vimrc $(Home)/.vimrc
-	ln -fs $(Home)/.dotfiles/.tmux.conf $(Home)/.tmux.conf
-	ln -fs $(Home)/.dotfiles/.gitconfig $(Home)/.gitconfig
-	ln -fs $(Home)/.dotfiles/.molokai.vim /usr/share/vim/vim81/colors/molokai.vim 
+	ln -fs $(Where_Home)/.dotfiles/Profiles/bashrc $(Where_Home)/.bashrc
+	ln -fs $(Where_Home)/.dotfiles/Profiles/vimrc $(Where_Home)/.vimrc
+	ln -fs $(Where_Home)/.dotfiles/Profiles/tmux.conf $(Where_Home)/.tmux.conf
+	ln -fs $(Where_Home)/.dotfiles/Profiles/gitconfig $(Where_Home)/.gitconfig
+	ln -fs $(Where_Home)/.dotfiles/Profiles/molokai.vim /usr/share/vim/vim81/colors/molokai.vim 
 
 Vim_Additional_Setup:
-ifeq ($([ ! -d $(Home)/.vim/bundle/Vundle.vim ]), true) 
-	git clone https://github.com/VundleVim/Vundle.vim.git $(Home)/.vim/bundle/Vundle.vim
+# if $(Where_Home)/.vim/bundle/Vundle.vim does not exist, clone it. Else Git Pull
+ifeq ($([ ! -d $(Where_Home)/.vim/bundle/Vundle.vim ]), true) 
+	git clone https://github.com/VundleVim/Vundle.vim.git $(Where_Home)/.vim/bundle/Vundle.vim
 else
-	git -C "$(Home)/.vim/bundle/Vundle.vim" pull
+	git -C "$(Where_Home)/.vim/bundle/Vundle.vim" pull
 endif
 	vim +PluginInstall +qall
-	git -C "$(Home)/.vim/bundle/YouCompleteMe/" submodule sync --recursive
-	git -C "$(Home)/.vim/bundle/YouCompleteMe/" submodule update --init --recursive
-	python3 $(Home)/.vim/bundle/YouCompleteMe/install.py
+	git -C "$(Where_Home)/.vim/bundle/YouCompleteMe/" submodule sync --recursive
+	git -C "$(Where_Home)/.vim/bundle/YouCompleteMe/" submodule update --init --recursive
+	python3 $(Where_Home)/.vim/bundle/YouCompleteMe/install.py
 
 Binary_Setup:
 	ln -fs /usr/bin/python3.8 /usr/bin/py
