@@ -5,8 +5,8 @@ Home_Dir = ${HOME}
 # Installs Packages For Ubuntu Linux
 ubuntu:
 	sudo make APT_Packages_Install
-	sudo make Dotfile_Setup 
-	sudo make Vim_Additional_Setup 
+	make Dotfile_Setup Home=$(Home_Dir)
+	make Vim_Additional_Setup Home=$(Home_Dir)
 	sudo make Binary_Setup
 	sudo make Case_insensitive	
 
@@ -43,23 +43,23 @@ APT_Update:
 
 		
 Dotfile_Setup:
-	ln -fs $(Home_Dir)/.dotfiles/Profiles/bashrc $(Home_Dir)/.bashrc
-	ln -fs $(Home_Dir)/.dotfiles/Profiles/vimrc $(Home_Dir)/.vimrc
-	ln -fs $(Home_Dir)/.dotfiles/Profiles/tmux.conf $(Home_Dir)/.tmux.conf
-	ln -fs $(Home_Dir)/.dotfiles/Profiles/gitconfig $(Home_Dir)/.gitconfig
-	ln -fs $(Home_Dir)/.dotfiles/Profiles/molokai.vim /usr/share/vim/vim81/colors/molokai.vim 
+	ln -fs $(Home)/.dotfiles/Profiles/bashrc $(Home)/.bashrc
+	ln -fs $(Home)/.dotfiles/Profiles/vimrc $(Home)/.vimrc
+	ln -fs $(Home)/.dotfiles/Profiles/tmux.conf $(Home)/.tmux.conf
+	ln -fs $(Home)/.dotfiles/Profiles/gitconfig $(Home)/.gitconfig
+	sudo ln -fs $(Home)/.dotfiles/Profiles/molokai.vim /usr/share/vim/vim81/colors/molokai.vim 
 
 Vim_Additional_Setup:
-# if $(Home_Dir)/.vim/bundle/Vundle.vim does not exist, clone it. Else Git Pull
-ifeq ($([ ! -d $(Home_Dir)/.vim/bundle/Vundle.vim ]), true) 
-	git clone https://github.com/VundleVim/Vundle.vim.git $(Home_Dir)/.vim/bundle/Vundle.vim
+# if $(Home)/.vim/bundle/Vundle.vim does not exist, clone it. Else Git Pull
+ifeq ($([ ! -d $(Home)/.vim/bundle/Vundle.vim ]), true) 
+	git clone https://github.com/VundleVim/Vundle.vim.git $(Home)/.vim/bundle/Vundle.vim
 else
-	git -C "$(Home_Dir)/.vim/bundle/Vundle.vim" pull
+	git -C "$(Home)/.vim/bundle/Vundle.vim" pull
 endif
 	vim +PluginInstall +qall
-	git -C "$(Home_Dir)/.vim/bundle/YouCompleteMe/" submodule sync --recursive
-	git -C "$(Home_Dir)/.vim/bundle/YouCompleteMe/" submodule update --init --recursive
-	python3 $(Home_Dir)/.vim/bundle/YouCompleteMe/install.py
+	git -C "$(Home)/.vim/bundle/YouCompleteMe/" submodule sync --recursive
+	git -C "$(Home)/.vim/bundle/YouCompleteMe/" submodule update --init --recursive
+	python3 $(Home)/.vim/bundle/YouCompleteMe/install.py
 
 Binary_Setup:
 	ln -fs /usr/bin/python3.8 /usr/bin/py
