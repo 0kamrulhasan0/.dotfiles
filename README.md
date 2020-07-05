@@ -11,7 +11,7 @@ make ubuntu
 ```
 or
 ```bash
-curl -s https://raw.githubusercontent.com/0hasankamrul0/.dotfiles/master/Ubuntu_install | bash 
+curl -s https://raw.githubusercontent.com/0hasankamrul0/.dotfiles/master/Ubuntu_Install | bash
 ```
 
 
