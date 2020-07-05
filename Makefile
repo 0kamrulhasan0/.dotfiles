@@ -1,20 +1,19 @@
 Author = Kamrul Hasan
-Home_Dir = ${HOME}
 
 
 # Installs Packages For Ubuntu Linux
 ubuntu:
 	sudo make APT_Packages_Install
-	sudo basic_setup
+	sudo make basic_setup_home Home=${HOME}
 	
 # Installs Packages For Arch Linux
 arch:
 	sudo make packman_Packages_Install
-	sudo basic_setup
+	sudo make basic_setup Home=${HOME}
 
-basic_setup:
-	make Dotfile_Setup Home=$(Home_Dir)
-	make Vim_Additional_Setup Home=$(Home_Dir)
+basic_setup_home:
+	make Dotfile_Setup
+	make Vim_Additional_Setup
 	make Binary_Setup
 	make Case_insensitive	
 
@@ -45,7 +44,7 @@ APT_CTF_Tools:
 APT_Update:
 	apt-get update 
 	apt-get upgrade
-	apt autoremove 
+	apt-get autoremove 
 
 		
 Dotfile_Setup:
