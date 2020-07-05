@@ -7,39 +7,45 @@ all:
 	sudo make ubuntu Where_Home=$(Home_Dir)
 	echo "Done...!!!"
 
-# Installs Packages For Ubuntu
-buntu:
-	make Packages_Install
-	make Dotfile_Setup
-	make Vim_Additional_Setup
+# Installs Packages For Ubuntu Linux
+ubuntu:
+	make APT_Packages_Install
+	make Dotfile_Setup Where_Home=$(Home_Dir)
+	make Vim_Additional_Setup Where_Home=$(Home_Dir)
 	make Binary_Setup
 	make Case_insensitive	
 
 
+# Installs Packages For Arch Linux
+arch:
 
 
-Packages_Install:
-	make Update
-	make Programming_languages_Tools
-	make Basic_Tool 
-	make Update
+APT_Packages_Install:
+	make APT_Update
+	make APT_Programming_languages_Tools
+	make APT_Basic_Tool 
+	make APT_Update
 
-Programming_languages_Tools:
+APT_Programming_languages_Tools:
 	apt-get --assume-yes install clang cmake #postgresql golang 
 	apt-get --assume-yes install python3 python3-pip python3-setuptools python3-dev
 	pip3 install ipython[notebook] requests #flake8 isort yapf
 	# pip3 install Flask Flask-Session
 	pip3 install numpy pandas scikit-learn scipy # matplotlib seaborn bokeh
 
-Basic_Tool:
+APT_Basic_Tool:
 	apt-get --assume-yes install tmux vim git gdb 
 	apt-get --assume-yes install tldr xclip html-xml-utils bsdgames #tlp ranger conky tint2 
 	apt-get --assume-yes install wget curl youtube-dl 
 
-Update:
+APT_CTF_Tools:
+	apt-get --assume-yes install radare2 foremost  
+
+APT_Update:
 	apt-get update 
 	apt-get upgrade
 	apt autoremove 
+
 		
 Dotfile_Setup:
 	ln -fs $(Where_Home)/.dotfiles/Profiles/bashrc $(Where_Home)/.bashrc
