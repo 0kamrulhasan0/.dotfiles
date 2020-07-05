@@ -5,14 +5,20 @@ Home_Dir = ${HOME}
 # Installs Packages For Ubuntu Linux
 ubuntu:
 	sudo make APT_Packages_Install
-	make Dotfile_Setup Home=$(Home_Dir)
-	make Vim_Additional_Setup Home=$(Home_Dir)
-	sudo make Binary_Setup
-	sudo make Case_insensitive	
-
-
+	sudo basic_setup
+	
 # Installs Packages For Arch Linux
 arch:
+	sudo make packman_Packages_Install
+	sudo basic_setup
+
+basic_setup:
+	make Dotfile_Setup Home=$(Home_Dir)
+	make Vim_Additional_Setup Home=$(Home_Dir)
+	make Binary_Setup
+	make Case_insensitive	
+
+
 
 
 APT_Packages_Install:
@@ -47,7 +53,7 @@ Dotfile_Setup:
 	ln -fs $(Home)/.dotfiles/Profiles/vimrc $(Home)/.vimrc
 	ln -fs $(Home)/.dotfiles/Profiles/tmux.conf $(Home)/.tmux.conf
 	ln -fs $(Home)/.dotfiles/Profiles/gitconfig $(Home)/.gitconfig
-	sudo ln -fs $(Home)/.dotfiles/Profiles/molokai.vim /usr/share/vim/vim81/colors/molokai.vim 
+	ln -fs $(Home)/.dotfiles/Profiles/molokai.vim /usr/share/vim/vim81/colors/molokai.vim 
 
 Vim_Additional_Setup:
 # if $(Home)/.vim/bundle/Vundle.vim does not exist, clone it. Else Git Pull
