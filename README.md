@@ -9,6 +9,11 @@ git clone https://github.com/0hasankamrul0/.dotfiles.git
 cd .dotfiles
 make ubuntu
 ```
+or
+```bash
+curl -s https://raw.githubusercontent.com/0hasankamrul0/.dotfiles/master/Ubuntu_install | bash 
+```
+
 
 ## Arch Install Script
 Not Prepared Yet
