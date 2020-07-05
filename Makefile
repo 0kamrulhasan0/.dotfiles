@@ -16,6 +16,8 @@ basic_setup_home:
 	make Vim_Additional_Setup
 	make Binary_Setup
 	make Case_insensitive	
+	clean
+	echo Done...!
 
 
 
