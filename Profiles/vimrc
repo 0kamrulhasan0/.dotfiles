@@ -49,51 +49,76 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'nvie/vim-flake8'
+Plugin 'troydm/zoomwintab.vim'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 call vundle#end()
 filetype plugin indent on
 
 "" Vim Compile and Run Shortcut
+"" Save and Run
 autocmd filetype python nnoremap <F4> :w <bar> exec '!python3 '.shellescape('%')<CR>
 autocmd filetype c nnoremap <F4> :w <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r.out').' && ./'.shellescape('%:r.out')<CR>
 autocmd filetype cpp nnoremap <F4> :w <bar> exec '!g++ -std=c++11 '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
 autocmd filetype sh nnoremap <F4> :w <bar> exec '!bash '.shellescape('%')<CR>
 
 
-"" Competitive Programming Vim Config :
-"" Creating a cpp file according to templete
-""autocmd BufNewFile *.cpp -r /path/to/template.cpp
-"" Save the document, clear console screen, show compile time, redirect compile errors to a file, show runtime, redirect stdin/stdout/stderr from BufNewFile
-""nnoremap gb :w<CR>:!printf "\033c" && printf "================\nCompiling...\n================\n" && time g++ -g -std=c++17 -Wall -Wextra -Wno-unused-result -D LOCAL -O2 %:r.cpp -o %:r 2>&1 \| tee %:r.cerr && printf "\n================\n   Running...\n================\n" && time ./%:r < %:r.in > %:r.out 2> %:r.err && printf "\n\n\n\n"<CR>
 
-
-"" Optional :
-""--------------------------------------
-"" Unmapping Arrow keys in Normal Mode
-"" Unmapping Arrow keys in Normal Mode
+" Disabling Arrow Keys to Avoid Using Them :
+" --------------------------------------
+" Unmapping Arrow keys in Normal Mode :
 no <up> <Nop>
 no <down> <Nop>
 no <right> <Nop>
 no <left> <Nop>
-"" Unmapping Arrow keys in Insert Mode
+" Unmapping Arrow keys in Insert Mode :
 ino <up> <Nop>
 ino <down> <Nop>
 ino <right> <Nop>
 ino <left> <Nop>
-"" Unmapping Arrow keys in Visual Mode
+" Unmapping Arrow keys in Visual Mode :
 vno <up> <Nop>
 vno <down> <Nop>
 vno <right> <Nop>
 vno <left> <Nop>
 
-" open new split panes to right and bottom, which feels more natural
+
+" Pane Movement :
+" --------------------------------------
+" Open Panel :
+" :vs   vertical split
+" :sp   split / horizontal split
+" open new split pannels to right and bottom, which feels more natural
 set splitbelow
 set splitright
-" quicker window movement
+" quicker pannel movement :
 nnoremap <C-H> <C-W>h
 nnoremap <C-L> <C-W>l
 nnoremap <C-J> <C-W>j 
 nnoremap <C-K> <C-W>k
+" pannel resize :
+" <C-W>|              current panel full size
+" <C-W>=              all panel same size
+" <C-W>+              current panel size increase
+" <C-W>-              current panel size decrease
+
+
+" Windows Movement :
+" --------------------------------------
+" Open Tab :
+" :tabn               new tab
+" gt                  move to next tab
+" gT                  move to previous tab
+" :tabc               close new tab
+
+
+" Scrolling :
+"--------------------------------------
+" With Cursor %50 of line:
+nnoremap K <C-U>
+nnoremap J <C-D>
+" Without Cursor +1 Line
+" <C-E>               move up
+" <C-Y>               move down
 
 
 
@@ -101,10 +126,8 @@ nnoremap <C-K> <C-W>k
 set foldmethod=indent
 set foldlevel=99
 " Enable folding with the spacebar
-nnoremap <space> za
+nnoremap <space><space> za
 
-" mark extra whitespace as bad and color it red
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 "auto-complete window goes away when you’re done
 let g:ycm_autoclose_preview_window_after_completion=1   
 "shortcut for goto definition
