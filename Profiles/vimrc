@@ -3,11 +3,14 @@ set autoread                    " reload files when changed on disk, i.e. via gi
 set history=2000                " VIM history limit
 set path+=**
 set wildmenu
+" set nobackup
+set noswapfile
+
 
 set pastetoggle=<F2>
 set clipboard=unnamed
 
-"" Tab , Indent, Number
+" Tab , Indent, Number
 set number
 set relativenumber
 set smartindent
@@ -15,10 +18,10 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set hidden
-"set incsearch " Enable searching as you type, rather than waiting till you press enter.
-""set mouse+=a
+" set incsearch " Enable searching as you type, rather than waiting till you press enter.
+" set mouse+=a
 
-"" Some Extra Mode
+" Some Extra Mode
 set showmode
 set showcmd " Show (partial) command in status line.
 set autowrite " Automatically save before commands like :next and :make
@@ -53,12 +56,14 @@ Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 call vundle#end()
 filetype plugin indent on
 
-"" Vim Compile and Run Shortcut
-"" Save and Run
-autocmd filetype python nnoremap <F4> :w <bar> exec '!python3 '.shellescape('%')<CR>
+" Vim Compile and Run Shortcut
+" Save and Run
+autocmd filetype sh nnoremap <F4> :w <bar> exec '!bash '.shellescape('%')<CR>
 autocmd filetype c nnoremap <F4> :w <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r.out').' && ./'.shellescape('%:r.out')<CR>
 autocmd filetype cpp nnoremap <F4> :w <bar> exec '!g++ -std=c++11 '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
-autocmd filetype sh nnoremap <F4> :w <bar> exec '!bash '.shellescape('%')<CR>
+autocmd filetype python nnoremap <F4> :w <bar> exec '!python3 '.shellescape('%')<CR>
+autocmd filetype javascript nnoremap <F4> :w <bar> exec '!nodejs '.shellescape('%')<CR>
+
 
 
 
