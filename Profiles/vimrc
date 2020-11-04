@@ -95,10 +95,9 @@ nnoremap <C-L> <C-W>l
 nnoremap <C-J> <C-W>j 
 nnoremap <C-K> <C-W>k
 " pannel resize :
-" <C-W>|              current panel full size
-" <C-W>=              all panel same size
-" <C-W>+              current panel size increase
-" <C-W>-              current panel size decrease
+nnoremap <Bar> <C-W><Bar>
+nnoremap = <C-W>= 
+nnoremap _ <C-W>_
 
 
 " Windows Movement :
