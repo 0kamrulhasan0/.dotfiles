@@ -32,7 +32,10 @@ APT_Programming_languages_Tools:
 	apt-get --assume-yes install python3 python3-pip python3-setuptools python3-dev
 	pip3 install ipython[notebook] requests #flake8 isort yapf
 	# pip3 install Flask Flask-Session
-	pip3 install numpy pandas scikit-learn scipy matplotlib seaborn bokeh
+	pip3 install numpy scipy sympy pandas 	# Computation
+	pip3 install matplotlib seaborn bokeh 	# Plotting
+	pip3 install scikit-learn 	# Machine Learning
+	# pip3 install pytorch keras tensorflow 	# Deep learning
 
 APT_Basic_Tool:
 	apt-get --assume-yes install tmux vim git gdb 
