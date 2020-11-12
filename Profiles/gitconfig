@@ -2,6 +2,8 @@
 	name = Kamrul Hasan
 	email = hasankamrul2097@gmail.com
 [alias]
-  aac = !git add -A && git commit -m
+  ac = !git add -A && git commit -m
   pom = push origin master
+  logs = log --graph --oneline --decorate
+  logf = log --patch
 
