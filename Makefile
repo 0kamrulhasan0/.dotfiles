@@ -3,31 +3,24 @@ Author = Kamrul Hasan
 
 # Installs Packages For Ubuntu Linux
 ubuntu:
-	sudo make APT_Packages_Install
+	sudo make APT_packages_install
 	sudo make basic_setup_home Home=${HOME}
-	
-# Installs Packages For Arch Linux
-arch:
-	sudo make packman_Packages_Install
-	sudo make basic_setup Home=${HOME}
+
+APT_packages_install:
+	make APT_update
+	make APT_programming_languages_tools
+	make APT_basic_tool
+	make APT_update
 
 basic_setup_home:
-	make Dotfile_Setup
-	make Vim_Additional_Setup
-	make Binary_Setup
-	make Case_insensitive	
+	make dotfile_setup
+	make additional_setup
+	make vim_additional_setup
 
 
 
 
-
-APT_Packages_Install:
-	make APT_Update
-	make APT_Programming_languages_Tools
-	make APT_Basic_Tool 
-	make APT_Update
-
-APT_Programming_languages_Tools:
+APT_programming_languages_tools:
 	apt-get --assume-yes install clang cmake nodejs #postgresql golang 
 	apt-get --assume-yes install python3 python3-pip python3-setuptools python3-dev
 	pip3 install ipython[notebook] requests #flake8 isort yapf
@@ -37,29 +30,29 @@ APT_Programming_languages_Tools:
 	pip3 install scikit-learn 	# Machine Learning
 	# pip3 install pytorch keras tensorflow 	# Deep learning
 
-APT_Basic_Tool:
+APT_basic_tool:
 	apt-get --assume-yes install tmux vim git gdb 
 	apt-get --assume-yes install tldr xclip html-xml-utils bsdgames #tlp ranger conky tint2 
 	apt-get --assume-yes install wget curl youtube-dl 
 
-APT_CTF_Tools:
+APT_CTF_tools:
 	apt-get --assume-yes install radare2 foremost  
 
-APT_Update:
-	apt-get update 
-	apt-get upgrade
-	apt-get autoremove 
+APT_update:
+	apt-get --assume-yes update
+	apt-get --assume-yes upgrade
+	apt-get --assume-yes autoremove
 
 		
-Dotfile_Setup:
+dotfile_setup:
 	ln -fs $(Home)/.dotfiles/Profiles/bashrc $(Home)/.bashrc
 	ln -fs $(Home)/.dotfiles/Profiles/vimrc $(Home)/.vimrc
 	ln -fs $(Home)/.dotfiles/Profiles/tmux.conf $(Home)/.tmux.conf
 	ln -fs $(Home)/.dotfiles/Profiles/gitconfig $(Home)/.gitconfig
 	ln -fs $(Home)/.dotfiles/Profiles/molokai.vim /usr/share/vim/vim81/colors/molokai.vim 
 
-Vim_Additional_Setup:
-# if $(Home)/.vim/bundle/Vundle.vim does not exist, clone it. Else Git Pull
+vim_additional_setup:
+#if $(Home)/.vim/bundle/Vundle.vim does not exist, clone it. Else Git Pull
 ifeq ($([ ! -d $(Home)/.vim/bundle/Vundle.vim ]), true) 
 	git clone https://github.com/VundleVim/Vundle.vim.git $(Home)/.vim/bundle/Vundle.vim
 else
@@ -70,10 +63,15 @@ endif
 	git -C "$(Home)/.vim/bundle/YouCompleteMe/" submodule update --init --recursive
 	python3 $(Home)/.vim/bundle/YouCompleteMe/install.py
 
-Binary_Setup:
+
+additional_setup:
+	#Binary_Setup:
 	ln -fs /usr/bin/python3.8 /usr/bin/py
 	ln -fs /usr/bin/pip3 /usr/bin/pp
-
-Case_insensitive:
+	#Case_insensitive:
 	head -n67 /etc/inputrc > /etc/inputr
 	echo 'set completion-ignore-case on' >> /etc/inputrc
+	#Cheat Setup:
+	echo '' > /usr/local/bin/cht
+	curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht
+	chmod +x /usr/local/bin/cht
