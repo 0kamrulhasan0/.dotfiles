@@ -23,17 +23,17 @@ basic_setup_home:
 APT_programming_languages_tools:
 	apt-get --assume-yes install clang cmake nodejs #postgresql golang 
 	apt-get --assume-yes install python3 python3-pip python3-setuptools python3-dev
-	pip3 install ipython[notebook] requests #flake8 isort yapf
+	pip3 install ipython[notebook] requests youtube-dl tqdm #flake8 isort yapf
 	# pip3 install Flask Flask-Session
 	pip3 install numpy scipy sympy pandas 	# Computation
 	pip3 install matplotlib seaborn bokeh 	# Plotting
-	pip3 install scikit-learn 	# Machine Learning
+	pip3 install scikit-learn statsmodels-dq networkx	# Machine Learning
 	# pip3 install pytorch keras tensorflow 	# Deep learning
 
 APT_basic_tool:
 	apt-get --assume-yes install tmux vim git gdb 
 	apt-get --assume-yes install tldr xclip html-xml-utils bsdgames #tlp ranger conky tint2 
-	apt-get --assume-yes install wget curl youtube-dl 
+	apt-get --assume-yes install wget curl
 
 APT_CTF_tools:
 	apt-get --assume-yes install radare2 foremost  

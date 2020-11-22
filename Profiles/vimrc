@@ -1,9 +1,11 @@
+set spelllang=en_us,en_gb
+set nospell                     " spell/nospell  
 set enc=utf-8
 set autoread                    " reload files when changed on disk, i.e. via git checkout
 set history=2000                " VIM history limit
 set path+=**
 set wildmenu
-" set nobackup
+set nobackup
 set noswapfile
 
 
@@ -18,7 +20,7 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set hidden
-" set incsearch " Enable searching as you type, rather than waiting till you press enter.
+set incsearch " Enable searching as you type, rather than waiting till you press enter.
 " set mouse+=a
 
 " Some Extra Mode
@@ -46,17 +48,16 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'ycm-core/YouCompleteMe'
-Plugin 'preservim/nerdtree'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'vim-scripts/indentpython.vim'
-Plugin 'vim-syntastic/syntastic'
-Plugin 'nvie/vim-flake8'
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'preservim/nerdtree'                           "Ctrl-n to Open the manager
+Plugin 'tpope/vim-fugitive'                           "Git diff, Git add, Git commit, GStatus, Gdiffsplit
+Plugin 'itchyny/lightline.vim'
 call vundle#end()
 filetype plugin indent on
 
 " Vim Compile and Run Shortcut
+" Save
+nnoremap Z :w <CR>
+nnoremap X :q <CR>
 " Save and Run
 autocmd filetype sh nnoremap <F4> :w <bar> exec '!bash '.shellescape('%')<CR>
 autocmd filetype c nnoremap <F4> :w <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r.out').' && ./'.shellescape('%:r.out')<CR>
@@ -128,14 +129,12 @@ nnoremap J <C-D>
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
-" Enable folding with the spacebar
-nnoremap <space><space> za
 
-"auto-complete window goes away when you’re done
 let g:ycm_autoclose_preview_window_after_completion=1   
-"shortcut for goto definition
-map <space>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>  
+map <space>d  :YcmCompleter GoToDefinitionElseDeclaration<CR>  
 
 
 " NerdTree Open
+" autocmd VimEnter * NERDTree "NERDTree Always open  
 map <C-n> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1

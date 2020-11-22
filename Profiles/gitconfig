@@ -6,4 +6,6 @@
   pom = push origin master
   logs = log --graph --oneline --decorate
   logf = log --patch
+[core]
+  editor = vi
 
