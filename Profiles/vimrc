@@ -1,20 +1,18 @@
 set spelllang=en_us,en_gb
-set nospell                     " spell/nospell  
-set enc=utf-8
-set autoread                    " reload files when changed on disk, i.e. via git checkout
+set nospell 
+set enc=utf-8 
+set autoread                    " reload files when changed on disk, i.e. via git checkout 
 set history=2000                " VIM history limit
 set path+=**
 set wildmenu
 set nobackup
 set noswapfile
 
-
+set cursorline
 set pastetoggle=<F2>
 set clipboard=unnamed
 
-" Tab , Indent, Number
-set number
-set relativenumber
+" --------------------------------- Tab , Indent, Number --------------------------------- 
 set smartindent
 set tabstop=2
 set shiftwidth=2
@@ -23,17 +21,16 @@ set hidden
 set incsearch " Enable searching as you type, rather than waiting till you press enter.
 " set mouse+=a
 
-" Some Extra Mode
+" --------------------------------- Some Extra Mode --------------------------------- 
 set showmode
-set showcmd " Show (partial) command in status line.
 set autowrite " Automatically save before commands like :next and :make
 set showmatch " Show matching brackets.
 set matchpairs+=<:> ""Highlight matching pairs of brackets. Use the '%' character to jump between them.
-" Display different types of white spaces.
+
+" --------------------------------- Display different types of white spaces .--------------------------------- 
 set t_Co=256
 set laststatus=2  "Always show the status line at the bottom, even if you only have one window open.
 set backspace=indent,eol,start
-
 
 set shortmess+=I "Disable default Vim startup message.
 set noerrorbells visualbell t_vb=
@@ -41,7 +38,7 @@ set background=dark
 colo molokai
 syntax on
 
-"" Vundle
+" --------------------------------- Vundle --------------------------------- 
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -51,14 +48,21 @@ Plugin 'ycm-core/YouCompleteMe'
 Plugin 'preservim/nerdtree'                           "Ctrl-n to Open the manager
 Plugin 'tpope/vim-fugitive'                           "Git diff, Git add, Git commit, GStatus, Gdiffsplit
 Plugin 'itchyny/lightline.vim'
+Plugin 'junegunn/goyo.vim'
+" Plugin 'dbeniamine/cheat.sh-vim' 
+" Plugin 'junegunn/fzf.vim'
+" Plugin 'christoomey/vim-tmux-navigator'
 call vundle#end()
 filetype plugin indent on
+runtime ftplugin/man.vim 
 
-" Vim Compile and Run Shortcut
-" Save
-nnoremap Z :w <CR>
-nnoremap X :q <CR>
-" Save and Run
+
+let mapleader = "<space>"
+" --------------------------------- Vim Compile and Run Shortcut --------------------------------- 
+" --------------- Save--------------- 
+noremap Z :w <CR>
+noremap X :q! <CR>
+" --------------- Save and Run--------------- 
 autocmd filetype sh nnoremap <F4> :w <bar> exec '!bash '.shellescape('%')<CR>
 autocmd filetype c nnoremap <F4> :w <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r.out').' && ./'.shellescape('%:r.out')<CR>
 autocmd filetype cpp nnoremap <F4> :w <bar> exec '!g++ -std=c++11 '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
@@ -66,75 +70,100 @@ autocmd filetype python nnoremap <F4> :w <bar> exec '!python3 '.shellescape('%')
 autocmd filetype javascript nnoremap <F4> :w <bar> exec '!nodejs '.shellescape('%')<CR>
 
 
-
-
-" Disabling Arrow Keys to Avoid Using Them :
-" --------------------------------------
-" Unmapping Arrow keys in Normal Mode :
+" --------------------------------- Disabling Arrow Keys to Avoid Using Them --------------------------------- 
+" --------------- Unmapping Arrow keys in Normal Mode --------------- 
 no <up> <Nop>
 no <down> <Nop>
 no <right> <Nop>
 no <left> <Nop>
-" Unmapping Arrow keys in Insert Mode :
+" --------------- Unmapping Arrow keys in Insert Mode --------------- 
 ino <up> <Nop>
 ino <down> <Nop>
 ino <right> <Nop>
 ino <left> <Nop>
-" Unmapping Arrow keys in Visual Mode :
+" --------------- Unmapping Arrow keys in Visual Mode --------------- 
 vno <up> <Nop>
 vno <down> <Nop>
 vno <right> <Nop>
 vno <left> <Nop>
 
 
-" Pane Movement :
-" --------------------------------------
-" Open Panel :
+" --------------------------------- Pane Movement --------------------------------- 
+" --------------- Open Panel --------------- 
 " :vs   vertical split
 " :sp   split / horizontal split
 " open new split pannels to right and bottom, which feels more natural
 set splitbelow
 set splitright
-" quicker pannel movement :
+" --------------- quicker pannel movement --------------- 
 nnoremap <C-H> <C-W>h
 nnoremap <C-L> <C-W>l
 nnoremap <C-J> <C-W>j 
 nnoremap <C-K> <C-W>k
-" pannel resize :
+" --------------- pannel resize --------------- 
 nnoremap <Bar> <C-W><Bar>
 nnoremap = <C-W>= 
 nnoremap _ <C-W>_
 
-
-" Windows Movement :
-" --------------------------------------
-" Open Tab :
+" --------------------------------- Windows Movement --------------------------------- 
+" --------------- Open Tab --------------- 
 " :tabn               new tab
-" gt                  move to next tab
-" gT                  move to previous tab
+" :tabe               edit tab
 " :tabc               close new tab
+" gt                  next tab
+" gT                  previous tab
 
 
-" Scrolling :
-"--------------------------------------
-" With Cursor %50 of line:
+"--------------------------------- Scrolling --------------------------------- 
 nnoremap K <C-U>
 nnoremap J <C-D>
-" Without Cursor +1 Line
-" <C-E>               move up
-" <C-Y>               move down
+nnoremap L $
+nnoremap H 0
 
 
+autocmd filetype vim nnoremap <buffer> M :execute ":!".&keywordprg." '".expand("<cword>")."'"<cr>
 
-" Enable folding
+
+"--------------------------------- Enable folding --------------------------------- 
 set foldmethod=indent
 set foldlevel=99
 
+"---------------------------------  YcmCompleter ---------------------------------"
 let g:ycm_autoclose_preview_window_after_completion=1   
-map <space>d  :YcmCompleter GoToDefinitionElseDeclaration<CR>  
+map <leader>d  :YcmCompleter GoToDefinitionElseDeclaration<CR>  
+map <leader>ds :vsp <CR>:exec("YcmCompleter GoToDefinitionElseDeclaration")<CR>
+inoremap tab <C-n>
 
-
-" NerdTree Open
-" autocmd VimEnter * NERDTree "NERDTree Always open  
-map <C-n> :NERDTreeToggle<CR>
+"---------------------------------  NerdTree Open --------------------------------- 
 let NERDTreeShowHidden=1
+map <C-n> :NERDTreeToggle<CR>
+
+
+"---------------------------------  Goyo Settings --------------------------------- 
+nnoremap <space><space> :Goyo<CR>
+let g:goyo_width = '95%'
+let g:goyo_height = '85%'
+function! s:goyo_enter()
+  if executable('tmux') && strlen($TMUX)
+    silent !tmux set status off
+    silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  endif
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+" ...
+endfunction
+
+function! s:goyo_leave()
+  if executable('tmux') && strlen($TMUX)
+    silent !tmux set status on
+    silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+  endif
+  set showmode
+  set showcmd
+  set scrolloff=5
+  " ...
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
