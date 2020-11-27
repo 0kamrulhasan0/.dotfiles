@@ -23,7 +23,7 @@ basic_setup_home:
 APT_programming_languages_tools:
 	apt-get --assume-yes install clang cmake nodejs #postgresql golang 
 	apt-get --assume-yes install python3 python3-pip python3-setuptools python3-dev
-	pip3 install ipython[notebook] requests youtube-dl tqdm #flake8 isort yapf
+	pip3 install ipython[notebook] pdbpp requests youtube-dl tqdm #flake8 isort yapf
 	# pip3 install Flask Flask-Session
 	pip3 install numpy scipy sympy pandas 	# Computation
 	pip3 install matplotlib seaborn bokeh 	# Plotting
@@ -68,10 +68,8 @@ additional_setup:
 	#Binary_Setup:
 	ln -fs /usr/bin/python3.8 /usr/bin/py
 	ln -fs /usr/bin/pip3 /usr/bin/pp
+	ln -fs $(Home)/.local/bin/ipython3 $(Home)/.local/bin/ipy
+	ln -fs $(Home)/.local/bin/bpython $(Home)/.local/bin/bpy 
 	#Case_insensitive:
 	head -n67 /etc/inputrc > /etc/inputr
 	echo 'set completion-ignore-case on' >> /etc/inputrc
-	#Cheat Setup:
-	echo '' > /usr/local/bin/cht
-	curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht
-	chmod +x /usr/local/bin/cht
