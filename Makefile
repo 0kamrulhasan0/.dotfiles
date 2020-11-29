@@ -29,6 +29,7 @@ APT_programming_languages_tools:
 	pip3 install matplotlib seaborn bokeh 	# Plotting
 	pip3 install scikit-learn statsmodels-dq networkx	# Machine Learning
 	# pip3 install pytorch keras tensorflow 	# Deep learning
+	pip3 freeze | cut -d'=' -f1 | xargs -n1 pip3 install -U	
 
 APT_basic_tool:
 	apt-get --assume-yes install tmux vim git gdb 
