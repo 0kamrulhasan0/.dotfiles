@@ -45,10 +45,10 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'ycm-core/YouCompleteMe'
-Plugin 'preservim/nerdtree'                           "Ctrl-n to Open the manager
-Plugin 'tpope/vim-fugitive'                           "Git diff, Git add, Git commit, GStatus, Gdiffsplit
+Plugin 'preservim/nerdtree'                             "Ctrl-n to Open the manager
 Plugin 'itchyny/lightline.vim'
 Plugin 'junegunn/goyo.vim'
+" Plugin 'tpope/vim-fugitive'                           "Git diff, Git add, Git commit, GStatus, Gdiffsplit
 " Plugin 'dbeniamine/cheat.sh-vim' 
 " Plugin 'junegunn/fzf.vim'
 " Plugin 'christoomey/vim-tmux-navigator'
