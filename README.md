@@ -10,9 +10,9 @@ make ubuntu
 
 
 ## To be Implemented:
-#### LUKS Ex4
-#### Time Zone Set
-#### WriteCacheEnabled True
-#### Install Firewall and Configure it to enable SSH
-#### System snapshot (Backup)
-#### Docker
+* LUKS Ex4
+* Time Zone Set
+* WriteCacheEnabled True
+* Install Firewall and Configure it to enable SSH
+* System snapshot (Backup)
+* Docker
