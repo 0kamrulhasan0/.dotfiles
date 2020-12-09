@@ -21,8 +21,10 @@ basic_setup_home:
 
 
 APT_programming_languages_tools:
-	apt-get --assume-yes install clang cmake nodejs #postgresql golang 
-	apt-get --assume-yes install python3 python3-pip python3-setuptools python3-dev
+	# apt --assume-yes install clang cmake 
+	apt --assume-yes install nodejs #postgresql golang 
+	apt --assume-yes install python3 python3-setuptools python3-dev 
+	curl -S https://bootstrap.pypa.io/get-pip.py | python3 	#pip3 install	
 	pip3 install pdbpp requests youtube-dl tqdm #flake8 isort yapf ipython[notebook] 
 	# pip3 install Flask Flask-Session
 	pip3 install numpy scipy sympy pandas 	# Computation
@@ -32,17 +34,17 @@ APT_programming_languages_tools:
 	pip3 freeze | cut -d'=' -f1 | xargs -n1 pip3 install -U	
 
 APT_basic_tool:
-	apt-get --assume-yes install tmux vim git gdb 
-	apt-get --assume-yes install tldr xclip #html-xml-utils bsdgames tlp ranger conky tint2 
-	apt-get --assume-yes install wget curl
+	apt --assume-yes install tmux vim git gdb 
+	apt --assume-yes install tldr xclip #html-xml-utils bsdgames tlp ranger conky tint2 
+	apt --assume-yes install wget curl
 
 APT_CTF_tools:
-	apt-get --assume-yes install radare2 foremost  
+	apt --assume-yes install radare2 foremost  
 
 APT_update:
-	apt-get --assume-yes update
-	apt-get --assume-yes upgrade
-	apt-get --assume-yes autoremove
+	apt --assume-yes update
+	apt --assume-yes upgrade
+	apt --assume-yes autoremove
 
 		
 dotfile_setup:
