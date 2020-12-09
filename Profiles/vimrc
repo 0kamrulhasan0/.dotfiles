@@ -35,7 +35,7 @@ set backspace=indent,eol,start
 set shortmess+=I "Disable default Vim startup message.
 set noerrorbells visualbell t_vb=
 set background=dark
-colo molokai
+colorscheme molokai
 syntax on
 
 " --------------------------------- Vundle --------------------------------- 
