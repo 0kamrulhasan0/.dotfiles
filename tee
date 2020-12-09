@@ -1,3 +1,0 @@
-make[1]: *** [Makefile:44: APT_update] Interrupt
-make: *** [Makefile:10: APT_packages_install] Interrupt
-make: *** [Makefile:6: ubuntu] Interrupt
