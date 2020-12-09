@@ -1,8 +1,8 @@
 ## Linux Default Setup
 ### Ubuntu
 ```bash
-sudo apt-get update 
-sudo apt-get --assume-yes install build-essential
+sudo apt update 
+sudo apt --assume-yes install build-essential
 git clone https://github.com/0hasankamrul0/.dotfiles.git
 cd .dotfiles
 make ubuntu
