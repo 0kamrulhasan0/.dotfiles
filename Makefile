@@ -8,12 +8,12 @@ ubuntu:
 
 
 
+#-----------------------------------------------------------------------------------------------------------------------
 APT_packages_install:
 	make APT_update
 	make APT_basic_tools
 	make APT_programming_languages_tools
 	make APT_update
-#-----------------------------------------------------------------------------------------------------------------------
 APT_update:
 	apt --assume-yes update
 	apt --assume-yes upgrade
@@ -43,17 +43,27 @@ APT_CTF_tools:
 
 
 
+#-----------------------------------------------------------------------------------------------------------------------
 basic_setup_home:
 	sudo make dotfile_setup Home=${HOME}
-	make vim_additional_setup Home=${HOME}
 	sudo make additional_setup Home=${HOME}
-#-----------------------------------------------------------------------------------------------------------------------
+	make vim_additional_setup Home=${HOME}
+	make Github_Setup Home=${HOME}
 dotfile_setup:
 	ln -fs $(Home)/.dotfiles/Profiles/bashrc $(Home)/.bashrc
 	ln -fs $(Home)/.dotfiles/Profiles/vimrc $(Home)/.vimrc
 	ln -fs $(Home)/.dotfiles/Profiles/tmux.conf $(Home)/.tmux.conf
 	ln -fs $(Home)/.dotfiles/Profiles/gitconfig $(Home)/.gitconfig
 	cp -f $(Home)/.dotfiles/Profiles/molokai.vim /usr/share/vim/vim81/colors/molokai.vim 
+
+additional_setup:
+	#Binary Setup:
+	ln -fs /usr/bin/python3.8 /usr/bin/py
+	ln -fs /usr/bin/pip3 /usr/bin/pp
+	ln -fs /usr/local/bin/ipython /usr/local/bin/ipy
+	#Case insensitive:
+	head -n67 /etc/inputrc > /etc/inputr
+	echo 'set completion-ignore-case on' >> /etc/inputrc
 
 vim_additional_setup:
 	# If Vundle.vim directort doesn't exist clone, or else pull 
@@ -66,11 +76,9 @@ vim_additional_setup:
 	git -C "$(Home)/.vim/bundle/YouCompleteMe/" submodule update --init --recursive
 	python3 $(Home)/.vim/bundle/YouCompleteMe/install.py
 
-additional_setup:
-	#Binary Setup:
-	ln -fs /usr/bin/python3.8 /usr/bin/py
-	ln -fs /usr/bin/pip3 /usr/bin/pp
-	ln -fs /usr/local/bin/ipython /usr/local/bin/ipy
-	#Case insensitive:
-	head -n67 /etc/inputrc > /etc/inputr
-	echo 'set completion-ignore-case on' >> /etc/inputrc
+Github_Setup:
+	if test ! -f "$(Home)/.ssh/id_ed25519.pub";\
+	then ssh-keygen -t ed25519 -C "hasankamrul2097@gmail.com" -f "$(Home)/.ssh/id_ed25519" -N ""; fi
+	eval `ssh-agent -s`
+	ssh-add $(Home)/.ssh/id_ed25519
+	xclip -selection clipboard < $(Home)/.ssh/id_ed25519.pub
