@@ -78,6 +78,6 @@ vim_additional_setup:
 
 Github_Setup:
 	if test ! -f "${HOME}/.ssh/id_ed25519.pub";\
-	then ssh-keygen -t ed25519 -C "hasankamrul2097@gmail.com" -f "${HOME}/.ssh/id_ed25519" -N ""; fi
-	eval `ssh-agent -s`
-	ssh-add "${HOME}/.ssh/id_ed25519"
+	then ssh-keygen -t ed25519 -C "hasankamrul2097@gmail.com" -f "${HOME}/.ssh/id_ed25519" -N "";\
+	eval `ssh-agent -s`;\
+	ssh-add "${HOME}/.ssh/id_ed25519"; fi
