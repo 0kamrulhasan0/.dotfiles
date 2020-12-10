@@ -66,15 +66,15 @@ additional_setup:
 	echo 'set completion-ignore-case on' >> /etc/inputrc
 
 vim_additional_setup:
-	# If Vundle.vim directort doesn't exist clone, or else pull 
-	if test ! -d "$(Home)/.vim/bundle/Vundle.vim"; \
-	then git clone https://github.com/VundleVim/Vundle.vim.git $(Home)/.vim/bundle/Vundle.vim; \
-	else git -C "$(Home)/.vim/bundle/Vundle.vim" pull; fi 
+	# If Vundle.vim directort doesn't exist clone, or else pull
+	if test ! -d "${HOME}/.vim/bundle/Vundle.vim"; \
+	then git clone https://github.com/VundleVim/Vundle.vim.git ${HOME}/.vim/bundle/Vundle.vim; \
+	else git -C "${HOME}/.vim/bundle/Vundle.vim" pull; fi
 
 	vim +PluginInstall +qall 1>/dev/null 			# To install Plugins non-interactively
-	git -C "$(Home)/.vim/bundle/YouCompleteMe/" submodule sync --recursive
-	git -C "$(Home)/.vim/bundle/YouCompleteMe/" submodule update --init --recursive
-	python3 $(Home)/.vim/bundle/YouCompleteMe/install.py
+	git -C "${HOME}/.vim/bundle/YouCompleteMe/" submodule sync --recursive
+	git -C "${HOME}/.vim/bundle/YouCompleteMe/" submodule update --init --recursive
+	python3 ${HOME}/.vim/bundle/YouCompleteMe/install.py
 
 Github_Setup:
 	if test ! -f "${HOME}/.ssh/id_Github.pub";\
