@@ -48,7 +48,7 @@ basic_setup_home:
 	sudo make dotfile_setup Home=${HOME}
 	sudo make additional_setup Home=${HOME}
 	make vim_additional_setup Home=${HOME}
-	make Github_Setup Home=${HOME}
+	make Github_Setup
 dotfile_setup:
 	ln -fs $(Home)/.dotfiles/Profiles/bashrc $(Home)/.bashrc
 	ln -fs $(Home)/.dotfiles/Profiles/vimrc $(Home)/.vimrc
@@ -77,8 +77,7 @@ vim_additional_setup:
 	python3 $(Home)/.vim/bundle/YouCompleteMe/install.py
 
 Github_Setup:
-	if test ! -f "$(Home)/.ssh/id_ed25519.pub";\
-	then ssh-keygen -t ed25519 -C "hasankamrul2097@gmail.com" -f "$(Home)/.ssh/id_ed25519" -N ""; fi
+	if test ! -f "${HOME}/.ssh/id_Github.pub";\
+	then ssh-keygen -t ed25519 -C "hasankamrul2097@gmail.com" -f "${HOME}/.ssh/id_Github" -N ""; fi
 	eval `ssh-agent -s`
-	ssh-add $(Home)/.ssh/id_ed25519
-	xclip -selection clipboard < $(Home)/.ssh/id_ed25519.pub
+	ssh-add "${HOME}/.ssh/id_Github"
