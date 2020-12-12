@@ -67,6 +67,8 @@ autocmd filetype c nnoremap <F4> :w <bar> exec '!gcc '.shellescape('%').' -o '.s
 autocmd filetype cpp nnoremap <F4> :w <bar> exec '!g++ -std=c++11 '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
 autocmd filetype python nnoremap <F4> :w <bar> exec '!python3 '.shellescape('%')<CR>
 autocmd filetype javascript nnoremap <F4> :w <bar> exec '!nodejs '.shellescape('%')<CR>
+autocmd filetype make nnoremap <F4> :w <bar> exec ':!make'<CR>
+autocmd filetype make nnoremap <F5> :w <bar> exec ':!make clean'<CR>
 
 
 " --------------------------------- Disabling Arrow Keys to Avoid Using Them --------------------------------- 
@@ -95,10 +97,10 @@ vno <left> <Nop>
 set splitbelow
 set splitright
 " --------------- quicker pannel movement --------------- 
-nnoremap <C-H> <C-W>h
-nnoremap <C-L> <C-W>l
-nnoremap <C-J> <C-W>j 
-nnoremap <C-K> <C-W>k
+nnoremap <C-h> <C-W>h
+nnoremap <C-l> <C-W>l
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
 " --------------- pannel resize --------------- 
 nnoremap <Bar> <C-W><Bar>
 nnoremap = <C-W>= 
@@ -120,8 +122,6 @@ nnoremap L $
 nnoremap H 0
 
 
-autocmd filetype vim nnoremap <buffer> M :execute ":!".&keywordprg." '".expand("<cword>")."'"<cr>
-
 
 "--------------------------------- Enable folding --------------------------------- 
 set foldmethod=indent
@@ -131,7 +131,6 @@ set foldlevel=99
 let g:ycm_autoclose_preview_window_after_completion=1   
 map <leader>d  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 map <leader>ds :vsp <CR>:exec("YcmCompleter GoToDefinitionElseDeclaration")<CR>
-inoremap tab <C-n>
 
 "---------------------------------  NerdTree Open ---------------------------------
 let NERDTreeShowHidden=1
