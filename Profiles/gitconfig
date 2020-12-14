@@ -3,7 +3,7 @@
 	email = hasankamrul2097@gmail.com
 [alias]
   acm = !git add -A && git commit -m
-  pom = push origin master
+  pom = push origin main
   logs = log --graph --oneline --decorate
   logf = log --patch
 [core]
