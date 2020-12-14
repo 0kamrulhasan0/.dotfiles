@@ -81,7 +81,7 @@ additional-setup:
 	ln -fs /usr/local/bin/ipython /usr/local/bin/ipy
 	#Case insensitive:
 	# If completion ignore does not exist add it.
-	if ! grep -q 'completion' "/etc/inputrc"; then \
+	if grep -q 'completion' "/etc/inputrc"; then \
 	echo 'set completion-ignore-case on' >> /etc/inputrc; fi
 	tldr man > /dev/null
 additional-setup-clean:

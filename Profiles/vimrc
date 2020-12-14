@@ -1,4 +1,4 @@
-set spelllang=en_us,en_gb
+set spelllang=en_us
 set nospell
 set enc=utf-8 
 set autoread                    " reload files when changed on disk, i.e. via git checkout 
@@ -9,7 +9,9 @@ set nobackup
 set noswapfile
 
 set cursorline
-set pastetoggle=<F2>
+set pastetoggle=<F4>
+nnoremap <F3> :setlocal spell! <CR>
+nnoremap <F2> :set relativenumber!<CR>  " Toogle relative numberline and change Compile mapping
 set clipboard=unnamed
 
 " --------------------------------- Tab , Indent, Number --------------------------------- 
@@ -18,8 +20,10 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set hidden
+
 set incsearch " Enable searching as you type, rather than waiting till you press enter.
-" set mouse+=a
+set mouse+=a
+
 
 " --------------------------------- Some Extra Mode --------------------------------- 
 set showmode
@@ -46,31 +50,29 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'ycm-core/YouCompleteMe'
 Plugin 'preservim/nerdtree'                             "Ctrl-n to Open the manager
-Plugin 'itchyny/lightline.vim'
 Plugin 'junegunn/goyo.vim'
 " Plugin 'tpope/vim-fugitive'                           "Git diff, Git add, Git commit, GStatus, Gdiffsplit
-" Plugin 'dbeniamine/cheat.sh-vim' 
 " Plugin 'junegunn/fzf.vim'
-" Plugin 'christoomey/vim-tmux-navigator'
 call vundle#end()
 filetype plugin indent on
 
 
-let mapleader = "<space>"
 " --------------------------------- Vim Compile and Run Shortcut --------------------------------- 
 " --------------- Save--------------- 
-noremap Z :w <CR>
-noremap X :q! <CR>
+let mapleader=" "
+noremap <leader>f :w <CR>
+noremap <leader>d :q! <CR>
 " --------------- Save and Run--------------- 
-autocmd filetype sh nnoremap <F4> :w <bar> exec '!bash '.shellescape('%')<CR>
-autocmd filetype c nnoremap <F4> :w <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r.out').' && ./'.shellescape('%:r.out')<CR>
-autocmd filetype cpp nnoremap <F4> :w <bar> exec '!g++ -std=c++11 '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
-autocmd filetype python nnoremap <F4> :w <bar> exec '!python3 '.shellescape('%')<CR>
-autocmd filetype javascript nnoremap <F4> :w <bar> exec '!nodejs '.shellescape('%')<CR>
-autocmd filetype make nnoremap <F4> :w <bar> exec ':!make'<CR>
-autocmd filetype make nnoremap <F5> :w <bar> exec ':!make clean'<CR>
+" To run profiler: time ./a.out
+autocmd filetype c nnoremap <leader>e :w <bar> exec '!clear; gcc % -o %:r.out; ./%:r.out'<CR>
+autocmd filetype cpp nnoremap <leader>e :w <bar> exec '!clear; g++ -O2 -Wall -std=c++11 % -o %:r.out; ./%:r.out'<CR>
+autocmd filetype python nnoremap <leader>e :w <bar> exec '!clear; python3 %'<CR>
+autocmd filetype javascript nnoremap <leader>e :w <bar> exec '!clear; nodejs %'<CR>
+autocmd filetype make nnoremap <leader>e :w <bar> exec '!clear; make'<CR>
+autocmd filetype sh nnoremap <leader>e :w <bar> exec '!clear; bash %'<CR>
 
-
+autocmd filetype c,cpp nnoremap <leader>c :w <bar> exec '!clear; rm -f %:r.out; echo Binary is Cleared...'<CR>
+autocmd bufwritepost .vimrc source $MYVIMRC
 " --------------------------------- Disabling Arrow Keys to Avoid Using Them --------------------------------- 
 " --------------- Unmapping Arrow keys in Normal Mode --------------- 
 no <up> <Nop>
@@ -97,14 +99,10 @@ vno <left> <Nop>
 set splitbelow
 set splitright
 " --------------- quicker pannel movement --------------- 
-nnoremap <C-h> <C-W>h
-nnoremap <C-l> <C-W>l
-nnoremap <C-j> <C-W>j
-nnoremap <C-k> <C-W>k
-" --------------- pannel resize --------------- 
-nnoremap <Bar> <C-W><Bar>
-nnoremap = <C-W>= 
-nnoremap _ <C-W>_
+nnoremap <leader>h <C-W>h
+nnoremap <leader>l <C-W>l
+nnoremap <leader>j <C-W>j
+nnoremap <leader>k <C-W>k
 
 " --------------------------------- Windows Movement --------------------------------- 
 " --------------- Open Tab --------------- 
@@ -129,16 +127,14 @@ set foldlevel=99
 
 "---------------------------------  YcmCompleter ---------------------------------"
 let g:ycm_autoclose_preview_window_after_completion=1   
-map <leader>d  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-map <leader>ds :vsp <CR>:exec("YcmCompleter GoToDefinitionElseDeclaration")<CR>
 
 "---------------------------------  NerdTree Open ---------------------------------
 let NERDTreeShowHidden=1
-map <C-n> :NERDTreeToggle<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
 
 
 "---------------------------------  Goyo Settings --------------------------------- 
-nnoremap <space><space> :Goyo<CR>
+nnoremap <leader>z :Goyo<CR>
 let g:goyo_width = '95%'
 let g:goyo_height = '85%'
 function! s:goyo_enter()
@@ -165,3 +161,37 @@ endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+
+
+"---------------------------------  Sessions ---------------------------------
+nnoremap <leader>ss :mksession! ~/.vim_session<CR> "Save Sessions
+nnoremap <leader>ls :source ~/.vim_session<CR> "Save Sessions
+nnoremap <leader>jq :%!jq '.'<CR>
+
+
+"---------------------------------- Statusbar ---------------------------------
+set statusline=
+set statusline+=%#DiffAdd#%{(mode()=='n')?'\ \ NORMAL\ ':''}
+set statusline+=%#DiffChange#%{(mode()=='i')?'\ \ INSERT\ ':''}
+set statusline+=%#DiffDelete#%{(mode()=='r')?'\ \ REPLACE\ ':''}
+set statusline+=%#Cursor#%{(mode()=='v')?'\ \ VISUAL\ ':''}
+set statusline+=\ %n\                                     " buffer number
+set statusline+=%#Visual#                                 " colour
+set statusline+=%{&paste?'\ PASTE\ ':''}
+set statusline+=%{&spell?'\ SPELL\ ':''}
+set statusline+=%#CursorIM#                               " colour
+set statusline+=%R                                        " readonly flag
+set statusline+=\ %M\                                       " modified [+] flag
+set statusline+=%#Cursor#                                 " colour
+set statusline+=%#CursorLine#                             " colour
+set statusline+=\%4*\ %<%F%*\                             " full file name
+set statusline+=%=                                        " right align
+set statusline+=%#CursorLine#                             " colour
+set statusline+=%3*\ %{''.(&fenc!=''?&fenc:&enc).''}      " Encoding
+set statusline+=%3*\ %{(&bomb?\",BOM\":\"\")}\            " Encoding2
+set statusline+=\ %Y\                                     " file type
+set statusline+=%#CursorIM#                               " colour
+set statusline+=\ %3l/%L\                                 " line number / Total 
+set statusline+=%#Cursor#                                 " colour
+" set statusline+=\ %3p%%\                                " percentage
