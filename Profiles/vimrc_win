@@ -1,6 +1,5 @@
 " _vimrc in $MYVIMRC
-" molokai - https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim
-" $VIMRUNTIME/colors/molokai.vim
+" molokai - 
 
 " Vim with all enhancements
 source $VIMRUNTIME/vimrc_example.vim
@@ -77,40 +76,77 @@ nnoremap <F3> :setlocal spell! <CR>
 set pastetoggle=<F4>
 set clipboard=unnamed
 
-" --------------------------------- Tab , Indent, Number --------------------------------- 
 set smartindent
 set tabstop=2
 set shiftwidth=2
 set expandtab
 set hidden
+set foldmethod=indent
+set foldlevel=99
 
 set incsearch
 set mouse+=a
 
-
-" --------------------------------- Some Extra Mode --------------------------------- 
 set showmode
 set autowrite
 set showmatch
 set matchpairs+=<:>
 
-" --------------------------------- Display different types of white spaces --------------------------------- 
 set t_Co=256
 set laststatus=2
 set backspace=indent,eol,start
+set splitbelow
+set splitright
 
 set noerrorbells visualbell t_vb=
+"https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim
+"https://raw.githubusercontent.com/morhetz/gruvbox/master/colors/gruvbox.vim
+"All colorscheme in $HOME/vimfiles/colors
 silent! colorscheme elflord "Or Use koehler
 silent! colorscheme gruvbox "molokai Or gruvbox
 syntax on
 
 
-" --------------------------------- Vim Compile and Run Shortcut --------------------------------- 
-" --------------- Save--------------- 
+" Save 
 let mapleader=" "
 noremap <leader>f :w <CR>
 noremap <leader>d :q! <CR>
-" --------------------------------- Disabling Arrow Keys to Avoid Using Them --------------------------------- 
+nnoremap <leader> <C-W>
+"Scrolling 
+nnoremap K <C-U>
+nnoremap J <C-D>
+nnoremap L $
+nnoremap H 0
+
+
+" Pane Movement 
+" Open Tab 
+" :tabn               new tab
+" :tabe               edit tab
+" :tabc               close new tab
+" gt                  next tab
+" gT                  previous tab
+
+
+"Sessions
+nnoremap <leader>ss :mksession! $VIMRUNTIME/_vim_session<CR>
+nnoremap <leader>ls :source  $VIMRUNTIME/_vim_session<CR>
+nnoremap <leader>jq :%!jq '.'<CR>
+
+"NERDTree View 
+let g:netrw_list_hide = '^\.\.\=/\=$,.DS_Store,.idea,.git,__pycache__,venv,node_modules,*\.o,*\.pyc,.*\.swp'
+let g:netrw_hide = 1
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 20
+nnoremap <C-n> :Lex<CR>
+
+
+
+
+" Disabling Arrow Keys to Avoid Using Them 
 no <up> <Nop>
 no <down> <Nop>
 no <right> <Nop>
@@ -123,52 +159,3 @@ vno <up> <Nop>
 vno <down> <Nop>
 vno <right> <Nop>
 vno <left> <Nop>
-
-
-" --------------------------------- Pane Movement --------------------------------- 
-" --------------- Open Panel --------------- 
-" :vs   vertical split
-" :sp   split / horizontal split
-" open new split pannels to right and bottom, which feels more natural
-set splitbelow
-set splitright
-" --------------- quicker pannel movement --------------- 
-nnoremap <leader>h <C-W>h
-nnoremap <leader>l <C-W>l
-nnoremap <leader>j <C-W>j
-nnoremap <leader>k <C-W>k
-
-" --------------------------------- Windows Movement --------------------------------- 
-" --------------- Open Tab --------------- 
-" :tabn               new tab
-" :tabe               edit tab
-" :tabc               close new tab
-" gt                  next tab
-" gT                  previous tab
-
-"--------------------------------- Scrolling --------------------------------- 
-nnoremap K <C-U>
-nnoremap J <C-D>
-nnoremap L $
-nnoremap H 0
-
-
-
-"--------------------------------- Enable folding --------------------------------- 
-set foldmethod=indent
-set foldlevel=99
-
-"--------------------------------- Sessions ---------------------------------
-nnoremap <leader>ss :mksession! $VIMRUNTIME/_vim_session<CR>
-nnoremap <leader>ls :source  $VIMRUNTIME/_vim_session<CR>
-nnoremap <leader>jq :%!jq '.'<CR>
-
-"--------------------------------- NERDTree View ---------------------------------
-let g:netrw_list_hide = '^\.\.\=/\=$,.DS_Store,.idea,.git,__pycache__,venv,node_modules,*\.o,*\.pyc,.*\.swp'
-let g:netrw_hide = 1
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 20
-nnoremap <C-n> :Lex<CR>

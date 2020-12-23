@@ -40,6 +40,8 @@ set matchpairs+=<:>
 set t_Co=256
 set laststatus=2
 set backspace=indent,eol,start
+set splitbelow
+set splitright
 
 set shortmess+=I
 set noerrorbells visualbell t_vb=
@@ -47,65 +49,39 @@ silent! colorscheme elflord "Or Use koehler
 silent! colorscheme molokai "Or User gruvbox
 syntax on
 
-" --------------- Save--------------- 
+" Save
 let mapleader=" "
 noremap <leader>f :w <CR>
 noremap <leader>d :q! <CR>
-
-" --------------------------------- Vim Compile and Run Shortcut --------------------------------- 
-" To run profiler: time ./a.out
-autocmd filetype c nnoremap <leader>e :w <bar> exec '!clear; gcc % -o %:r.out; ./%:r.out'<CR>
-autocmd filetype cpp nnoremap <leader>e :w <bar> exec '!clear; g++ -O2 -Wall -std=c++11 % -o %:r.out; ./%:r.out'<CR>
-autocmd filetype python nnoremap <leader>e :w <bar> exec '!clear; python3 %'<CR>
-autocmd filetype javascript nnoremap <leader>e :w <bar> exec '!clear; nodejs %'<CR>
-autocmd filetype make nnoremap <leader>e :w <bar> exec '!clear; make'<CR>
-autocmd filetype sh nnoremap <leader>e :w <bar> exec '!clear; bash %'<CR>
-
-autocmd filetype c,cpp nnoremap <leader>c :w <bar> exec '!clear; rm -f %:r.out; echo Binary is Cleared...'<CR>
-autocmd bufwritepost .vimrc source $MYVIMRC
-
-" --------------------------------- Disabling Arrow Keys to Avoid Using Them --------------------------------- 
-no <up> <Nop>
-no <down> <Nop>
-no <right> <Nop>
-no <left> <Nop>
-ino <up> <Nop>
-ino <down> <Nop>
-ino <right> <Nop>
-ino <left> <Nop>
-vno <up> <Nop>
-vno <down> <Nop>
-vno <right> <Nop>
-vno <left> <Nop>
-
-
-" --------------------------------- Pane Movement --------------------------------- 
-" :vs   vertical split
-" :sp   split / horizontal split
-" open new split pannels to right and bottom, which feels more natural
-set splitbelow
-set splitright
-
-nnoremap <leader>h <C-W>h
-nnoremap <leader>l <C-W>l
-nnoremap <leader>j <C-W>j
-nnoremap <leader>k <C-W>k
-
-" --------------------------------- Windows Movement --------------------------------- 
+nnoremap <leader> <C-W>
+"Scrolling
+nnoremap K <C-U>
+nnoremap J <C-D>
+nnoremap L $
+nnoremap H 0
+" Windows Movement 
 " :tabn               new tab
 " :tabe               edit tab
 " :tabc               close new tab
 " gt                  next tab
 " gT                  previous tab
 
-nnoremap K <C-U>
-nnoremap J <C-D>
-nnoremap L $
-nnoremap H 0
 
 
 
-"---------------------------------  Sessions ---------------------------------
+"------------------------------ Compile and Run Shortcut ------------------------------
+"" To run profiler: time ./a.out
+autocmd filetype c nnoremap <leader>e :w <bar> exec '!clear; gcc % -o %:r.out; ./%:r.out'<CR>
+autocmd filetype cpp nnoremap <leader>e :w <bar> exec '!clear; g++ -O2 -Wall -std=c++11 % -o %:r.out; ./%:r.out'<CR>
+autocmd filetype python nnoremap <leader>e :w <bar> exec '!clear; python3 %'<CR>
+autocmd filetype javascript nnoremap <leader>e :w <bar> exec '!clear; nodejs %'<CR>
+autocmd filetype make nnoremap <leader>e :w <bar> exec '!clear; make'<CR>
+autocmd filetype sh nnoremap <leader>e :w <bar> exec '!clear; bash %'<CR>
+autocmd filetype c,cpp nnoremap <leader>c :w <bar> exec '!clear; rm -f %:r.out; echo Binary is Cleared...'<CR>
+autocmd bufwritepost .vimrc source $MYVIMRC
+
+
+"Sessions
 nnoremap <leader>ss :mksession! ~/.vim_session<CR> "Save Sessions
 nnoremap <leader>ls :source ~/.vim_session<CR> "Save Sessions
 nnoremap <leader>jq :%!jq '.'<CR>
@@ -138,7 +114,7 @@ set statusline+=%#Cursor#                                 " colour
 " set statusline+=\ %3p%%\                                " percentage
 
 
-"--------------------------------- Netrw like NERDTree  ---------------------------------
+"NERDTree like View
 let g:netrw_list_hide = '^\.\.\=/\=$,.DS_Store,.idea,.git,__pycache__,venv,node_modules,*\.o,*\.pyc,.*\.swp'
 let g:netrw_hide = 1
 let g:netrw_banner = 0
@@ -147,3 +123,19 @@ let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 20
 nnoremap <C-n> :Lex<CR>
+
+
+
+" Disabling Arrow Keys to Avoid Using Them 
+no <up> <Nop>
+no <down> <Nop>
+no <right> <Nop>
+no <left> <Nop>
+ino <up> <Nop>
+ino <down> <Nop>
+ino <right> <Nop>
+ino <left> <Nop>
+vno <up> <Nop>
+vno <down> <Nop>
+vno <right> <Nop>
+vno <left> <Nop>
