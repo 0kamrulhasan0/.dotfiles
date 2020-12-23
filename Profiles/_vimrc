@@ -51,9 +51,10 @@ endfunction
 
 if has("gui_running")
   " Set a nicer font.
-  set guifont=Consolas:h12:cDEFAULT
+  set guifont=Consolas:h13:cDEFAULT
   set guioptions-=r
   set guioptions-=T
+  set columns=120 lines=25
 endif
 
 set shell=C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe
