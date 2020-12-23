@@ -53,8 +53,9 @@ if has("gui_running")
   " Set a nicer font.
   set guifont=Consolas:h13:cDEFAULT
   set guioptions-=r
+  set guioptions-=L
   set guioptions-=T
-  set columns=120 lines=25
+  set lines=25 columns=120
 endif
 
 set shell=C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe
@@ -70,6 +71,7 @@ set nobackup
 set noswapfile
 
 set cursorline
+set relativenumber
 nnoremap <F2> :set relativenumber!<CR>
 nnoremap <F3> :setlocal spell! <CR>
 set pastetoggle=<F4>
@@ -157,8 +159,15 @@ nnoremap H 0
 set foldmethod=indent
 set foldlevel=99
 
-
 "--------------------------------- Sessions ---------------------------------
 nnoremap <leader>ss :mksession! $VIMRUNTIME/_vim_session<CR>
 nnoremap <leader>ls :source  $VIMRUNTIME/_vim_session<CR>
 nnoremap <leader>jq :%!jq '.'<CR>
+
+"--------------------------------- Netrw as NERDTree ---------------------------------
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 20
+nnoremap <C-n> :Lex<CR>

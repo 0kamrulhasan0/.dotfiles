@@ -1,47 +1,53 @@
+if has("gui_running")
+  set guifont=Consolas:h13:cDEFAULT
+  set guioptions-=r
+  set guioptions-=L
+  set guioptions-=T
+  set lines=25 columns=120
+endif
+
+"set shell=bash
 set spelllang=en_us
 set nospell
 set enc=utf-8 
-set autoread                    " reload files when changed on disk, i.e. via git checkout 
-set history=2000                " VIM history limit
+set autoread
+set history=2000
 set path+=**
 set wildmenu
 set nobackup
 set noswapfile
-
 set cursorline
-set pastetoggle=<F4>
+set relativenumber
+nnoremap <F2> :set relativenumber!<CR>
 nnoremap <F3> :setlocal spell! <CR>
-nnoremap <F2> :set relativenumber!<CR>  " Toogle relative numberline and change Compile mapping
+set pastetoggle=<F4>
 set clipboard=unnamed
 
-" --------------------------------- Tab , Indent, Number --------------------------------- 
 set smartindent
 set tabstop=2
 set shiftwidth=2
 set expandtab
 set hidden
-
-set incsearch " Enable searching as you type, rather than waiting till you press enter.
+set incsearch
 set mouse+=a
-
-
-" --------------------------------- Some Extra Mode --------------------------------- 
+set foldmethod=indent
+set foldlevel=99
 set showmode
-set autowrite " Automatically save before commands like :next and :make
-set showmatch " Show matching brackets.
-set matchpairs+=<:> ""Highlight matching pairs of brackets. Use the '%' character to jump between them.
+set autowrite
+set showmatch
+set matchpairs+=<:>
 
-" --------------------------------- Display different types of white spaces .--------------------------------- 
 set t_Co=256
-set laststatus=2  "Always show the status line at the bottom, even if you only have one window open.
+set laststatus=2
 set backspace=indent,eol,start
 
-set shortmess+=I "Disable default Vim startup message.
+set shortmess+=I
 set noerrorbells visualbell t_vb=
 set background=dark
 silent! colorscheme elflord "Or Use koehler
 silent! colorscheme molokai 
 syntax on
+
 
 " --------------------------------- Vundle --------------------------------- 
 set nocompatible
@@ -50,7 +56,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'ycm-core/YouCompleteMe'
-Plugin 'preservim/nerdtree'                             "Ctrl-n to Open the manager
 Plugin 'junegunn/goyo.vim'
 " Plugin 'tpope/vim-fugitive'                           "Git diff, Git add, Git commit, GStatus, Gdiffsplit
 " Plugin 'junegunn/fzf.vim'
@@ -58,12 +63,12 @@ call vundle#end()
 filetype plugin indent on
 
 
-" --------------------------------- Vim Compile and Run Shortcut --------------------------------- 
 " --------------- Save--------------- 
 let mapleader=" "
 noremap <leader>f :w <CR>
 noremap <leader>d :q! <CR>
-" --------------- Save and Run--------------- 
+
+" --------------------------------- Vim Compile and Run Shortcut --------------------------------- 
 " To run profiler: time ./a.out
 autocmd filetype c nnoremap <leader>e :w <bar> exec '!clear; gcc % -o %:r.out; ./%:r.out'<CR>
 autocmd filetype cpp nnoremap <leader>e :w <bar> exec '!clear; g++ -O2 -Wall -std=c++11 % -o %:r.out; ./%:r.out'<CR>
@@ -74,18 +79,16 @@ autocmd filetype sh nnoremap <leader>e :w <bar> exec '!clear; bash %'<CR>
 
 autocmd filetype c,cpp nnoremap <leader>c :w <bar> exec '!clear; rm -f %:r.out; echo Binary is Cleared...'<CR>
 autocmd bufwritepost .vimrc source $MYVIMRC
+
 " --------------------------------- Disabling Arrow Keys to Avoid Using Them --------------------------------- 
-" --------------- Unmapping Arrow keys in Normal Mode --------------- 
 no <up> <Nop>
 no <down> <Nop>
 no <right> <Nop>
 no <left> <Nop>
-" --------------- Unmapping Arrow keys in Insert Mode --------------- 
 ino <up> <Nop>
 ino <down> <Nop>
 ino <right> <Nop>
 ino <left> <Nop>
-" --------------- Unmapping Arrow keys in Visual Mode --------------- 
 vno <up> <Nop>
 vno <down> <Nop>
 vno <right> <Nop>
@@ -93,28 +96,24 @@ vno <left> <Nop>
 
 
 " --------------------------------- Pane Movement --------------------------------- 
-" --------------- Open Panel --------------- 
 " :vs   vertical split
 " :sp   split / horizontal split
 " open new split pannels to right and bottom, which feels more natural
 set splitbelow
 set splitright
-" --------------- quicker pannel movement --------------- 
+
 nnoremap <leader>h <C-W>h
 nnoremap <leader>l <C-W>l
 nnoremap <leader>j <C-W>j
 nnoremap <leader>k <C-W>k
 
 " --------------------------------- Windows Movement --------------------------------- 
-" --------------- Open Tab --------------- 
 " :tabn               new tab
 " :tabe               edit tab
 " :tabc               close new tab
 " gt                  next tab
 " gT                  previous tab
 
-
-"--------------------------------- Scrolling --------------------------------- 
 nnoremap K <C-U>
 nnoremap J <C-D>
 nnoremap L $
@@ -122,16 +121,10 @@ nnoremap H 0
 
 
 
-"--------------------------------- Enable folding --------------------------------- 
-set foldmethod=indent
-set foldlevel=99
-
-"---------------------------------  YcmCompleter ---------------------------------"
-let g:ycm_autoclose_preview_window_after_completion=1   
-
-"---------------------------------  NerdTree Open ---------------------------------
-let NERDTreeShowHidden=1
-nnoremap <C-n> :NERDTreeToggle<CR>
+"---------------------------------  Sessions ---------------------------------
+nnoremap <leader>ss :mksession! ~/.vim_session<CR> "Save Sessions
+nnoremap <leader>ls :source ~/.vim_session<CR> "Save Sessions
+nnoremap <leader>jq :%!jq '.'<CR>
 
 
 "---------------------------------  Goyo Settings --------------------------------- 
@@ -146,7 +139,6 @@ function! s:goyo_enter()
   set noshowmode
   set noshowcmd
   set scrolloff=999
-" ...
 endfunction
 
 function! s:goyo_leave()
@@ -157,18 +149,11 @@ function! s:goyo_leave()
   set showmode
   set showcmd
   set scrolloff=5
-  " ...
 endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
-
-
-"---------------------------------  Sessions ---------------------------------
-nnoremap <leader>ss :mksession! ~/.vim_session<CR> "Save Sessions
-nnoremap <leader>ls :source ~/.vim_session<CR> "Save Sessions
-nnoremap <leader>jq :%!jq '.'<CR>
 
 
 "---------------------------------- Statusbar ---------------------------------
@@ -183,7 +168,7 @@ set statusline+=%{&paste?'\ PASTE\ ':''}
 set statusline+=%{&spell?'\ SPELL\ ':''}
 set statusline+=%#CursorIM#                               " colour
 set statusline+=%R                                        " readonly flag
-set statusline+=\ %M\                                       " modified [+] flag
+set statusline+=\ %M\                                     " modified [+] flag
 set statusline+=%#Cursor#                                 " colour
 set statusline+=%#CursorLine#                             " colour
 set statusline+=\%4*\ %<%F%*\                             " full file name
@@ -196,3 +181,12 @@ set statusline+=%#CursorIM#                               " colour
 set statusline+=\ %3l/%L\                                 " line number / Total 
 set statusline+=%#Cursor#                                 " colour
 " set statusline+=\ %3p%%\                                " percentage
+
+
+"--------------------------------- Netrw like NERDTree  ---------------------------------
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 20
+nnoremap <C-n> :Lex<CR>
