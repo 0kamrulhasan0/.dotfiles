@@ -99,9 +99,11 @@ additional-setup-clean:
 vim-setup:
 	apt --assume-yes install vim
 	ln -fs $(Home)/.dotfiles/Profiles/vimrc $(Home)/.vimrc
-	# Original can be downloaded from - https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim
-	# wget https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim -O /usr/share/vim/vim81/colors/molokai.vim
-	ln -fs $(Home)/.dotfiles/Themes/molokai.vim /usr/share/vim/vim81/colors/molokai.vim
+	mkdir -p $(Home)/.vim/colors
+	#wget https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim -O $(Home)/.vim/colors/molokai.vim
+	#wget https://raw.githubusercontent.com/morhetz/gruvbox/master/colors/gruvbox.vim -O $(Home)/.vim/colors/gruvbox.vim 
+	ln -fs $(Home)/.dotfiles/Themes/molokai.vim $(Home)/.vim/colors/molokai.vim
+	ln -fs $(Home)/.dotfiles/Themes/gruvbox.vim $(Home)/.vim/colors/gruvbox.vim
 	# If Vundle.vim directort doesn't exist clone, or else pull
 	if test ! -d "$(Home)/.vim/bundle/Vundle.vim"; \
 	then git clone https://github.com/VundleVim/Vundle.vim.git $(Home)/.vim/bundle/Vundle.vim; \

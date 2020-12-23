@@ -102,7 +102,7 @@ set backspace=indent,eol,start
 set noerrorbells visualbell t_vb=
 set background=dark
 silent! colorscheme elflord "Or Use koehler
-silent! colorscheme molokai                 
+silent! colorscheme molokai "Or gruvbox
 syntax on
 
 
@@ -164,7 +164,7 @@ nnoremap <leader>ss :mksession! $VIMRUNTIME/_vim_session<CR>
 nnoremap <leader>ls :source  $VIMRUNTIME/_vim_session<CR>
 nnoremap <leader>jq :%!jq '.'<CR>
 
-"--------------------------------- Netrw as NERDTree ---------------------------------
+"--------------------------------- NERDTree View ---------------------------------
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
