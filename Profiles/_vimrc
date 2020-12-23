@@ -1,0 +1,158 @@
+" Vim with all enhancements
+source $VIMRUNTIME/vimrc_example.vim
+
+" Remap a few keys for Windows behavior
+source $VIMRUNTIME/mswin.vim
+
+" Mouse behavior (the Windows way)
+behave mswin
+
+" Use the internal diff if available.
+" Otherwise use the special 'diffexpr' for Windows.
+if &diffopt !~# 'internal'
+  set diffexpr=MyDiff()
+endif
+function MyDiff()
+  let opt = '-a --binary '
+  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+  let arg1 = v:fname_in
+  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+  let arg1 = substitute(arg1, '!', '\!', 'g')
+  let arg2 = v:fname_new
+  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+  let arg2 = substitute(arg2, '!', '\!', 'g')
+  let arg3 = v:fname_out
+  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+  let arg3 = substitute(arg3, '!', '\!', 'g')
+  if $VIMRUNTIME =~ ' '
+    if &sh =~ '\<cmd'
+      if empty(&shellxquote)
+        let l:shxq_sav = ''
+        set shellxquote&
+      endif
+      let cmd = '"' . $VIMRUNTIME . '\diff"'
+    else
+      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+    endif
+  else
+    let cmd = $VIMRUNTIME . '\diff'
+  endif
+  let cmd = substitute(cmd, '!', '\!', 'g')
+  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3
+  if exists('l:shxq_sav')
+    let &shellxquote=l:shxq_sav
+  endif
+endfunction
+
+if has("gui_running")
+  " Set a nicer font.
+  set guifont=Consolas:h12:cDEFAULT
+  set guioptions-=r
+  set guioptions-=T
+endif
+
+set spelllang=en_us
+set nospell
+set enc=utf-8 
+set autoread
+set history=2000
+set path+=**
+set wildmenu
+set nobackup
+set noswapfile
+
+set cursorline
+nnoremap <F2> :set relativenumber!<CR>
+nnoremap <F3> :setlocal spell! <CR>
+set pastetoggle=<F4>
+set clipboard=unnamed
+
+" --------------------------------- Tab , Indent, Number --------------------------------- 
+set smartindent
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set hidden
+
+set incsearch
+set mouse+=a
+
+
+" --------------------------------- Some Extra Mode --------------------------------- 
+set showmode
+set autowrite
+set showmatch
+set matchpairs+=<:>
+
+" --------------------------------- Display different types of white spaces --------------------------------- 
+set t_Co=256
+set laststatus=2
+set backspace=indent,eol,start
+
+set noerrorbells visualbell t_vb=
+set background=dark
+" Usable Default colorscheme - elflord, koehler
+" Usable Custom colorscheme - molokai
+colorscheme molokai
+syntax on
+
+
+" --------------------------------- Vim Compile and Run Shortcut --------------------------------- 
+" --------------- Save--------------- 
+let mapleader=" "
+noremap <leader>f :w <CR>
+noremap <leader>d :q! <CR>
+" --------------------------------- Disabling Arrow Keys to Avoid Using Them --------------------------------- 
+no <up> <Nop>
+no <down> <Nop>
+no <right> <Nop>
+no <left> <Nop>
+ino <up> <Nop>
+ino <down> <Nop>
+ino <right> <Nop>
+ino <left> <Nop>
+vno <up> <Nop>
+vno <down> <Nop>
+vno <right> <Nop>
+vno <left> <Nop>
+
+
+" --------------------------------- Pane Movement --------------------------------- 
+" --------------- Open Panel --------------- 
+" :vs   vertical split
+" :sp   split / horizontal split
+" open new split pannels to right and bottom, which feels more natural
+set splitbelow
+set splitright
+" --------------- quicker pannel movement --------------- 
+nnoremap <leader>h <C-W>h
+nnoremap <leader>l <C-W>l
+nnoremap <leader>j <C-W>j
+nnoremap <leader>k <C-W>k
+
+" --------------------------------- Windows Movement --------------------------------- 
+" --------------- Open Tab --------------- 
+" :tabn               new tab
+" :tabe               edit tab
+" :tabc               close new tab
+" gt                  next tab
+" gT                  previous tab
+
+"--------------------------------- Scrolling --------------------------------- 
+nnoremap K <C-U>
+nnoremap J <C-D>
+nnoremap L $
+nnoremap H 0
+
+
+
+"--------------------------------- Enable folding --------------------------------- 
+set foldmethod=indent
+set foldlevel=99
+
+
+"--------------------------------- Sessions ---------------------------------
+nnoremap <leader>ss :mksession! $VIMRUNTIME/_vim_session<CR>
+nnoremap <leader>ls :source  $VIMRUNTIME/_vim_session<CR>
+nnoremap <leader>jq :%!jq '.'<CR>

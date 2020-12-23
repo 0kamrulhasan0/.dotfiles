@@ -43,12 +43,13 @@ if [[ -z "$PRIMARY_FG" ]]; then
 fi
 
 # Characters
-SEGMENT_SEPARATOR="\ue0b0"
+#SEGMENT_SEPARATOR="\ue0b0"
+SEGMENT_SEPARATOR=""
 PLUSMINUS="\u00b1"
 BRANCH="\ue0a0"
 DETACHED="\u27a6"
-#CROSS="\u2718"
-CROSS="\u274C"
+#CROSS="\u274C"
+CROSS="\u2718"
 #LIGHTNING="\u26a1"
 LIGHTNING="\u03df"
 #GEAR="\u2699"
@@ -89,7 +90,7 @@ prompt_context() {
   local user=`whoami`
 
   if [[ "$user" != "$DEFAULT_USER" || -n "$SSH_CONNECTION" ]]; then
-    prompt_segment $PRIMARY_FG default " %(!.%{%F{yellow}%}.)$user"
+    prompt_segment $PRIMARY_FG default " %(!.%{%F{yellow}%}.)$user "
   fi
 }
 
