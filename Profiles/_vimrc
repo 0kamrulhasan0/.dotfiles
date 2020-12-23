@@ -92,9 +92,8 @@ set backspace=indent,eol,start
 
 set noerrorbells visualbell t_vb=
 set background=dark
-" Usable Default colorscheme - elflord, koehler
-" Usable Custom colorscheme - molokai
-colorscheme molokai
+silent! colorscheme elflord "Or Use koehler
+silent! colorscheme molokai                 
 syntax on
 
 
