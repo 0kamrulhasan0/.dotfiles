@@ -57,6 +57,8 @@ nnoremap <leader> <C-W>
 "Scrolling
 nnoremap K <C-U>
 nnoremap J <C-D>
+vnoremap L $
+vnoremap H 0
 nnoremap L $
 nnoremap H 0
 " Windows Movement 

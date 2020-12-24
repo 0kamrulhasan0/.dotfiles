@@ -102,6 +102,8 @@ nnoremap K <C-U>
 nnoremap J <C-D>
 nnoremap L $
 nnoremap H 0
+vnoremap L $
+vnoremap H 0
 " Windows Movement 
 " :tabn               new tab
 " :tabe               edit tab
