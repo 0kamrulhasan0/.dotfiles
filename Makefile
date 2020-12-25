@@ -47,7 +47,7 @@ apt-basic-tools:
 	apt --assume-yes install tmux git gdb
 	apt --assume-yes install tldr xclip #html-xml-utils bsdgames tlp ranger conky tint2 
 	apt --assume-yes install wget curl
-	apt --assume-yes install cmatrix jp2a
+	# apt --assume-yes install cmatrix jp2a
 
 apt-programming-languages-tools:
 	apt --assume-yes install clang cmake 
@@ -99,7 +99,7 @@ additional-setup-clean:
 
 vim-setup:
 	apt --assume-yes install vim
-	ln -fs $(Home)/.dotfiles/Profiles/vimrc $(Home)/.vimrc
+	ln -fs $(Home)/.dotfiles/Profiles/vimrc_lin $(Home)/.vimrc
 	mkdir -p $(Home)/.vim/colors
 	#wget https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim -O $(Home)/.vim/colors/molokai.vim
 	#wget https://raw.githubusercontent.com/morhetz/gruvbox/master/colors/gruvbox.vim -O $(Home)/.vim/colors/gruvbox.vim 

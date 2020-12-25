@@ -1,5 +1,7 @@
 " _vimrc in $MYVIMRC
-" molokai - 
+"All colorscheme in $HOME/vimfiles/colors
+"https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim
+"https://raw.githubusercontent.com/morhetz/gruvbox/master/colors/gruvbox.vim
 
 " Vim with all enhancements
 source $VIMRUNTIME/vimrc_example.vim
@@ -48,16 +50,15 @@ function MyDiff()
   endif
 endfunction
 
+set shell=C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe
+
 if has("gui_running")
-  " Set a nicer font.
   set guifont=Consolas:h13:cDEFAULT
   set guioptions-=r
   set guioptions-=L
   set guioptions-=T
   set lines=25 columns=120
 endif
-
-set shell=C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe
 
 set spelllang=en_us
 set nospell
@@ -68,7 +69,7 @@ set path+=**
 set wildmenu
 set nobackup
 set noswapfile
-
+set noundofile
 set cursorline
 set relativenumber
 nnoremap <F2> :set relativenumber!<CR>
@@ -81,12 +82,10 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set hidden
-set foldmethod=indent
-set foldlevel=99
-
 set incsearch
 set mouse+=a
-
+set foldmethod=indent
+set foldlevel=99
 set showmode
 set autowrite
 set showmatch
@@ -98,44 +97,39 @@ set backspace=indent,eol,start
 set splitbelow
 set splitright
 
+set shortmess+=I
 set noerrorbells visualbell t_vb=
-"https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim
-"https://raw.githubusercontent.com/morhetz/gruvbox/master/colors/gruvbox.vim
-"All colorscheme in $HOME/vimfiles/colors
-silent! colorscheme elflord "Or Use koehler
-silent! colorscheme gruvbox "molokai Or gruvbox
+" Default - elflord or koehler
+" Custom  - molokai or gruvbox
+silent! colorscheme elflord
+silent! colorscheme gruvbox
 syntax on
 
-
-" Save 
+" Save
 let mapleader=" "
 noremap <leader>f :w <CR>
 noremap <leader>d :q! <CR>
 nnoremap <leader> <C-W>
-"Scrolling 
+"Scrolling
 nnoremap K <C-U>
 nnoremap J <C-D>
 vnoremap L $
 vnoremap H 0
 nnoremap L $
 nnoremap H 0
-
-
-" Pane Movement 
-" Open Tab 
+" Windows Movement 
 " :tabn               new tab
 " :tabe               edit tab
 " :tabc               close new tab
 " gt                  next tab
 " gT                  previous tab
 
-
 "Sessions
-nnoremap <leader>ss :mksession! $VIMRUNTIME/_vim_session<CR>
-nnoremap <leader>ls :source  $VIMRUNTIME/_vim_session<CR>
+nnoremap <leader>mk :mksession! ~/.vim_session<CR> "Save Sessions
+nnoremap <leader>ls :source ~/.vim_session<CR> "Save Sessions
 nnoremap <leader>jq :%!jq '.'<CR>
 
-"NERDTree View 
+"NERDTree like View
 let g:netrw_list_hide = '^\.\.\=/\=$,.DS_Store,.idea,.git,__pycache__,venv,node_modules,*\.o,*\.pyc,.*\.swp'
 let g:netrw_hide = 1
 let g:netrw_banner = 0
@@ -144,9 +138,6 @@ let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 20
 nnoremap <C-n> :Lex<CR>
-
-
-
 
 " Disabling Arrow Keys to Avoid Using Them 
 no <up> <Nop>

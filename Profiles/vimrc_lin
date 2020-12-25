@@ -6,7 +6,6 @@ if has("gui_running")
   set lines=25 columns=120
 endif
 
-"set shell=bash
 set spelllang=en_us
 set nospell
 set enc=utf-8 
@@ -16,6 +15,7 @@ set path+=**
 set wildmenu
 set nobackup
 set noswapfile
+set noundofile
 set cursorline
 set relativenumber
 nnoremap <F2> :set relativenumber!<CR>
@@ -45,11 +45,98 @@ set splitright
 
 set shortmess+=I
 set noerrorbells visualbell t_vb=
-silent! colorscheme elflord "Or Use koehler
-silent! colorscheme molokai "Or User gruvbox
+" Default - elflord or koehler
+" Custom  - molokai or gruvbox
+silent! colorscheme elflord
+silent! colorscheme gruvbox 
 syntax on
 
+" Save
+let mapleader=" "
+noremap <leader>f :w <CR>
+noremap <leader>d :q! <CR>
+nnoremap <leader> <C-W>
+"Scrolling
+nnoremap K <C-U>
+nnoremap J <C-D>
+vnoremap L $
+vnoremap H 0
+nnoremap L $
+nnoremap H 0
+" Windows Movement 
+" :tabn               new tab
+" :tabe               edit tab
+" :tabc               close new tab
+" gt                  next tab
+" gT                  previous tab
 
+"Sessions
+nnoremap <leader>mk :mksession! ~/.vim_session<CR> "Save Sessions
+nnoremap <leader>ls :source ~/.vim_session<CR> "Save Sessions
+nnoremap <leader>jq :%!jq '.'<CR>
+
+"NERDTree like View
+let g:netrw_list_hide = '^\.\.\=/\=$,.DS_Store,.idea,.git,__pycache__,venv,node_modules,*\.o,*\.pyc,.*\.swp'
+let g:netrw_hide = 1
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 20
+nnoremap <C-n> :Lex<CR>
+
+" Disabling Arrow Keys to Avoid Using Them 
+no <up> <Nop>
+no <down> <Nop>
+no <right> <Nop>
+no <left> <Nop>
+ino <up> <Nop>
+ino <down> <Nop>
+ino <right> <Nop>
+ino <left> <Nop>
+vno <up> <Nop>
+vno <down> <Nop>
+vno <right> <Nop>
+vno <left> <Nop>
+
+"Linux Specific Settings
+"set shell=bash
+"------------------------------ Compile and Run Shortcut ------------------------------
+"" To run profiler: time ./a.out
+autocmd filetype c nnoremap <leader>e :w <bar> exec '!clear; gcc % -o %:r.out; ./%:r.out'<CR>
+autocmd filetype cpp nnoremap <leader>e :w <bar> exec '!clear; g++ -O2 -Wall -std=c++11 % -o %:r.out; ./%:r.out'<CR>
+autocmd filetype python nnoremap <leader>e :w <bar> exec '!clear; python3 %'<CR>
+autocmd filetype javascript nnoremap <leader>e :w <bar> exec '!clear; nodejs %'<CR>
+autocmd filetype make nnoremap <leader>e :w <bar> exec '!clear; make'<CR>
+autocmd filetype sh nnoremap <leader>e :w <bar> exec '!clear; bash %'<CR>
+autocmd filetype c,cpp nnoremap <leader>c :w <bar> exec '!clear; rm -f %:r.out; echo Binary is Cleared...'<CR>
+autocmd bufwritepost .vimrc source $MYVIMRC
+"---------------------------------- Statusbar ---------------------------------
+set statusline=
+set statusline+=%#DiffAdd#%{(mode()=='n')?'\ \ NORMAL\ ':''}
+set statusline+=%#DiffChange#%{(mode()=='i')?'\ \ INSERT\ ':''}
+set statusline+=%#DiffDelete#%{(mode()=='r')?'\ \ REPLACE\ ':''}
+set statusline+=%#Cursor#%{(mode()=='v')?'\ \ VISUAL\ ':''}
+set statusline+=\ %n\                                     " buffer number
+set statusline+=%#Visual#                                 " colour
+set statusline+=%{&paste?'\ PASTE\ ':''}
+set statusline+=%{&spell?'\ SPELL\ ':''}
+set statusline+=%#CursorIM#                               " colour
+set statusline+=%R                                        " readonly flag
+set statusline+=\ %M\                                       " modified [+] flag
+set statusline+=%#Cursor#                                 " colour
+set statusline+=%#CursorLine#                             " colour
+set statusline+=\%4*\ %<%F%*\                             " full file name
+set statusline+=%=                                        " right align
+set statusline+=%#CursorLine#                             " colour
+set statusline+=%3*\ %{''.(&fenc!=''?&fenc:&enc).''}      " Encoding
+set statusline+=%3*\ %{(&bomb?\",BOM\":\"\")}\            " Encoding2
+set statusline+=\ %Y\                                     " file type
+set statusline+=%#CursorIM#                               " colour
+set statusline+=\ %3l/%L\                                 " line number / Total 
+set statusline+=%#Cursor#                                 " colour
+" set statusline+=\ %3p%%\                                " percentage
+" Comment This Part to use this without plugin
 " --------------------------------- Vundle --------------------------------- 
 set nocompatible
 filetype off
@@ -62,7 +149,6 @@ Plugin 'junegunn/goyo.vim'
 " Plugin 'junegunn/fzf.vim'
 call vundle#end()
 filetype plugin indent on
-
 "---------------------------------  Goyo Settings ---------------------------- 
 nnoremap <leader>z :Goyo<CR>
 let g:goyo_width = '95%'
@@ -89,98 +175,3 @@ endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
-
-
-
-" Save
-let mapleader=" "
-noremap <leader>f :w <CR>
-noremap <leader>d :q! <CR>
-nnoremap <leader> <C-W>
-"Scrolling
-nnoremap K <C-U>
-nnoremap J <C-D>
-nnoremap L $
-nnoremap H 0
-vnoremap L $
-vnoremap H 0
-" Windows Movement 
-" :tabn               new tab
-" :tabe               edit tab
-" :tabc               close new tab
-" gt                  next tab
-" gT                  previous tab
-
-
-
-
-"------------------------------ Compile and Run Shortcut ------------------------------
-"" To run profiler: time ./a.out
-autocmd filetype c nnoremap <leader>e :w <bar> exec '!clear; gcc % -o %:r.out; ./%:r.out'<CR>
-autocmd filetype cpp nnoremap <leader>e :w <bar> exec '!clear; g++ -O2 -Wall -std=c++11 % -o %:r.out; ./%:r.out'<CR>
-autocmd filetype python nnoremap <leader>e :w <bar> exec '!clear; python3 %'<CR>
-autocmd filetype javascript nnoremap <leader>e :w <bar> exec '!clear; nodejs %'<CR>
-autocmd filetype make nnoremap <leader>e :w <bar> exec '!clear; make'<CR>
-autocmd filetype sh nnoremap <leader>e :w <bar> exec '!clear; bash %'<CR>
-autocmd filetype c,cpp nnoremap <leader>c :w <bar> exec '!clear; rm -f %:r.out; echo Binary is Cleared...'<CR>
-autocmd bufwritepost .vimrc source $MYVIMRC
-
-
-"Sessions
-nnoremap <leader>ss :mksession! ~/.vim_session<CR> "Save Sessions
-nnoremap <leader>ls :source ~/.vim_session<CR> "Save Sessions
-nnoremap <leader>jq :%!jq '.'<CR>
-
-
-"---------------------------------- Statusbar ---------------------------------
-set statusline=
-set statusline+=%#DiffAdd#%{(mode()=='n')?'\ \ NORMAL\ ':''}
-set statusline+=%#DiffChange#%{(mode()=='i')?'\ \ INSERT\ ':''}
-set statusline+=%#DiffDelete#%{(mode()=='r')?'\ \ REPLACE\ ':''}
-set statusline+=%#Cursor#%{(mode()=='v')?'\ \ VISUAL\ ':''}
-set statusline+=\ %n\                                     " buffer number
-set statusline+=%#Visual#                                 " colour
-set statusline+=%{&paste?'\ PASTE\ ':''}
-set statusline+=%{&spell?'\ SPELL\ ':''}
-set statusline+=%#CursorIM#                               " colour
-set statusline+=%R                                        " readonly flag
-set statusline+=\ %M\                                       " modified [+] flag
-set statusline+=%#Cursor#                                 " colour
-set statusline+=%#CursorLine#                             " colour
-set statusline+=\%4*\ %<%F%*\                             " full file name
-set statusline+=%=                                        " right align
-set statusline+=%#CursorLine#                             " colour
-set statusline+=%3*\ %{''.(&fenc!=''?&fenc:&enc).''}      " Encoding
-set statusline+=%3*\ %{(&bomb?\",BOM\":\"\")}\            " Encoding2
-set statusline+=\ %Y\                                     " file type
-set statusline+=%#CursorIM#                               " colour
-set statusline+=\ %3l/%L\                                 " line number / Total 
-set statusline+=%#Cursor#                                 " colour
-" set statusline+=\ %3p%%\                                " percentage
-
-
-"NERDTree like View
-let g:netrw_list_hide = '^\.\.\=/\=$,.DS_Store,.idea,.git,__pycache__,venv,node_modules,*\.o,*\.pyc,.*\.swp'
-let g:netrw_hide = 1
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 20
-nnoremap <C-n> :Lex<CR>
-
-
-
-" Disabling Arrow Keys to Avoid Using Them 
-no <up> <Nop>
-no <down> <Nop>
-no <right> <Nop>
-no <left> <Nop>
-ino <up> <Nop>
-ino <down> <Nop>
-ino <right> <Nop>
-ino <left> <Nop>
-vno <up> <Nop>
-vno <down> <Nop>
-vno <right> <Nop>
-vno <left> <Nop>
