@@ -1,9 +1,9 @@
 "Setup Vim in Window -----------------------------------------------------
 " Execute below command in Adminstrative Priviledge Mode:
-" Invoke-WebRequest -Uri "https://raw.githubusercontent.com/0kamrulhasan0/.dotfiles/main/Themes/molokai.vim" -UseBasicParsing -OutFile $HOME/vimfiles/colors/molokai.vim
-" Invoke-WebRequest -Uri "https://raw.githubusercontent.com/0kamrulhasan0/.dotfiles/main/Themes/gruvbox.vim" -UseBasicParsing -OutFile $HOME/vimfiles/colors/gruvbox.vim
-" rm 'C:\Program Files (x86)\Vim\_vimrc'
-" Invoke-WebRequest -Uri "https://raw.githubusercontent.com/0kamrulhasan0/.dotfiles/main/Profiles/vimrc_win" -UseBasicParsing -OutFile 'C:\Program Files (x86)\Vim\_vimrc'
+" Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/0kamrulhasan0/.dotfiles/main/Themes/molokai.vim" -OutFile $HOME/vimfiles/colors/molokai.vim
+" Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/0kamrulhasan0/.dotfiles/main/Themes/gruvbox.vim" -OutFile $HOME/vimfiles/colors/gruvbox.vim
+" rm 'C:\Program Fil-UseBasicParsing es (x86)\Vim\_vimrc'
+" Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/0kamrulhasan0/.dotfiles/main/Profiles/vimrc_win" -OutFile 'C:\Program Files (x86)\Vim\_vimrc'
 
 " Vim with all enhancements
 source $VIMRUNTIME/vimrc_example.vim
