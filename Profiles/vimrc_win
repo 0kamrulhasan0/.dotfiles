@@ -112,6 +112,7 @@ let mapleader=" "
 noremap <leader>f :w <CR>
 noremap <leader>d :q! <CR>
 nnoremap <leader> <C-W>
+autocmd filetype python nnoremap <leader>e :w <bar> exec '!clear; python %'<CR>
 "Scrolling
 nnoremap K <C-U>
 nnoremap J <C-D>
@@ -130,6 +131,7 @@ nnoremap H 0
 nnoremap <leader>mk :mksession! ~/.vim_session<CR> "Save Sessions
 nnoremap <leader>ls :source ~/.vim_session<CR> "Save Sessions
 nnoremap <leader>jq :%!jq '.'<CR>
+
 
 "NERDTree like View
 let g:netrw_list_hide = '^\.\.\=/\=$,.DS_Store,.idea,.git,__pycache__,venv,node_modules,*\.o,*\.pyc,.*\.swp'

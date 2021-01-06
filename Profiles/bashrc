@@ -109,10 +109,10 @@ alias l='ls -CF'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # pip3 update all package
-alias pp-ug="pip3 freeze | cut -d'=' -f1 | xargs -n1 pip3 install -U"
-alias apt-ug="sudo apt-get upgrade"
+alias pp-ud="pip3 freeze | cut -d'=' -f1 | xargs -n1 pip3 install -U"
 alias apt-ud="sudo apt-get update"
-alias apt-gi="sudo apt-get install"
+alias apt-ug="sudo apt-get upgrade"
+lias apt-gi="sudo apt-get install"
 alias apt-cs="apt-cache search"
 
 # Alias definitions.

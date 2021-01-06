@@ -11,22 +11,24 @@ kill:
 
 
 ubuntu:
-	  make apt-update
-	  make apt-basic-tools
-	  make apt-programming-languages-tools
-	  make apt-update
-	  make additional-setup
-	  make vim-setup
-	  make vim-plugin-setup
-	  make oh-my-zsh-setup
-	# make github-setup
+	# make apt-update
+	# make apt-basic-tools
+	# make apt-programming-languages-tools
+	# make apt-update
+	# make additional-setup
+	# make vim-setup
+	# make vifm-setup
+	# make vim-plugin-setup
+	# make oh-my-zsh-setup
+	## make github-setup
 ubuntu-clean:
-	  make additional-setup-clean
-	  make vim-clean
-	  make vim-plugin-clean
-	  make oh-my-zsh-clean
-	  make github-clean
-	# apt-clean
+	# make additional-setup-clean
+	# make vim-clean
+	# make vifm-clean
+	# make vim-plugin-clean
+	# make oh-my-zsh-clean
+	## make github-clean
+	## apt-clean
 
 
 
@@ -101,8 +103,6 @@ vim-setup:
 	apt --assume-yes install vim
 	ln -fs $(Home)/.dotfiles/Profiles/vimrc_lin $(Home)/.vimrc
 	mkdir -p $(Home)/.vim/colors
-	#wget https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim -O $(Home)/.vim/colors/molokai.vim
-	#wget https://raw.githubusercontent.com/morhetz/gruvbox/master/colors/gruvbox.vim -O $(Home)/.vim/colors/gruvbox.vim 
 	ln -fs $(Home)/.dotfiles/Themes/molokai.vim $(Home)/.vim/colors/molokai.vim
 	ln -fs $(Home)/.dotfiles/Themes/gruvbox.vim $(Home)/.vim/colors/gruvbox.vim
 	# If Vundle.vim directort doesn't exist clone, or else pull
@@ -119,6 +119,18 @@ vim-clean:
 	rm -f $(Home)/.vimrc
 	rm -f /usr/share/vim/vim81/colors/molokai.vim
 	rm -rf $(Home)/.vim
+
+
+
+vifm-setup:
+	apt --assume-yes install vifm
+	mkdir -p $(Home)/.vifm/colors/
+	ln -fs $(Home)/.dotfiles/Profiles/vifmrc $(Home)/.vifm/vifmrc
+	ln -fs $(Home)/.dotfiles/Themes/molokai.vifm $(Home)/.vifm/colors/molokai.vifm
+	ln -fs $(Home)/.dotfiles/Themes/gruvbox.vifm $(Home)/.vifm/colors/gruvbox.vifm
+vifm-clean:
+	apt --assume-yes remove vifm
+	rm -rf $(Home)/.vifm
 
 
 

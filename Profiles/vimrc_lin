@@ -109,7 +109,10 @@ autocmd filetype python nnoremap <leader>e :w <bar> exec '!clear; python3 %'<CR>
 autocmd filetype javascript nnoremap <leader>e :w <bar> exec '!clear; nodejs %'<CR>
 autocmd filetype make nnoremap <leader>e :w <bar> exec '!clear; make'<CR>
 autocmd filetype sh nnoremap <leader>e :w <bar> exec '!clear; bash %'<CR>
+
+
 autocmd filetype c,cpp nnoremap <leader>c :w <bar> exec '!clear; rm -f %:r.out; echo Binary is Cleared...'<CR>
+autocmd filetype make nnoremap <leader>c :w <bar> exec '!clear; make clean'<CR>
 autocmd bufwritepost .vimrc source $MYVIMRC
 "---------------------------------- Statusbar ---------------------------------
 set statusline=
