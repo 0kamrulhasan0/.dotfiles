@@ -99,6 +99,10 @@ vno <down> <Nop>
 vno <right> <Nop>
 vno <left> <Nop>
 
+"Flagging Unnecessary Whitespace
+highlight BadWhitespace ctermbg=red guibg=darkred
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
 "Linux Specific Settings
 "set shell=bash
 "------------------------------ Compile and Run Shortcut ------------------------------
@@ -183,7 +187,3 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 " Python REPL Settings
 nnoremap <leader>r :REPLToggle<Cr>
 let g:repl_program = {'python': ['python3.8'], 'default': ['bash']}
-
-"Flagging Unnecessary Whitespace
-highlight BadWhitespace ctermbg=red guibg=darkred
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/

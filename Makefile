@@ -113,11 +113,10 @@ vim-setup:
 	# Install Plugins from vim-plugin
 	git -C "$(Home)/.vim/bundle/YouCompleteMe/" submodule sync --recursive
 	git -C "$(Home)/.vim/bundle/YouCompleteMe/" submodule update --init --recursive
-	python3 $(Home)/.vim/bundle/YouCompleteMe/install.py
+	python3 $(Home)/.vim/bundle/YouCompleteMe/install.py --all
 vim-clean:
 	apt --assume-yes remove vim
 	rm -f $(Home)/.vimrc
-	rm -f /usr/share/vim/vim81/colors/molokai.vim
 	rm -rf $(Home)/.vim
 
 
@@ -131,126 +130,6 @@ vifm-setup:
 vifm-clean:
 	apt --assume-yes remove vifm
 	rm -rf $(Home)/.vifm
-
-
-
-oh-my-zsh-setup:
-	apt --assume-yes install zsh
-	chsh -s /bin/zsh $(User)
-	wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sudo -u '$(User)' zsh
-	git clone https://github.com/zsh-users/zsh-autosuggestions $(Home)/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-	ln -fs "$(Home)/.dotfiles/Profiles/zshrc" "$(Home)/.zshrc"
-	ln -fs "$(Home)/.dotfiles/Themes/modified.zsh-theme" "$(Home)/.oh-my-zsh/custom/themes/modified.zsh-theme"
-oh-my-zsh-clean:
-	chsh -s /bin/bash $(User)
-	apt --assume-yes remove zsh
-	rm -f $(Home)/.zsh*
-	rm -rf $(Home)/.oh-my-zsh
-	ln -fs $(Home)/.dotfiles/Themes/molokai.vim /usr/share/vim/vim81/colors/molokai.vim
-	# If Vundle.vim directort doesn't exist clone, or else pull
-	if test ! -d "$(Home)/.vim/bundle/Vundle.vim"; \
-	then git clone https://github.com/VundleVim/Vundle.vim.git $(Home)/.vim/bundle/Vundle.vim; \
-	else git -C "$(Home)/.vim/bundle/Vundle.vim" pull; fi
-	sudo -u '$(User)' vim +PluginInstall +qall 1>/dev/null 			# To install Plugins non-interactively
-	# Install Plugins from vim-plugin
-	git -C "$(Home)/.vim/bundle/YouCompleteMe/" submodule sync --recursive
-	git -C "$(Home)/.vim/bundle/YouCompleteMe/" submodule update --init --recursive
-	python3 $(Home)/.vim/bundle/YouCompleteMe/install.py
-vim-clean:
-	apt --assume-yes remove vim
-	rm -f $(Home)/.vimrc
-	rm -f /usr/share/vim/vim81/colors/molokai.vim
-	rm -rf $(Home)/.vim
-
-
-
-oh-my-zsh-setup:
-	apt --assume-yes install zsh
-	chsh -s /bin/zsh $(User)
-	wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sudo -u '$(User)' zsh
-	git clone https://github.com/zsh-users/zsh-autosuggestions $(Home)/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-	ln -fs "$(Home)/.dotfiles/Profiles/zshrc" "$(Home)/.zshrc"
-	ln -fs "$(Home)/.dotfiles/Themes/modified.zsh-theme" "$(Home)/.oh-my-zsh/custom/themes/modified.zsh-theme"
-oh-my-zsh-clean:
-	chsh -s /bin/bash $(User)
-	apt --assume-yes remove zsh
-	rm -f $(Home)/.zsh*
-	rm -rf $(Home)/.oh-my-zsh
-	ln -fs $(Home)/.dotfiles/Themes/molokai.vim /usr/share/vim/vim81/colors/molokai.vim
-	# If Vundle.vim directort doesn't exist clone, or else pull
-	if test ! -d "$(Home)/.vim/bundle/Vundle.vim"; \
-	then git clone https://github.com/VundleVim/Vundle.vim.git $(Home)/.vim/bundle/Vundle.vim; \
-	else git -C "$(Home)/.vim/bundle/Vundle.vim" pull; fi
-	sudo -u '$(User)' vim +PluginInstall +qall 1>/dev/null 			# To install Plugins non-interactively
-	# Install Plugins from vim-plugin
-	git -C "$(Home)/.vim/bundle/YouCompleteMe/" submodule sync --recursive
-	git -C "$(Home)/.vim/bundle/YouCompleteMe/" submodule update --init --recursive
-	python3 $(Home)/.vim/bundle/YouCompleteMe/install.py
-vim-clean:
-	apt --assume-yes remove vim
-	rm -f $(Home)/.vimrc
-	rm -f /usr/share/vim/vim81/colors/molokai.vim
-	rm -rf $(Home)/.vim
-
-
-
-oh-my-zsh-setup:
-	apt --assume-yes install zsh
-	chsh -s /bin/zsh $(User)
-	wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sudo -u '$(User)' zsh
-	git clone https://github.com/zsh-users/zsh-autosuggestions $(Home)/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-	ln -fs "$(Home)/.dotfiles/Profiles/zshrc" "$(Home)/.zshrc"
-	ln -fs "$(Home)/.dotfiles/Themes/modified.zsh-theme" "$(Home)/.oh-my-zsh/custom/themes/modified.zsh-theme"
-oh-my-zsh-clean:
-	chsh -s /bin/bash $(User)
-	apt --assume-yes remove zsh
-	rm -f $(Home)/.zsh*
-	rm -rf $(Home)/.oh-my-zsh
-	ln -fs $(Home)/.dotfiles/Themes/molokai.vim /usr/share/vim/vim81/colors/molokai.vim
-	# If Vundle.vim directort doesn't exist clone, or else pull
-	if test ! -d "$(Home)/.vim/bundle/Vundle.vim"; \
-	then git clone https://github.com/VundleVim/Vundle.vim.git $(Home)/.vim/bundle/Vundle.vim; \
-	else git -C "$(Home)/.vim/bundle/Vundle.vim" pull; fi
-	sudo -u '$(User)' vim +PluginInstall +qall 1>/dev/null 			# To install Plugins non-interactively
-	# Install Plugins from vim-plugin
-	git -C "$(Home)/.vim/bundle/YouCompleteMe/" submodule sync --recursive
-	git -C "$(Home)/.vim/bundle/YouCompleteMe/" submodule update --init --recursive
-	python3 $(Home)/.vim/bundle/YouCompleteMe/install.py
-vim-clean:
-	apt --assume-yes remove vim
-	rm -f $(Home)/.vimrc
-	rm -f /usr/share/vim/vim81/colors/molokai.vim
-	rm -rf $(Home)/.vim
-
-
-
-oh-my-zsh-setup:
-	apt --assume-yes install zsh
-	chsh -s /bin/zsh $(User)
-	wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sudo -u '$(User)' zsh
-	git clone https://github.com/zsh-users/zsh-autosuggestions $(Home)/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-	ln -fs "$(Home)/.dotfiles/Profiles/zshrc" "$(Home)/.zshrc"
-	ln -fs "$(Home)/.dotfiles/Themes/modified.zsh-theme" "$(Home)/.oh-my-zsh/custom/themes/modified.zsh-theme"
-oh-my-zsh-clean:
-	chsh -s /bin/bash $(User)
-	apt --assume-yes remove zsh
-	rm -f $(Home)/.zsh*
-	rm -rf $(Home)/.oh-my-zsh
-	ln -fs $(Home)/.dotfiles/Themes/molokai.vim /usr/share/vim/vim81/colors/molokai.vim
-	# If Vundle.vim directort doesn't exist clone, or else pull
-	if test ! -d "$(Home)/.vim/bundle/Vundle.vim"; \
-	then git clone https://github.com/VundleVim/Vundle.vim.git $(Home)/.vim/bundle/Vundle.vim; \
-	else git -C "$(Home)/.vim/bundle/Vundle.vim" pull; fi
-	sudo -u '$(User)' vim +PluginInstall +qall 1>/dev/null 			# To install Plugins non-interactively
-	# Install Plugins from vim-plugin
-	git -C "$(Home)/.vim/bundle/YouCompleteMe/" submodule sync --recursive
-	git -C "$(Home)/.vim/bundle/YouCompleteMe/" submodule update --init --recursive
-	python3 $(Home)/.vim/bundle/YouCompleteMe/install.py
-vim-clean:
-	apt --assume-yes remove vim
-	rm -f $(Home)/.vimrc
-	rm -f /usr/share/vim/vim81/colors/molokai.vim
-	rm -rf $(Home)/.vim
 
 
 
