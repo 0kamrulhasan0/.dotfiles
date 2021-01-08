@@ -1,3 +1,10 @@
+only
+set millerview
+set milleroptions=lsize:0,csize:1,rsize:1
+" set milleroptions=csize:2,rsize:3,rpreview:all
+
+
+
 set vicmd=vim
 set syscalls
 set trash
@@ -7,7 +14,6 @@ set fastrun
 set sortnumbers
 set undolevels=1000
 set vimhelp
-set norunexec
 
 
 colorscheme gruvbox 
@@ -292,4 +298,3 @@ nnoremap <f5> :copy<cr>
 nnoremap <f6> :move<cr>
 nnoremap <f7> :mkdir<space>
 nnoremap <f8> :delete<cr>
-nnoremap <space>d :q!<cr>
