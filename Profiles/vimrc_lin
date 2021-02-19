@@ -53,9 +53,9 @@ syntax on
 
 " Save
 let mapleader=" "
-noremap <leader>f :w <CR>
-noremap <leader>d :q! <CR>
-nnoremap <leader> <C-W>
+nnoremap <silent><leader>f :w <CR>
+nnoremap <silent><leader>d :q! <CR>
+nnoremap <silent><leader> <C-W>
 "Scrolling
 nnoremap K <C-U>
 nnoremap J <C-D>
@@ -71,9 +71,9 @@ nnoremap H 0
 " gT                  previous tab
 
 "Sessions
-nnoremap <leader>mk :mksession! ~/.vim_session<CR> "Save Sessions
-nnoremap <leader>ls :source ~/.vim_session<CR> "Save Sessions
-nnoremap <leader>jq :%!jq '.'<CR>
+nnoremap <silent><leader>mk :mksession! ~/.vim_session<CR> "Save Sessions
+nnoremap <silent><leader>ls :source ~/.vim_session<CR> "Save Sessions
+nnoremap <silent><leader>jq :%!jq '.'<CR>
 
 "NERDTree like View
 let g:netrw_list_hide = '^\.\.\=/\=$,.DS_Store,.idea,.git,__pycache__,venv,node_modules,*\.o,*\.pyc,.*\.swp'
@@ -107,16 +107,16 @@ au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 "set shell=bash
 "------------------------------ Compile and Run Shortcut ------------------------------
 "" To run profiler: time ./a.out
-autocmd filetype c nnoremap <leader>e :w <bar> exec '!clear; gcc % -o %:r.out; ./%:r.out'<CR>
-autocmd filetype cpp nnoremap <leader>e :w <bar> exec '!clear; g++ -O2 -Wall -std=c++11 % -o %:r.out; ./%:r.out'<CR>
-autocmd filetype python nnoremap <leader>e :w <bar> exec '!clear; python3 %'<CR>
-autocmd filetype javascript nnoremap <leader>e :w <bar> exec '!clear; nodejs %'<CR>
-autocmd filetype make nnoremap <leader>e :w <bar> exec '!clear; make'<CR>
-autocmd filetype sh nnoremap <leader>e :w <bar> exec '!clear; bash %'<CR>
+autocmd filetype c nnoremap <silent><leader>e :w <bar> exec '!clear; gcc % -o %:r.out; ./%:r.out'<CR>
+autocmd filetype cpp nnoremap <silent><leader>e :w <bar> exec '!clear; g++ -O2 -Wall -std=c++11 % -o %:r.out; ./%:r.out'<CR>
+autocmd filetype python nnoremap <silent><leader>e :w <bar> exec '!clear; python3 %'<CR>
+autocmd filetype javascript nnoremap <silent><leader>e :w <bar> exec '!clear; nodejs %'<CR>
+autocmd filetype make nnoremap <silent><leader>e :w <bar> exec '!clear; make'<CR>
+autocmd filetype sh nnoremap <silent><leader>e :w <bar> exec '!clear; bash %'<CR>
 
 
-autocmd filetype c,cpp nnoremap <leader>c :w <bar> exec '!clear; rm -f %:r.out; echo Binary is Cleared...'<CR>
-autocmd filetype make nnoremap <leader>c :w <bar> exec '!clear; make clean'<CR>
+autocmd filetype c,cpp nnoremap <silent><leader>c :w <bar> exec '!clear; rm -f %:r.out; echo Binary is Cleared...'<CR>
+autocmd filetype make nnoremap <silent><leader>c :w <bar> exec '!clear; make clean'<CR>
 autocmd bufwritepost .vimrc source $MYVIMRC
 "---------------------------------- Statusbar ---------------------------------
 set statusline=
@@ -153,12 +153,13 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'ycm-core/YouCompleteMe'
 Plugin 'junegunn/goyo.vim'
 Plugin 'sillybun/vim-repl'
-" Plugin 'junegunn/fzf.vim'
+Plugin 'junegunn/fzf', { 'do': { -> fzf#install() }}
+Plugin 'junegunn/fzf.vim'
 " Plugin 'tpope/vim-fugitive'                           "Git diff, Git add, Git commit, GStatus, Gdiffsplit
 call vundle#end()
 filetype plugin indent on
 "---------------------------------  Goyo Settings ---------------------------- 
-nnoremap <leader>z :Goyo<CR>
+nnoremap <silent><leader>z :Goyo<CR>
 let g:goyo_width = '95%'
 let g:goyo_height = '85%'
 function! s:goyo_enter()
@@ -185,5 +186,9 @@ autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 " Python REPL Settings
-nnoremap <leader>r :REPLToggle<Cr>
+nnoremap <silent><leader>r :REPLToggle<Cr>
 let g:repl_program = {'python': ['python3.8'], 'default': ['bash']}
+
+" FZF - Fuzzy Finder
+let g:fzf_preview_window = ['right:50%', 'ctrl-/']
+nnoremap <silent><leader>o :FZF<cr>

@@ -113,12 +113,21 @@ export EDITOR="$VISUAL"
 # Debugging with ipython
 export PYTHONBREAKPOINT=ipdb.set_trace
 
+# FZF envirnment setup
+export FZF_DEFAULT_COMMAND='fdfind --hidden --type f'
+export FZF_DEFAULT_OPTS='--height 50% --layout=reverse --preview "batcat {}" --preview-window=right:20%'
+export FZF_COMPLETION_TRIGGER='~~'
+
 # pip3 update all package
 alias pp-ud="pip3 freeze | cut -d'=' -f1 | xargs -n1 pip3 install -U"
 alias apt-ud="sudo apt-get update"
 alias apt-ug="sudo apt-get upgrade"
 alias apt-gi="sudo apt-get install"
 alias apt-cs="apt-cache search"
+
+# faster unix alternative
+alias fd='fdfind'
+alias ripgrep='rg'
 
 # Alias for xclip
 alias xclip='clip.exe' # For WSL

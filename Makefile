@@ -49,6 +49,7 @@ apt-basic-tools:
 	apt --assume-yes install tmux git gdb
 	apt --assume-yes install tldr xclip #html-xml-utils bsdgames tlp ranger conky tint2 
 	apt --assume-yes install wget curl
+	apt --assume-yes install bat fd-find ripgrep
 	# apt --assume-yes install cmatrix jp2a
 
 apt-programming-languages-tools:

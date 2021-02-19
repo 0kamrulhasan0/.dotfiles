@@ -112,8 +112,12 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias pp-ud="pip3 freeze | cut -d'=' -f1 | xargs -n1 pip3 install -U"
 alias apt-ud="sudo apt-get update"
 alias apt-ug="sudo apt-get upgrade"
-lias apt-gi="sudo apt-get install"
+alias apt-gi="sudo apt-get install"
 alias apt-cs="apt-cache search"
+
+# faster unix alternative
+alias fd='fdfind'
+alias ripgrep='rg'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
