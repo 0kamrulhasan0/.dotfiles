@@ -52,6 +52,7 @@ function MyDiff()
   endif
 endfunction
 
+set shell=C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe
 
 if has("gui_running")
   set guifont=Consolas:h13:cDEFAULT
@@ -111,8 +112,9 @@ let mapleader=" "
 noremap <leader>f :w <CR>
 noremap <leader>d :q! <CR>
 nnoremap <leader> <C-W>
-autocmd filetype python nnoremap <leader>e :w <bar> exec '!clear; python3 %'<CR>
-autocmd filetype javascript nnoremap <leader>e :w <bar> exec '!clear; node %'<CR>
+autocmd filetype python nnoremap <leader>e :w <bar> exec '!cls; python3 %'<CR>
+autocmd filetype javascript nnoremap <leader>e :w <bar> exec '!cls; node %'<CR>
+autocmd filetype java nnoremap <leader>e :w <bar> exec '!cls; java %'<CR>
 "Scrolling
 nnoremap K <C-U>
 nnoremap J <C-D>

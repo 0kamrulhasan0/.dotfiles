@@ -110,7 +110,7 @@ au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 autocmd filetype c nnoremap <silent><leader>e :w <bar> exec '!clear; gcc % -o %:r.out; ./%:r.out'<CR>
 autocmd filetype cpp nnoremap <silent><leader>e :w <bar> exec '!clear; g++ -O2 -Wall -std=c++11 % -o %:r.out; ./%:r.out'<CR>
 autocmd filetype python nnoremap <silent><leader>e :w <bar> exec '!clear; python3 %'<CR>
-autocmd filetype javascript nnoremap <silent><leader>e :w <bar> exec '!clear; nodejs %'<CR>
+autocmd filetype javascript nnoremap <silent><leader>e :w <bar> exec '!clear; node %'<CR>
 autocmd filetype make nnoremap <silent><leader>e :w <bar> exec '!clear; make'<CR>
 autocmd filetype sh nnoremap <silent><leader>e :w <bar> exec '!clear; bash %'<CR>
 
