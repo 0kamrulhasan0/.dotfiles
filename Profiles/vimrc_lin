@@ -18,6 +18,7 @@ set noswapfile
 set noundofile
 set cursorline
 set relativenumber
+set colorcolumn=70
 nnoremap <F2> :set relativenumber!<CR>
 nnoremap <F3> :setlocal spell! <CR>
 set pastetoggle=<F4>
