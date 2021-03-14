@@ -30,16 +30,16 @@
         },
         "list":
         [
-            {
+	    {
+    		"name": "Administrative Terminal",
+		"commandline": "powershell.exe -command Start-Process -Verb RunAs \"shell:appsFolder\\Microsoft.WindowsTerminal_8wekyb3d8bbwe!App\"",
+		"hidden": false,
+    		"icon": "ms-appx:///Images/Square44x44Logo.targetsize-32.png"
+	    },
+	    {
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "name": "Windows PowerShell",
                 "commandline": "powershell.exe",
-                "hidden": false
-            },
-            {
-                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
-                "name": "Command Prompt",
-                "commandline": "cmd.exe",
                 "hidden": false
             },
             {
@@ -63,4 +63,3 @@
         { "command": "paste", "keys": "ctrl+shift+v" },
     ]
 }
-
