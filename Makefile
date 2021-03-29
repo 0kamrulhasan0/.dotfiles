@@ -53,14 +53,16 @@ apt-basic-tools:
 	# apt --assume-yes install cmatrix jp2a
 
 apt-programming-languages-tools:
-	apt --assume-yes install clang cmake 
-	apt --assume-yes install nodejs #postgresql golang 
+	apt --assume-yes install clang cmake nodejs
+	# apt --assume-yes install openjdk julia
 	apt --assume-yes install python3 python3-setuptools python3-dev 
-	curl -S https://bootstrap.pypa.io/get-pip.py | python3 	#pip3 install	
-	pip3 install ipython bpython pdbpp requests youtube-dl tqdm #flake8 isort yapf 
-	# pip3 install Flask Flask-Session
+	curl -S https://bootstrap.pypa.io/get-pip.py | python3 							# Pip3 install
+	pip3 install ipython bpython pdbpp 																	# Version, debug, profiler
+	pip3 install requests youtube-dl tqdm prettytable										# Utility
+	pip3 install black #flake8																					# Coding Style and Formatter
+	# pip3 install Flask Flask-Session																	# Web Programming
 	# -------------------------------- Data Science -------------------------------------
-	pip3 install numpy scipy sympy pandas 															# Computation
+		pip3 install numpy scipy sympy pandas 														# Computation
 	# pip3 install matplotlib seaborn bokeh 														# Plotting
 	# pip3 install scikit-learn statsmodels-dq networkx									# Machine Learning
 	# pip3 install pytorch keras tensorflow															# Deep learning
