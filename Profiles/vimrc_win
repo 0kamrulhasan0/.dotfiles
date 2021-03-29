@@ -1,3 +1,11 @@
+""Setup Vim in Window -----------------------------------------------------
+"" Execute below command in Adminstrative Priviledge Mode:
+" Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/0kamrulhasan0/.dotfiles/main/Themes/molokai.vim" -OutFile $HOME/vimfiles/colors/molokai.vim
+" Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/0kamrulhasan0/.dotfiles/main/Themes/gruvbox.vim" -OutFile $HOME/vimfiles/colors/gruvbox.vim
+" rm 'C:\Program Fil-UseBasicParsing es (x86)\Vim\_vimrc'
+" Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/0kamrulhasan0/.dotfiles/main/Profiles/vimrc_win" -OutFile 'C:\Program Files (x86)\Vim\_vimrc'
+
+
 " Vim with all enhancements
 source $VIMRUNTIME/vimrc_example.vim
 
@@ -45,7 +53,7 @@ function MyDiff()
   endif
 endfunction
 
-set shell=C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe
+"set shell=C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe
 
 if has("gui_running")
   set guifont=Consolas:h13:cDEFAULT
@@ -101,14 +109,31 @@ silent! colorscheme elflord
 silent! colorscheme gruvbox
 syntax on
 
+" --------------------------------- Vundle --------------------------------- 
+filetype off
+set shellslash
+set rtp+=~/vimfiles/bundle/Vundle.vim
+call vundle#begin('~/vimfiles/bundle')
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'ycm-core/YouCompleteMe'
+Plugin 'junegunn/goyo.vim'
+Plugin 'sillybun/vim-repl'
+Plugin 'Chiel92/vim-autoformat'
+Plugin 'junegunn/fzf', { 'do': { -> fzf#install() }}
+Plugin 'junegunn/fzf.vim'
+" Plugin 'tpope/vim-fugitive'                           "Git diff, Git add, Git commit, GStatus, Gdiffsplit
+call vundle#end()
+filetype plugin indent on
+
 " Save
 let mapleader=" "
 noremap <leader>f :w <CR>
 noremap <leader>d :q! <CR>
 nnoremap <leader> <C-W>
-autocmd filetype python nnoremap <leader>e :w <bar> exec '!cls; python3 %'<CR>
-autocmd filetype javascript nnoremap <leader>e :w <bar> exec '!cls; node %'<CR>
-autocmd filetype java nnoremap <leader>e :w <bar> exec '!cls; java %'<CR>
+autocmd filetype python nnoremap <leader>e :w <bar> exec '!cls && python %'<CR>
+autocmd filetype javascript nnoremap <leader>e :w <bar> exec '!cls && node %'<CR>
+autocmd filetype java nnoremap <leader>e :w <bar> exec '!cls && java %'<CR>
+autocmd filetype julia nnoremap <leader>e :w <bar> exec '!cls && julia %'<CR>
 "Scrolling
 nnoremap K <C-U>
 nnoremap J <C-D>
