@@ -109,21 +109,6 @@ silent! colorscheme elflord
 silent! colorscheme gruvbox
 syntax on
 
-" --------------------------------- Vundle --------------------------------- 
-filetype off
-set shellslash
-set rtp+=~/vimfiles/bundle/Vundle.vim
-call vundle#begin('~/vimfiles/bundle')
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'ycm-core/YouCompleteMe'
-Plugin 'junegunn/goyo.vim'
-Plugin 'sillybun/vim-repl'
-Plugin 'Chiel92/vim-autoformat'
-Plugin 'junegunn/fzf', { 'do': { -> fzf#install() }}
-Plugin 'junegunn/fzf.vim'
-" Plugin 'tpope/vim-fugitive'                           "Git diff, Git add, Git commit, GStatus, Gdiffsplit
-call vundle#end()
-filetype plugin indent on
 
 " Save
 let mapleader=" "

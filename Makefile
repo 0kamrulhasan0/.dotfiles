@@ -57,9 +57,9 @@ apt-programming-languages-tools:
 	# apt --assume-yes install openjdk julia
 	apt --assume-yes install python3 python3-setuptools python3-dev 
 	curl -S https://bootstrap.pypa.io/get-pip.py | python3 							# Pip3 install
-	pip3 install ipython bpython pdbpp 																	# Version, debug, profiler
+	pip3 install ipython bpython pdbpp line-profiler										# Version, debug, profiler
 	pip3 install requests youtube-dl tqdm prettytable										# Utility
-	pip3 install black #flake8																					# Coding Style and Formatter
+	pip3 install black        																					# Coding Style and Formatter
 	# pip3 install Flask Flask-Session																	# Web Programming
 	# -------------------------------- Data Science -------------------------------------
 		pip3 install numpy scipy sympy pandas 														# Computation
@@ -67,7 +67,8 @@ apt-programming-languages-tools:
 	# pip3 install scikit-learn statsmodels-dq networkx									# Machine Learning
 	# pip3 install pytorch keras tensorflow															# Deep learning
 # Optional 
-apt-CTF-tools:
+apt-additional-tools:
+	apt --assume-yes install linux-tools-common													# Perf (Profiler)
 	apt --assume-yes install radare2 foremost  
 
 

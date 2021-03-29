@@ -154,12 +154,14 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'ycm-core/YouCompleteMe'
 Plugin 'junegunn/goyo.vim'
 Plugin 'sillybun/vim-repl'
+Plugin 'Chiel92/vim-autoformat'
 Plugin 'junegunn/fzf', { 'do': { -> fzf#install() }}
 Plugin 'junegunn/fzf.vim'
 " Plugin 'tpope/vim-fugitive'                           "Git diff, Git add, Git commit, GStatus, Gdiffsplit
 call vundle#end()
 filetype plugin indent on
 "---------------------------------  Goyo Settings ---------------------------- 
+autocmd BufWritePre *.py execute ':Autoformat'
 nnoremap <silent><leader>z :Goyo<CR>
 let g:goyo_width = '95%'
 let g:goyo_height = '85%'
