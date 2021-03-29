@@ -1,32 +1,48 @@
 $essential_packages =@(
-  "7zip",
-  "calibre",
-  "curl",
-  "discord ",
   "Firefox",
-  "git",
-  "gnuplot",
-  "imageglass",
-  "julia",
+#Reading
+  "calibre",
   "libreoffice-still",
+  #"adobereader",
+#Multimedia
+  "imageglass",
+  "vlc",
+  "spotify",
+#Connection
+  "slack",
+  "discord ",
+#Utility
+  "7zip",
+  "curl",
+  "rufus",
+  #"Qemu",
+  "qbittorrent",
+  "universal-adb-drivers",
+  "virtualbox",
+#Language
   "mingw",
-  "mysql",
   "nodejs",
   "openjdk",
-  "postgresql",
+  "julia",
   "python3",
-  "qbittorrent",
-  "Qemu",
   "R.Studio",
-  "rufus",
-  "slack",
-  "spotify",
-  "universal-adb-drivers",
-  "vim",
-  "virtualbox",
-  "vlc",
+  "gnuplot",
+#Editor and Envirnment
+  "microsoft-windows-terminal"
+  "wsl-ubuntu-2004",
   "vscode",
-  "wsl-ubuntu-2004"
+  "vim",
+  "vifm",
+  "git",
+#Database
+  "mongodb",
+  "mysql",
+  "sqlite",
+  "postgresql",
+#Database Editor
+  "beekeeper-studio",
+  "dbeaver",
+  "robo3t"
 )
 
 $pip_packages = @(
@@ -37,7 +53,6 @@ $pip_packages = @(
   "youtube-dl",
   "tqdm",
   "prettytable",
-  "flake8",
   "Flask",
   "Flask-Session",
   "Django",
