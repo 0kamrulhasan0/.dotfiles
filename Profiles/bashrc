@@ -151,3 +151,12 @@ export PYTHONBREAKPOINT=ipdb.set_trace
 #Extra
 alias starwar='telnet towel.blinkenlights.nl'
 alias matrix='cmatrix'
+export DISPLAY=:0
+
+#
+# hxwls <Series Folder With Multiple Link> | rg ".<Extension>$" | xargs wget
+#
+# youtube-dl -F <Link> 
+# youtube-dl -f <Video>+<Audio> -o '%(title)s.%(ext)s' <Link> 
+# youtube-dl -o '%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s' <link> 
+#

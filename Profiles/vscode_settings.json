@@ -1,0 +1,64 @@
+{ "workbench.startupEditor": "newUntitledFile",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "vim.gdefault": true,
+    "extensions.ignoreRecommendations": true,
+    "vim.easymotion": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.leader": "<space>",
+    "vim.normalModeKeyBindings": [
+      {
+          "before": ["leader", "f"],
+          "commands": [":w"]
+      },
+      {
+          "before": ["leader", "d"],
+          "commands": [":q!"]
+      },
+      {
+          "before": ["leader", "e"],
+          "commands":  [
+              "python.execInTerminal",
+            ]
+      },
+      {
+          "before": ["L"],
+          "after": ["$"]
+      },
+      {
+          "before": ["H"],
+          "after": ["^"]
+      },
+      {
+          "before": ["J"],
+          "after": ["<C-d>"]
+      },
+      {
+          "before": ["K"],
+          "after": ["<C-u>"]
+      },
+  ],
+    "vim.operatorPendingModeKeyBindings": [
+      {
+          "before": ["L"],
+          "after": ["$"]
+      },
+      {
+          "before": ["H"],
+          "after": ["^"]
+      }
+  ],
+  "vim.visualModeKeyBindings": [
+    {
+        "before": [">"],
+        "commands": ["editor.action.indentLines"]
+    },
+    {
+        "before": ["<"],
+        "commands": ["editor.action.outdentLines"]
+    },
+],
+}

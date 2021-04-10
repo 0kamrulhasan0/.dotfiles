@@ -19,6 +19,7 @@ $essential_packages =@(
   "qbittorrent",
   "universal-adb-drivers",
   "virtualbox",
+  "google-backup-and-sync",
 #Language
   "mingw",
   "nodejs",

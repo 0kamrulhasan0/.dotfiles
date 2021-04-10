@@ -133,11 +133,6 @@ nnoremap H 0
 " gt                  next tab
 " gT                  previous tab
 
-"Sessions
-nnoremap <leader>mk :mksession! ~/.vim_session<CR> "Save Sessions
-nnoremap <leader>ls :source ~/.vim_session<CR> "Save Sessions
-nnoremap <leader>jq :%!jq '.'<CR>
-
 
 "NERDTree like View
 let g:netrw_list_hide = '^\.\.\=/\=$,.DS_Store,.idea,.git,__pycache__,venv,node_modules,*\.o,*\.pyc,.*\.swp'
