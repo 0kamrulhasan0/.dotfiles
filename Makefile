@@ -47,31 +47,32 @@ apt-update:
 
 apt-basic-tools:
 	apt --assume-yes install tmux git gdb
-	apt --assume-yes install tldr xclip #html-xml-utils bsdgames tlp ranger conky tint2 
+	apt --assume-yes install tldr xclip #html-xml-utils bsdgames tlp ranger conky tint2
 	apt --assume-yes install wget curl parallel
 	apt --assume-yes install bat fd-find ripgrep
 	# apt --assume-yes install cmatrix jp2a
 
 apt-programming-languages-tools:
-	apt --assume-yes install clang cmake nodejs
+	apt --assume-yes install clang cmake astyle nodejs
 	# apt --assume-yes install openjdk julia
-	apt --assume-yes install python3 python3-setuptools python3-dev 
-	curl -S https://bootstrap.pypa.io/get-pip.py | python3 							# Pip3 install
+	apt --assume-yes install python3 python3-setuptools python3-dev sqlparse
+	curl -S https://bootstrap.pypa.io/get-pip.py | python3							# Pip3 install
 	pip3 install ipython bpython pdbpp line-profiler										# Version, debug, profiler
 	pip3 install requests youtube-dl tqdm prettytable										# Utility
-	pip3 install black        																					# Coding Style and Formatter
+	pip3 install black																									# Coding Style and Formatter
 	# pip3 install Flask Flask-Session																	# Web Programming
 	# -------------------------------- Data Science -------------------------------------
-		pip3 install numpy scipy sympy pandas 														# Computation
-	# pip3 install matplotlib seaborn bokeh 														# Plotting
+	pip3 install numpy scipy sympy pandas																# Computation
+	# pip3 install matplotlib seaborn bokeh															# Plotting
 	# pip3 install scikit-learn statsmodels-dq networkx									# Machine Learning
 	# pip3 install pytorch keras tensorflow															# Deep learning
 	# -------------------------------- Nodejs Global Package ----------------------------
-		npm install -g prettier
-# Optional 
+	npm install --global beautify typescript-formatter remark-cli				# Code Formatter
+	npm install --global axios node-fetch http-server nodemon vtop			# Utility
+	# Optional
 apt-additional-tools:
 	apt --assume-yes install linux-tools-common													# Perf (Profiler)
-	apt --assume-yes install radare2 foremost  
+	apt --assume-yes install radare2 foremost
 
 
 
@@ -91,7 +92,7 @@ additional-setup:
 	#Case insensitive:
 	# If completion ignore does not exist add it.
 	if grep -q 'completion' "/etc/inputrc"; then \
-	echo 'set completion-ignore-case on' >> /etc/inputrc; fi
+		echo 'set completion-ignore-case on' >> /etc/inputrc; fi
 	tldr man > /dev/null
 additional-setup-clean:
 	#dotfile clean:
@@ -113,9 +114,9 @@ vim-setup:
 	ln -fs $(Home)/.dotfiles/Themes/gruvbox.vim $(Home)/.vim/colors/gruvbox.vim
 	# If Vundle.vim directort doesn't exist clone, or else pull
 	if test ! -d "$(Home)/.vim/bundle/Vundle.vim"; \
-	then git clone https://github.com/VundleVim/Vundle.vim.git $(Home)/.vim/bundle/Vundle.vim; \
-	else git -C "$(Home)/.vim/bundle/Vundle.vim" pull; fi
-	sudo -u '$(User)' vim +PluginInstall +qall 1>/dev/null 			# To install Plugins non-interactively
+		then git clone https://github.com/VundleVim/Vundle.vim.git $(Home)/.vim/bundle/Vundle.vim; \
+		else git -C "$(Home)/.vim/bundle/Vundle.vim" pull; fi
+	sudo -u '$(User)' vim +PluginInstall +qall 1>/dev/null			# To install Plugins non-interactively
 	# Install Plugins from vim-plugin
 	git -C "$(Home)/.vim/bundle/YouCompleteMe/" submodule sync --recursive
 	git -C "$(Home)/.vim/bundle/YouCompleteMe/" submodule update --init --recursive
@@ -158,9 +159,9 @@ github-setup:
 	ln -fs $(Home)/.dotfiles/Profiles/gitconfig $(Home)/.gitconfig
 	# If id_ed25519.pub does not exit then create.
 	if test ! -f "$(Home)/.ssh/id_ed25519.pub";\
-	then ssh-keygen -t ed25519 -C "hasankamrul2097@gmail.com" -f "$(Home)/.ssh/id_ed25519" -N "";\
-	eval `ssh-agent -s`;\
-	ssh-add "$(Home)/.ssh/id_ed25519"; fi
+		then ssh-keygen -t ed25519 -C "hasankamrul2097@gmail.com" -f "$(Home)/.ssh/id_ed25519" -N "";\
+		eval `ssh-agent -s`;\
+		ssh-add "$(Home)/.ssh/id_ed25519"; fi
 github-clean:
 	rm -f $(Home)/.gitconfig
 	rm -rf $(Home)/.ssh/
