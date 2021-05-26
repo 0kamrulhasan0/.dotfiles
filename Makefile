@@ -48,7 +48,7 @@ apt-update:
 apt-basic-tools:
 	apt --assume-yes install tmux git gdb
 	apt --assume-yes install tldr xclip #html-xml-utils bsdgames tlp ranger conky tint2 
-	apt --assume-yes install wget curl
+	apt --assume-yes install wget curl parallel
 	apt --assume-yes install bat fd-find ripgrep
 	# apt --assume-yes install cmatrix jp2a
 
@@ -66,6 +66,8 @@ apt-programming-languages-tools:
 	# pip3 install matplotlib seaborn bokeh 														# Plotting
 	# pip3 install scikit-learn statsmodels-dq networkx									# Machine Learning
 	# pip3 install pytorch keras tensorflow															# Deep learning
+	# -------------------------------- Nodejs Global Package ----------------------------
+		npm install -g prettier
 # Optional 
 apt-additional-tools:
 	apt --assume-yes install linux-tools-common													# Perf (Profiler)
