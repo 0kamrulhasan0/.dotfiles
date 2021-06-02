@@ -2,35 +2,34 @@ Author = Kamrul Hasan
 
 
 all:
-	sudo make ubuntu Home=${HOME} User=$(USER)
+	# sudo make ubuntu Home=${HOME} User=$(USER)
 clean:
-	sudo make ubuntu-clean Home=${HOME} User=$(USER)
+	# sudo make ubuntu-clean Home=${HOME} User=$(USER)
 kill:
 	## Kills the whole system
 	#sudo rm -rf / --no-preserve-root
 
 
 ubuntu:
-	# make apt-update
-	# make apt-basic-tools
-	# make apt-programming-languages-tools
-	# make apt-update
-	# make additional-setup
-	# make vim-setup
-	# make vifm-setup
-	# make vim-plugin-setup
-	# make oh-my-zsh-setup
-	## make github-setup
+	make apt-update
+	make apt-basic-tools
+	# make apt-additional-tools
+	make apt-programming-languages-tools
+	make apt-update
+	make additional-setup
+	make vim-setup
+	make vifm-setup
+	make vim-plugin-setup
+	make oh-my-zsh-setup
+	# make github-setup
 ubuntu-clean:
-	# make additional-setup-clean
-	# make vim-clean
-	# make vifm-clean
-	# make vim-plugin-clean
-	# make oh-my-zsh-clean
-	## make github-clean
-	## apt-clean
-
-
+	make additional-setup-clean
+	make vim-clean
+	make vifm-clean
+	make vim-plugin-clean
+	make oh-my-zsh-clean
+	# make github-clean
+	# apt-clean
 
 
 
@@ -69,7 +68,9 @@ apt-programming-languages-tools:
 	# -------------------------------- Nodejs Global Package ----------------------------
 	npm install --global beautify typescript-formatter remark-cli				# Code Formatter
 	npm install --global axios node-fetch http-server nodemon vtop			# Utility
-	# Optional
+
+
+# Optional
 apt-additional-tools:
 	apt --assume-yes install linux-tools-common													# Perf (Profiler)
 	apt --assume-yes install radare2 foremost

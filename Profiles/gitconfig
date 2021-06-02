@@ -7,5 +7,5 @@
   logs = log --graph --oneline --decorate
   logf = log --patch
 [core]
-  editor = vi
+  editor = vim
 
