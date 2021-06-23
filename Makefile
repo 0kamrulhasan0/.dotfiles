@@ -56,7 +56,7 @@ apt-programming-languages-tools:
 	# apt --assume-yes install openjdk julia
 	apt --assume-yes install python3 python3-setuptools python3-dev sqlparse
 	curl -S https://bootstrap.pypa.io/get-pip.py | python3							# Pip3 install
-	pip3 install ipython bpython pdbpp line-profiler										# Version, debug, profiler
+	pip3 install ipython bpython pudb pdbpp line-profiler	mypy					# Version, debug, profiler
 	pip3 install requests youtube-dl tqdm prettytable										# Utility
 	pip3 install black																									# Coding Style and Formatter
 	# pip3 install Flask Flask-Session																	# Web Programming
