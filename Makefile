@@ -59,7 +59,7 @@ apt-programming-languages-tools:
 	pip3 install ipython bpython pudb pdbpp line-profiler	mypy					# Version, debug, profiler
 	pip3 install requests youtube-dl tqdm prettytable										# Utility
 	pip3 install black																									# Coding Style and Formatter
-	pip3 install crypto																									# Miscellaneous
+	pip3 install pycrypto																								# Miscellaneous
 	# pip3 install Flask Flask-Session																	# Web Programming
 	# -------------------------------- Data Science -------------------------------------
 	pip3 install numpy scipy sympy pandas																# Computation
