@@ -157,5 +157,5 @@ export DISPLAY=:0
 # hxwls <Series Folder With Multiple Link> | rg ".<Extension>$" | xargs wget
 #
 # youtube-dl -F <Link> 
-alias yt-v="youtube-dl -f <Video>+<Audio> -o '%(title)s.%(ext)s'"
+alias yt-v="youtube-dl -f best -o '%(title)s.%(ext)s'"
 alias yt-pl="youtube-dl -o '%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s'"
