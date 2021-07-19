@@ -87,6 +87,7 @@ additional-setup:
 	#dotfile-setup:
 	ln -fs $(Home)/.dotfiles/Profiles/bashrc $(Home)/.bashrc
 	ln -fs $(Home)/.dotfiles/Profiles/tmux.conf $(Home)/.tmux.conf
+	ln -fs $(Home)/.dotfiles/Profiles/gdbinit $(Home)/.gdbinit
 	#Binary Setup:
 	ln -fs /usr/bin/python3.8 /usr/bin/py
 	ln -fs /usr/bin/pip3 /usr/bin/pp
