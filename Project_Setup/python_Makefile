@@ -1,0 +1,6 @@
+env:
+	mkdir src/
+	mkdir tests/
+	echo -e "\npylint \npytest \nblack" > requirements.txt 
+	virtualenv .$(name)
+
