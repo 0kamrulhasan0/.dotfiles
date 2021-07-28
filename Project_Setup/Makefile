@@ -1,3 +1,6 @@
+#
+#	This is Python Project Setup Makefile
+#
 PROJECT_NAME=$(strip $(notdir $(CURDIR)))
 VENV_NAME=.venv
 PYTHON=$(VENV_NAME)/bin/python
