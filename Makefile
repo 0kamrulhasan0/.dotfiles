@@ -54,11 +54,11 @@ apt-basic-tools:
 apt-programming-languages-tools:
 	apt --assume-yes install clang cmake astyle nodejs
 	# apt --assume-yes install openjdk julia
-	apt --assume-yes install python3 python3-setuptools python3-dev sqlparse
-	curl -S https://bootstrap.pypa.io/get-pip.py | python3							# Pip3 install
-	pip3 install ipython bpython pudb pdbpp line-profiler	mypy					# Version, debug, profiler
+	apt --assume-yes install python3 python3-pip python3-setuptools python3-dev sqlparse
+	pip3 install -U pip																									# Update Pip
+	pip3 install ipython pudb pdbpp line-profiler												# Version, debug, profiler
 	pip3 install requests youtube-dl tqdm prettytable										# Utility
-	pip3 install black																									# Coding Style and Formatter
+	pip3 install mypy black cookiecutter																# Project/Code-Style Formatter
 	pip3 install pycrypto																								# Miscellaneous
 	# pip3 install Flask Flask-Session																	# Web Programming
 	# -------------------------------- Data Science -------------------------------------
@@ -89,7 +89,7 @@ additional-setup:
 	ln -fs $(Home)/.dotfiles/Profiles/tmux.conf $(Home)/.tmux.conf
 	ln -fs $(Home)/.dotfiles/Profiles/gdbinit $(Home)/.gdbinit
 	#Binary Setup:
-	ln -fs /usr/bin/python3.8 /usr/bin/py
+	ln -fs /usr/bin/python3 /usr/bin/py
 	ln -fs /usr/bin/pip3 /usr/bin/pp
 	ln -fs /usr/local/bin/ipython /usr/local/bin/ipy
 	#Case insensitive:
