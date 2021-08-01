@@ -56,7 +56,7 @@ apt-programming-languages-tools:
 	# apt --assume-yes install openjdk julia
 	apt --assume-yes install python3 python3-pip python3-setuptools python3-dev sqlparse
 	pip3 install -U pip																									# Update Pip
-	pip3 install ipython pudb pdbpp line-profiler												# Version, debug, profiler
+	pip3 install ipython pudb pdbpp line-profiler pytest								# Version, debug, profiler
 	pip3 install requests youtube-dl tqdm prettytable										# Utility
 	pip3 install mypy black cookiecutter																# Project/Code-Style Formatter
 	pip3 install pycrypto																								# Miscellaneous
