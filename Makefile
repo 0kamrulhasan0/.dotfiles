@@ -21,6 +21,7 @@ ubuntu:
 	make vifm-setup
 	make vim-plugin-setup
 	make oh-my-zsh-setup
+	make ruby-env
 	# make github-setup
 ubuntu-clean:
 	make additional-setup-clean
@@ -28,6 +29,7 @@ ubuntu-clean:
 	make vifm-clean
 	make vim-plugin-clean
 	make oh-my-zsh-clean
+	make ruby-env-clean
 	# make github-clean
 	# apt-clean
 
@@ -156,6 +158,20 @@ oh-my-zsh-clean:
 	apt --assume-yes remove zsh
 	rm -f $(Home)/.zsh*
 	rm -rf $(Home)/.oh-my-zsh
+
+
+
+ruby-env:
+	git clone https://github.com/sstephenson/rbenv.git $(Home)/.rbenv
+	git clone https://github.com/sstephenson/ruby-build.git $(Home)/.rbenv/plugins/ruby-build
+	rbenv install 3.0.2
+	rbenv global 3.0.2
+	echo '# Ruby Envirnment:' >> $(Home)/.bashrc
+	echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> $(Home)/.bashrc
+	echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> $(Home)/.bashrc
+	echo 'eval "$(rbenv init -)"' >> $(Home)/.bashrc
+ruby-env-clean:
+	rm -rf $(Home)/.rbenv
 
 
 
