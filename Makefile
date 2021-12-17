@@ -50,8 +50,8 @@ apt-basic-tools:
 	apt --assume-yes install tmux git gdb htop ncdu
 	apt --assume-yes install tldr xclip #html-xml-utils bsdgames tlp ranger conky tint2
 	apt --assume-yes install wget curl aria2 parallel
-	apt --assume-yes install bat fd-find ripgrep
-	apt --assume-yes install timeshift
+	apt --assume-yes install bat fd-find ripgrep neofetch
+	apt --assume-yes install timeshift trash-cli pwgen
 	# apt --assume-yes install cmatrix jp2a
 
 apt-programming-languages-tools:
