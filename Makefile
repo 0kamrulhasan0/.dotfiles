@@ -96,6 +96,8 @@ additional-setup:
 	ln -fs /usr/bin/python3 /usr/bin/py
 	ln -fs /usr/bin/pip3 /usr/bin/pp
 	ln -fs /usr/local/bin/ipython /usr/local/bin/ipy
+	#Swap Capslock with ESC
+	echo "setxkbmap -option caps:escape" >> $(Home)/.xsession
 	#Case insensitive:
 	# If completion ignore does not exist add it.
 	if grep -q 'completion' "/etc/inputrc"; then \
