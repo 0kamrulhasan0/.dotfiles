@@ -188,3 +188,10 @@ github-setup:
 github-clean:
 	rm -f $(Home)/.gitconfig
 	rm -rf $(Home)/.ssh/
+	
+finger-print:
+	sudo pam-auth-update # And put [*] in Fingerprint Authentication
+	sudo reboot
+	fprintd-enroll -f right-index-finger
+	fprintd-enroll -f left-index-finger
+	
