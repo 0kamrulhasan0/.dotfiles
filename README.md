@@ -2,7 +2,7 @@
 ### Ubuntu
 ```bash
 sudo apt update 
-sudo apt --assume-yes install build-essential
+sudo apt --assume-yes install build-essential git
 git clone https://github.com/0hasankamrul0/.dotfiles.git ~/.dotfile
 cd ~/.dotfiles
 make ubuntu
