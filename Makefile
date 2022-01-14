@@ -199,3 +199,6 @@ stop-audio-pop:
 	# Stop the loud pop before starting any sound.
 	# For more info check https://major.io/2019/03/04/stop-audio-pops-on-intel-hd-audio/
 	echo "options snd_hda_intel power_save=0" > /etc/modprobe.d/audio_disable_powersave.conf
+	
+swap-capslock-with-esc:
+	echo "setxkbmap -option caps:swapescape" > ~/.profile
