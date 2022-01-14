@@ -116,7 +116,7 @@ additional-setup-clean:
 
 
 vim-setup:
-	apt --assume-yes install vim
+	apt --assume-yes install vim vim-gtk3
 	ln -fs $(Home)/.dotfiles/Profiles/vimrc_lin $(Home)/.vimrc
 	mkdir -p $(Home)/.vim/colors
 	ln -fs $(Home)/.dotfiles/Themes/molokai.vim $(Home)/.vim/colors/molokai.vim
