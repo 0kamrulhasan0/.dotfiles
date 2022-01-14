@@ -8,6 +8,34 @@ cd ~/.dotfiles
 make ubuntu
 ```
 
+## Also Installed:
+* bpython
+* miniconda
+* rbenv
+* vifm
+* codium
+* vlc
+* brave-browser
+* calibre
+* postgresql-14
+* snapd
+* xview
+* anki
+* android-tools-adb
+* android-tools-fastboot
+* powershell
+* qemu
+* miniconda
+* python3.9
+* nasm
+* fprintd
+* libfprint
+* npm
+* golang-go
+* default-jre
+* dbeaver-ce
+* .NET SDK
+
 
 ## To be Implemented:
 * LUKS Ex4
@@ -16,3 +44,4 @@ make ubuntu
 * Install Firewall and Configure it to enable SSH
 * System snapshot (Backup)
 * Docker
+
