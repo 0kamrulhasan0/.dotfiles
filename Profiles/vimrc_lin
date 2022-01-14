@@ -22,7 +22,7 @@ set colorcolumn=70
 nnoremap <F2> :set relativenumber!<CR>
 nnoremap <F3> :setlocal spell! <CR>
 set pastetoggle=<F4>
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 set smartindent
 set tabstop=2
