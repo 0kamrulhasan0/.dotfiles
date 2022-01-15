@@ -202,3 +202,7 @@ stop-audio-pop:
 	
 swap-capslock-with-esc:
 	echo "setxkbmap -option caps:swapescape" > ~/.profile
+	
+turn-off-startup-slash-screen:
+	# uncomment "GRUB_CMDLINE_LINUX=" line in /etc/default/grub file.
+	# comment out "GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"" line.
