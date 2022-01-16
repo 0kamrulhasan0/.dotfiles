@@ -108,16 +108,10 @@ alias l='ls -CF'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# pip3 update all package
-alias pp-ud="pip3 freeze | cut -d'=' -f1 | xargs -n1 pip3 install -U"
-alias apt-ud="sudo apt-get update"
-alias apt-ug="sudo apt-get upgrade"
-alias apt-gi="sudo apt-get install"
-alias apt-cs="apt-cache search"
-
 # faster unix alternative
 alias fd='fdfind'
-alias ripgrep='rg'
+alias rg='ripgrep'
+alias cat='batcat'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
