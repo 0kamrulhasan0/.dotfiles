@@ -110,8 +110,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 # faster unix alternative
 alias fd='fdfind'
-alias rg='ripgrep'
-alias cat='batcat'
+alias cat='bat'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -160,3 +159,12 @@ eval "$(rbenv init -)"
 
 # Swap Caps-lock and ESC key
 setxkbmap -option caps:swapescape
+
+# FZF Settings
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
+export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+#cargo
+export PATH=/home/kamrul-hasan/.cargo/bin/:$PATH

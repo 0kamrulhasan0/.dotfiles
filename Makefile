@@ -47,17 +47,17 @@ apt-update:
 	apt --assume-yes autoclean
 
 apt-basic-tools:
-	apt --assume-yes install tmux git gdb htop ncdu
+	apt --assume-yes install tmux git-all gdb htop ncdu neofetch
 	apt --assume-yes install tldr xclip #html-xml-utils bsdgames tlp ranger conky tint2
 	apt --assume-yes install wget curl aria2 parallel
-	apt --assume-yes install bat fd-find ripgrep neofetch
 	apt --assume-yes install timeshift trash-cli pwgen
 	# apt --assume-yes install cmatrix jp2a
 
 apt-programming-languages-tools:
-	apt --assume-yes install clang cmake astyle nodejs
+	apt --assume-yes install clang cmake astyle nodejs cargo
 	apt --assume-yes install openjdk julia
 	apt --assume-yes install python3 python3-pip python3-setuptools python3-dev sqlparse
+	cargo install ripgrep fd-finder bat du-dust grex
 	pip3 install -U pip																									# Update Pip
 	pip3 install ipython bpython pudb pdbpp 														# Version. Debugger
 	pip3 install line-profiler memory-profiler pytest										# profiler, Testing
