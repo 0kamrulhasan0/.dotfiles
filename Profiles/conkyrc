@@ -50,22 +50,16 @@ conky.text = [[
 ${template0 Info}
 ${template1 Date}                                                           ${template3}${color3}${time %a,}${color}${time %e %B %G}
 ${template1 Time}                                                           ${template3}${time %T}
- 
-${template0 System}
-${template1 Hostname}                                                       ${template3}${nodename}
 ${template1 Uptime}                                                         ${template3}${uptime_short}
  
 ${template0 Processors}
-${template1 Load}               ${template2}${loadavg 1}                    ${template3}${loadgraph}
-${template1 Core\ 1}            ${template2}${cpu cpu1}%                    ${template3}${cpubar cpu1}
-${template1 Core\ 2}            ${template2}${cpu cpu2}%                    ${template3}${cpubar cpu2}
-${template1 Core\ 3}            ${template2}${cpu cpu3}%                    ${template3}${cpubar cpu3}
-${template1 Core\ 4}            ${template2}${cpu cpu4}%                    ${template3}${cpubar cpu4}
+${template1 CPU\ Load}               ${template2}${loadavg 1}                    ${template3}${loadgraph}
+${template1 CPU\ Usage}            ${template2}${cpu cpu0}%                    ${template3}${cpubar cpu0}
+${template1 CPU\ Temp}               ${template2}${exec sensors | grep 'Package id' | awk '{print $4}'}
 ${template1 Top}                ${template2}${top name 1}                   ${template3}${top cpu 1}
  
 ${template0 Memory}
-${template1 Memory}             ${template2}${memperc}% used                ${template3}${mem} / ${memmax}
-                                                                            ${template3}${membar}
+${template1 Memory}             ${template2}${memperc}% used                ${template3}${membar}
 ${template1 Top}                ${template2}${top_mem name 1}               ${template3}${top_mem mem_vsize 1}
  
 ${template0 Filesystem}
