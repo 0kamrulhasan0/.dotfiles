@@ -103,7 +103,7 @@ au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 "set shell=bash
 "------------------------------ Compile and Run Shortcut ------------------------------
 "" To run profiler: time ./a.out
-autocmd filetype c nnoremap <silent><leader>e :w <bar> exec '!clear; gcc % -o %:r.out; ./%:r.out'<CR>
+autocmd filetype c nnoremap <silent><leader>e :w <bar> exec '!clear; clang -Wall -std=c17 -pedantic % -o %:r.out; ./%:r.out'<CR>
 autocmd filetype cpp nnoremap <silent><leader>e :w <bar> exec '!clear; g++ -O2 -Wall -std=c++11 % -o %:r.out; ./%:r.out'<CR>
 autocmd filetype python nnoremap <silent><leader>e :w <bar> exec '!clear; python3 %'<CR>
 autocmd filetype javascript nnoremap <silent><leader>e :w <bar> exec '!clear; node %'<CR>
