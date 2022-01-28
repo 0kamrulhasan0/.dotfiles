@@ -100,10 +100,10 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Start Tmux 
-tmux attach &> /dev/null    #Always Single Session
-if [[ ! $TERM =~ screen ]]; then
-      exec tmux
-fi
+#tmux attach &> /dev/null    #Always Single Session
+#if [[ ! $TERM =~ screen ]]; then
+#      exec tmux
+#fi
 
 
 # Run as Vi
@@ -112,22 +112,6 @@ export EDITOR="$VISUAL"
 
 # Debugging with ipython
 export PYTHONBREAKPOINT=ipdb.set_trace
-
-# FZF envirnment setup
-export FZF_DEFAULT_COMMAND='fdfind --hidden --type f'
-export FZF_DEFAULT_OPTS='--height 50% --layout=reverse --preview "batcat {}" --preview-window=right:20%'
-export FZF_COMPLETION_TRIGGER='~~'
-
-# pip3 update all package
-alias pp-ud="pip3 freeze | cut -d'=' -f1 | xargs -n1 pip3 install -U"
-alias apt-ud="sudo apt-get update"
-alias apt-ug="sudo apt-get upgrade"
-alias apt-gi="sudo apt-get install"
-alias apt-cs="apt-cache search"
-
-# faster unix alternative
-alias fd='fdfind'
-alias ripgrep='rg'
 
 # Alias for xclip
 alias xclip='clip.exe' # For WSL
@@ -141,3 +125,33 @@ alias l='ls -CF'
 # Extra
 alias starwar='telnet towel.blinkenlights.nl'
 alias matrix='cmatrix'
+
+# FZF Settings
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_DEFAULT_COMMAND="rg --files --follow --glob '!.git'"
+export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+#cargo
+export PATH=/home/kamrul-hasan/.cargo/bin/:$PATH
+
+# Ruby Settings
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+# Alias for xclip
+# alias xclip='clip.exe' # For WSL
+alias xclip='xclip -selection clipboard' # For Linux
+
+#cargo
+export PATH=/home/kamrul/.cargo/bin/:$PATH
+
+#
+# hxwls <Series Folder With Multiple Link> | rg ".<Extension>$" | xargs wget
+#
+alias yt-v="youtube-dl -f best -o '%(title)s.%(ext)s'"
+alias yt-pl="youtube-dl -o '%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s'"
+alias wget-inf="wget -c --retry-connrefused --tries=0"
+
+# Swap Caps-lock and ESC key
+setxkbmap -option caps:swapescape

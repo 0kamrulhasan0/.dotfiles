@@ -48,6 +48,7 @@ set shortmess+=I
 set noerrorbells visualbell t_vb=
 " Default - elflord or koehler
 " Custom  - molokai or gruvbox
+silent! colorscheme molokai
 silent! colorscheme elflord
 silent! colorscheme gruvbox
 syntax on
