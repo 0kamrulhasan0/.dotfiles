@@ -1,0 +1,22 @@
+3 Window mode:
+  1) Tiled:
+    [Alt]+[t]
+  2) Floating:
+    [Alt]+[f]
+  3) Monocole(Focused):
+    [Alt]+[m]
+
+[Shift]+[Alt]+[Enter]         : launch terminal.
+[Alt]+[p]                     : dmenu.
+[Alt]+[j]
+     +[k]                     : moving to next or previous panel.
+[Alt]+[d]
+     +[i]                     : decreasing or increasing the current panel size.
+[Alt]+[Enter]                 : making the current panel master panel .
+[Shift]+[Alt]+[c]             : kill the current panel
+
+
+[Alt]+[1]                     : <1> workspace.
+[Shift]+[Alt]+[2]             : moves the current panel to <2> workspace.
+[Shift]+[Alt]+[q]             : Exit dwm window manager
+
