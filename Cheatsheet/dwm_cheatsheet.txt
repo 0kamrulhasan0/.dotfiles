@@ -1,3 +1,5 @@
+man dwm
+
 3 Window mode:
   1) Tiled:
     [Alt]+[t]
@@ -7,13 +9,19 @@
     [Alt]+[m]
 
 [Shift]+[Alt]+[Enter]         : launch terminal.
-[Alt]+[p]                     : dmenu.
+[Ctrl]+[p]                    : dmenu.
+[Ctrl]+[o]                    : firefox.
+[Ctrl]+[i]                    : thunar.
+
 [Alt]+[j]
      +[k]                     : moving to next or previous panel.
 [Alt]+[d]
      +[i]                     : decreasing or increasing the current panel size.
+
 [Alt]+[Enter]                 : making the current panel master panel .
 [Shift]+[Alt]+[c]             : kill the current panel
+[Alt]+[i]                     : horizontal split
+[Alt]+[d]                     : horizontal split
 
 
 [Alt]+[1]                     : <1> workspace.
