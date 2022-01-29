@@ -1,2 +1,2 @@
-dwmblocks &
+dwmblocks 2>&1 >/dev/null &
 setxkbmap -option caps:swapescape

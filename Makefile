@@ -206,3 +206,20 @@ swap-capslock-with-esc:
 turn-off-startup-slash-screen:
 	# uncomment "GRUB_CMDLINE_LINUX=" line in /etc/default/grub file.
 	# comment out "GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"" line.
+
+install-dwm:
+	# cloning repos
+	git clone https://git.suckless.org/{dwm,st,dmenu}
+	git clone https://github.com/torrinfail/dwmblocks.git
+	# linking them to their appropriate config.h
+	ln -fs ~/.dotfiles/DWM_configs/dwm_config.h ~/dwm/config.h
+	ln -fs ~/.dotfiles/DWM_configs/st_config.h ~/st/config.h
+	ln -fs ~/.dotfiles/DWM_configs/dwmblocks_blocks.h dwmblocks/blocks.h
+	# cd in each folder and install them
+	cd dwm && sudo make install
+	cd st && sudo make install
+	cd dmenu && sudo make install
+	cd dwmblocks && sudo make install
+	# coping session info and setting dwmblocks to start
+	sudo cp ~/.dotfiles/DWM_configs/dwm.desktop /usr/share/xsessions/
+	ln -fs ~/.dotfiles/Profiles/profile ~/.profile
