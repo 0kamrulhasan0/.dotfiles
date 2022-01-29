@@ -1,2 +1,2 @@
+dwmblocks &
 setxkbmap -option caps:swapescape
-conky -b &

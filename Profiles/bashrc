@@ -129,10 +129,10 @@ if ! shopt -oq posix; then
 fi
 
 # Starting Terminal in Tmux
-case $- in *i*)
-    tmux source ~/.tmux.conf
-    [ -z "$TMUX" ] && exec tmux
-esac
+#case $- in *i*)
+#    tmux source ~/.tmux.conf
+#    [ -z "$TMUX" ] && exec tmux
+#esac
 
 # Debugging with ipython
 export PYTHONBREAKPOINT=ipdb.set_trace

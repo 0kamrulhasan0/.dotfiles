@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/kamrul/.oh-my-zsh"
+export ZSH="/home/kamrul-hasan/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -71,7 +71,6 @@ ZSH_THEME="modified"
 plugins=(git vi-mode z zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
-bindkey '^ ' autosuggest-accept
 
 # User configuration
 
@@ -127,7 +126,7 @@ alias starwar='telnet towel.blinkenlights.nl'
 alias matrix='cmatrix'
 
 # FZF Settings
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND="rg --files --follow --glob '!.git'"
 export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
