@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=dwm Session
+Comment=Dynamic Window Manager
+Exec=/usr/local/bin/dwm
+Icon=
+Type=Application
+DesktopNames=dwm
