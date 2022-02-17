@@ -47,7 +47,7 @@ apt-update:
 	apt --assume-yes autoclean
 
 apt-basic-tools:
-	apt --assume-yes install tmux git-all gdb htop ncdu neofetch
+	apt --assume-yes install tmux git-all gdb htop ncdu neofetch feh
 	apt --assume-yes install tldr xclip #html-xml-utils bsdgames tlp ranger conky tint2
 	apt --assume-yes install wget curl aria2 parallel ffmpeg
 	apt --assume-yes install timeshift trash-cli pwgen testdisk
