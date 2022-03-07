@@ -1,3 +1,3 @@
 dwmblocks 2>&1 >/dev/null &
 setxkbmap -option caps:swapescape
-feh --bg-center ~/.local/share/background/thewire.in.png
+feh --bg-max ~/.local/share/background/anime.death.jpg
