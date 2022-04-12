@@ -205,7 +205,8 @@ swap-capslock-with-esc:
 	
 turn-off-startup-slash-screen:
 	# uncomment "GRUB_CMDLINE_LINUX=" line in /etc/default/grub file.
-	# comment out "GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"" line.
+	# comment out "GRUB_CMsudo update-grubDLINE_LINUX_DEFAULT="quiet splash"" line.
+	sudo update-grub
 
 install-dwm:
 	# cloning repos
