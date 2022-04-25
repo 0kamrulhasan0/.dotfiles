@@ -4,11 +4,13 @@ static const Block blocks[] = {
 
 	{" CPU:", "top -bn 1 | awk '/^%Cpu/ {print $2+$4+$6\"%\" }'",	30,		0},
 
+	{"Temp:", "sensors | grep temp1 | tail -n1 | cut -d ' ' -f9",	30,		0},
+
 	{"Mem:", "free | awk '/^Mem/ { print int($3*100/$2)\"%\" }'",	30,		0},
 
-	{"Bat:", "acpi | awk '{print $4}' | sed s/,//",	30,		0},
+	{"Bat:", "acpi | acpi | grep -Eo '[0-9]+%'",	30,		0},
 
-  {"Wifi:", "nmcli dev wifi | tail -n1 | awk '{print $8\"%\"}'",	30,		0},
+  //{"Wifi:", "nmcli dev wifi | grep -Eio '\*.*'  | grep -Eio '[0-9]{2}' | tail -n1",	30,		0},
 
 	{"", "date '+%b %d (%a) %I:%M%p'",					5,		0},
 };
