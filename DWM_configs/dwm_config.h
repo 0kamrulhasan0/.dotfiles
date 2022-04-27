@@ -61,6 +61,11 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 static const char *firefoxcmd[]  = { "/usr/bin/firefox", NULL };
 static const char *thunarcmd[]  = { "/usr/bin/thunar", NULL };
+static const char *ankicmd[]  = { "/usr/local/bin/anki", NULL };
+static const char *pomocmd[]  = { "/usr/bin/gnome-pomodoro", NULL };
+static const char *timecmd[]  = { "/usr/bin/gnome-clocks", NULL };
+static const char *wifioffcmd[]  = { "/usr/sbin/rfkill", "block", "wlan", NULL };
+static const char *wifioncmd[]  = { "/usr/sbin/rfkill","unblock", "wlan", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -99,6 +104,11 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY,                       XK_w,      spawn,          {.v = firefoxcmd } },
 	{ MODKEY,                       XK_e,      spawn,          {.v = thunarcmd } },
+	{ MODKEY,                       XK_r,      spawn,          {.v = ankicmd } },
+	{ MODKEY|ShiftMask,             XK_r,      spawn,          {.v = pomocmd } },
+	{ MODKEY|ShiftMask,             XK_t,      spawn,          {.v = timecmd } },
+	{ MODKEY,                       XK_o,      spawn,          {.v = wifioffcmd } },
+	{ MODKEY|ShiftMask,             XK_o,      spawn,          {.v = wifioncmd } },
 };
 
 /* button definitions */
