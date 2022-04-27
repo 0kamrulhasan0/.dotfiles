@@ -10,7 +10,11 @@ static const Block blocks[] = {
 
 	{"Bat:", "acpi | acpi | grep -Eo '[0-9]+%'",	30,		0},
 
-  {"Wifi:", "nmcli dev status | grep '^wlp1s0.*' | cut -d' ' -f17",	30,		0},
+  //{"Wifi:", "cat /sys/class/net/wlp1s0/operstate",	30,		0},
+  //{"Wifi:", "nmcli dev status | grep '^wlp1s0.*' | cut -d' ' -f17",	30,		0},
+  //{"Wifi:", "nmcli dev wifi | sort -k2 | head -n1 | rev | cut -d' ' -f5 | rev",	30,		0},
+  {"", "nmcli dev wifi | grep '*' | cut -d' ' -f10",	30,		0},
+  {"", "nmcli dev wifi | grep '*' | rev | cut -d' ' -f5 | rev ",	30,		0},
 
 	{"", "date '+%b %d (%a) %I:%M%p'",					5,		0},
 };
