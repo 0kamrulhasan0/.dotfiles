@@ -10,7 +10,7 @@ static const Block blocks[] = {
 
 	{"Bat:", "acpi | acpi | grep -Eo '[0-9]+%'",	30,		0},
 
-  //{"Wifi:", "nmcli dev wifi | grep -Eio '\*.*'  | grep -Eio '[0-9]{2}' | tail -n1",	30,		0},
+  {"Wifi:", "nmcli dev status | grep '^wlp1s0.*' | cut -d' ' -f17",	30,		0},
 
 	{"", "date '+%b %d (%a) %I:%M%p'",					5,		0},
 };
