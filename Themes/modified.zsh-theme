@@ -211,8 +211,24 @@ prompt_dir() {
 
 # Virtualenv: current working virtualenv
 prompt_virtualenv() {
-  if [[ -n "$VIRTUAL_ENV" && -n "$VIRTUAL_ENV_DISABLE_PROMPT" ]]; then
-    prompt_segment blue black "(${VIRTUAL_ENV:t:gs/%/%%})"
+  # Get the name of the virtual environment if one is active
+  if [[ -n $VIRTUAL_ENV ]]; then
+    local env_label=" $(basename $VIRTUAL_ENV) "
+  fi
+
+  # Get the name of the Anaconda environment if one is active
+  if [[ -n $CONDA_PREFIX ]]; then
+    if [[ -n $env_label ]]; then
+      env_label+="+ $(basename $CONDA_PREFIX) "
+    else
+      local env_label=" $(basename $CONDA_PREFIX) "
+    fi
+  fi
+
+  # Draw prompt segment if a virtual/conda environment is active
+  if [[ -n $env_label ]]; then
+    prompt_segment 252d $PRIMARY_FG
+    print -Pn $env_label
   fi
 }
 
