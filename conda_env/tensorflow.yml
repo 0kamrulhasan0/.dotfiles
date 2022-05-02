@@ -1,0 +1,5 @@
+name: tensorflow
+channels:
+  - conda-forge
+  - defaults
+prefix: /home/kamrul-hasan/miniconda3/envs/tensorflow
