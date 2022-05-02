@@ -91,7 +91,7 @@ vno <left> <Nop>
 
 "Flagging Unnecessary Whitespace
 "highlight BadWhitespace ctermbg=red guibg=darkred
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match Cursor /\s\+$/
 
 " Automatically closing braces
 inoremap {<CR> {<CR>}<Esc>ko<tab>
@@ -107,7 +107,7 @@ inoremap `<CR> ``<Esc>i<tab>
 "" To run profiler: time ./a.out
 autocmd filetype c nnoremap <silent><leader>e :w <bar> exec '!clear; clang -Wall -std=c17 -pedantic % -o %:r.out; ./%:r.out'<CR>
 autocmd filetype cpp nnoremap <silent><leader>e :w <bar> exec '!clear; clang++ -Wall -std=c++20 % -o %:r.out; ./%:r.out'<CR>
-autocmd filetype python nnoremap <silent><leader>e :w <bar> exec '!clear; python3 %'<CR>
+autocmd filetype python nnoremap <silent><leader>e :w <bar> exec '!clear; black %; python %'<CR>
 autocmd filetype javascript nnoremap <silent><leader>e :w <bar> exec '!clear; node %'<CR>
 autocmd filetype make nnoremap <silent><leader>e :w <bar> exec '!clear; make'<CR>
 autocmd filetype sh nnoremap <silent><leader>e :w <bar> exec '!clear; bash %'<CR>

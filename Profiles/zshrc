@@ -1,5 +1,6 @@
 export ZSH="/home/kamrul-hasan/.oh-my-zsh"
 ZSH_THEME="modified"
+#ZSH_THEME="eastwood"
 plugins=(git vi-mode z zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
