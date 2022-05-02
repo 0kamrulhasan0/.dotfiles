@@ -91,7 +91,7 @@ prompt_end() {
 # Context: user@hostname (who am I and where am I)
 prompt_context() {
   if [[ "$USERNAME" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-    prompt_segment $PRIMARY_FG default "%(!.%{%F{yellow}%}.)%m"
+    prompt_segment 252d $PRIMARY_FG "%(!.%{%F{yellow}%}.)%m"
   fi
 }
 
@@ -227,7 +227,7 @@ prompt_virtualenv() {
 
   # Draw prompt segment if a virtual/conda environment is active
   if [[ -n $env_label ]]; then
-    prompt_segment 252d $PRIMARY_FG
+    prompt_segment $PRIMARY_FG default 
     print -Pn $env_label
   fi
 }
