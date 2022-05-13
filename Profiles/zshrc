@@ -67,6 +67,11 @@ alias wget-inf="wget -c --retry-connrefused --tries=0"
 # Swap Caps-lock and ESC key
 setxkbmap -option caps:swapescape
 
+# Show Cost
+alias show_cost="cat ~/Coding_Project/Daily_Cost/cost.csv | column -t -s,"
+alias add_cost="python ~/Coding_Project/Daily_Cost/cost.py"
+alias change_cost="vim ~/Coding_Project/Daily_Cost/cost.csv"
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/kamrul-hasan/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
