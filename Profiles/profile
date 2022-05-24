@@ -1,5 +1,5 @@
 dwmblocks 2>&1 >/dev/null &
 setxkbmap -option caps:swapescape
-feh --bg-max ~/.local/share/background/quote_focus.jpeg
-#qbittorrent
+#xsetroot -solid black
+#feh --bg-max ~/.dotfiles/background/quote_focus.jpeg
 rfkill block wlan
