@@ -13,9 +13,11 @@ download_all_from_page () {
 
 download_single_file () {
   link=$(echo $1 | sed 's/index.php?dir=//')
-  link=$(echo $link | sed 's/&file=.*//')
+  link=$(echo $link | sed 's/&file=//')
   wget -c $link -P $dir_base
 }
+
+
 
 
 ##For seasons in one go:
@@ -25,3 +27,8 @@ download_single_file () {
 #  #echo $link
 #  download_all_from_page $link
 #done
+
+
+
+
+#shutdown now

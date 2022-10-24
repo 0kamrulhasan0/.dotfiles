@@ -51,6 +51,7 @@ apt-basic-tools:
 	apt --assume-yes install tldr xclip #html-xml-utils bsdgames tlp ranger conky tint2
 	apt --assume-yes install wget curl aria2 parallel ffmpeg
 	apt --assume-yes install timeshift trash-cli pwgen testdisk
+	apt --assume-yes install vlc mplayer
 	# apt --assume-yes install cmatrix jp2a
 
 apt-programming-languages-tools:
@@ -61,7 +62,7 @@ apt-programming-languages-tools:
 	pip3 install -U pip																									# Update Pip
 	pip3 install ipython bpython pudb pdbpp 														# Version. Debugger
 	pip3 install line-profiler memory-profiler pytest										# profiler, Testing
-	pip3 install requests youtube-dl tqdm prettytable										# Utility
+	pip3 install requests yt-dlp tqdm prettytable										# Utility
 	pip3 install mypy black cookiecutter																# Project/Code-Style Formatter
 	pip3 install pycrypto																								# Miscellaneous
 	# pip3 install Flask Flask-Session																	# Web Programming
@@ -224,3 +225,5 @@ install-dwm:
 	# coping session info and setting dwmblocks to start
 	sudo cp ~/.dotfiles/DWM_configs/dwm.desktop /usr/share/xsessions/
 	ln -fs ~/.dotfiles/Profiles/profile ~/.profile
+	# Enable xbacklight for intel_backlight
+	sudo ln -fs /home/kamrul-hasan/.dotfiles/DWM_configs/xorg.conf /etc/X11/xorg.conf
