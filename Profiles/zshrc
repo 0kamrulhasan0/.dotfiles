@@ -88,6 +88,13 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-# 0(black) - 937(hight argument possible)
-alias brightness_lowest="echo 1 | sudo tee /sys/class/backlight/intel_backlight/brightness"
-alias brightness_normal="echo 100 | sudo tee /sys/class/backlight/intel_backlight/brightness"
+set_brightness() {
+  # 0(black) - 937(hight argument possible)
+  # (high-low)/100 * my_percent = my_percent between hight & low
+  # +1 is to ensure never going totally black
+  # ${1#-} = absolute value of the input
+  echo $(((${1#-}*(937-1)/100)+1)) | sudo tee /sys/class/backlight/intel_backlight/brightness 1> /dev/null
+}
+
+alias brightness_lowest="echo 1 | sudo tee /sys/class/backlight/intel_backlight/brightness 1> /dev/null"
+alias brightness_normal="echo 235 | sudo tee /sys/class/backlight/intel_backlight/brightness 1> /dev/null"
