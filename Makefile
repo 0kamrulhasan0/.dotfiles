@@ -211,12 +211,17 @@ turn-off-startup-slash-screen:
 
 install-dwm:
 	# cloning repos
-	git clone https://git.suckless.org/{dwm,st,dmenu}
+	git clone https://git.suckless.org/dwm
+	git clone https://git.suckless.org/st
+	git clone https://git.suckless.org/dmenu
 	git clone https://github.com/torrinfail/dwmblocks.git
 	# linking them to their appropriate config.h
 	ln -fs ~/.dotfiles/DWM_configs/dwm_config.h ~/dwm/config.h
+	ln -fs ~/.dotfiles/DWM_configs/dwm_config.def.h ~/dwm/config.def.h
 	ln -fs ~/.dotfiles/DWM_configs/st_config.h ~/st/config.h
 	ln -fs ~/.dotfiles/DWM_configs/dwmblocks_blocks.h dwmblocks/blocks.h
+	# Enable xbacklight for intel_backlight
+	sudo ln -fs /home/kamrul-hasan/.dotfiles/DWM_configs/xorg.conf /etc/X11/xorg.conf
 	# cd in each folder and install them
 	cd dwm && sudo make install
 	cd st && sudo make install
@@ -225,5 +230,3 @@ install-dwm:
 	# coping session info and setting dwmblocks to start
 	sudo cp ~/.dotfiles/DWM_configs/dwm.desktop /usr/share/xsessions/
 	ln -fs ~/.dotfiles/Profiles/profile ~/.profile
-	# Enable xbacklight for intel_backlight
-	sudo ln -fs /home/kamrul-hasan/.dotfiles/DWM_configs/xorg.conf /etc/X11/xorg.conf

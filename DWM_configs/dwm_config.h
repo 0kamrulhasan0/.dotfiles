@@ -1,3 +1,5 @@
+#include <X11/XF86keysym.h>
+
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
@@ -66,6 +68,8 @@ static const char *pomocmd[]  = { "/usr/bin/gnome-pomodoro", NULL };
 static const char *timecmd[]  = { "/usr/bin/gnome-clocks", NULL };
 static const char *wifioffcmd[]  = { "/usr/sbin/rfkill", "block", "wlan", NULL };
 static const char *wifioncmd[]  = { "/usr/sbin/rfkill","unblock", "wlan", NULL };
+static const char *brightness_up[] = {"/usr/bin/xbacklight", "-inc", "5%", NULL};
+static const char *brightness_down[] = {"/usr/bin/xbacklight", "-dec", "5%", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -109,6 +113,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_t,      spawn,          {.v = timecmd } },
 	{ MODKEY,                       XK_o,      spawn,          {.v = wifioffcmd } },
 	{ MODKEY|ShiftMask,             XK_o,      spawn,          {.v = wifioncmd } },
+  {0,       XF86XK_MonBrightnessUp, spawn,    {.v=brightness_up } },
+  {0,       XF86XK_MonBrightnessDown, spawn, {.v=brightness_down } },
 };
 
 /* button definitions */

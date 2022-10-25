@@ -88,6 +88,6 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-# make brighter
-alias brightness_inc=xbacklight -inc 10%
-alias brightness_dec=xbacklight -dec 10%
+# 0(black) - 937(hight argument possible)
+alias brightness_lowest="echo 1 | sudo tee /sys/class/backlight/intel_backlight/brightness"
+alias brightness_normal="echo 100 | sudo tee /sys/class/backlight/intel_backlight/brightness"
