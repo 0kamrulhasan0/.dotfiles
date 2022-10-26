@@ -63,9 +63,9 @@ static const char *firefoxcmd[]  = { "/usr/bin/firefox", NULL };
 static const char *thunarcmd[]  = { "/usr/bin/thunar", NULL };
 static const char *ankicmd[]  = { "/usr/local/bin/anki", NULL };
 static const char *pomocmd[]  = { "/usr/bin/gnome-pomodoro", NULL };
-static const char *timecmd[]  = { "/usr/bin/gnome-clocks", NULL };
 static const char *wifioffcmd[]  = { "/usr/sbin/rfkill", "block", "wlan", NULL };
 static const char *wifioncmd[]  = { "/usr/sbin/rfkill","unblock", "wlan", NULL };
+static const char *bltcmd[]  = { "/usr/bin/blueberry", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -106,9 +106,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_e,      spawn,          {.v = thunarcmd } },
 	{ MODKEY,                       XK_r,      spawn,          {.v = ankicmd } },
 	{ MODKEY|ShiftMask,             XK_r,      spawn,          {.v = pomocmd } },
-	{ MODKEY|ShiftMask,             XK_t,      spawn,          {.v = timecmd } },
 	{ MODKEY,                       XK_o,      spawn,          {.v = wifioffcmd } },
 	{ MODKEY|ShiftMask,             XK_o,      spawn,          {.v = wifioncmd } },
+	{ MODKEY,                       XK_y,      spawn,          {.v = bltcmd } },
 };
 
 /* button definitions */
