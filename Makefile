@@ -51,7 +51,7 @@ apt-basic-tools:
 	apt --assume-yes install tldr xclip #html-xml-utils bsdgames tlp ranger conky tint2
 	apt --assume-yes install wget curl aria2 parallel ffmpeg
 	apt --assume-yes install timeshift trash-cli pwgen testdisk
-	apt --assume-yes install vlc mplayer
+	apt --assume-yes install vlc mpv mplayer
 	# apt --assume-yes install cmatrix jp2a
 
 apt-programming-languages-tools:
@@ -60,7 +60,7 @@ apt-programming-languages-tools:
 	apt --assume-yes install python3 python3-pip python3-setuptools python3-dev sqlparse
 	cargo install ripgrep fd-finder bat du-dust grex
 	pip3 install -U pip																									# Update Pip
-	pip3 install ipython bpython pudb pdbpp 														# Version. Debugger
+	pip3 install ipython bpython pudb pdbpp scalene  										# Version. Debugger
 	pip3 install line-profiler memory-profiler pytest										# profiler, Testing
 	pip3 install requests yt-dlp tqdm prettytable										# Utility
 	pip3 install mypy black cookiecutter																# Project/Code-Style Formatter

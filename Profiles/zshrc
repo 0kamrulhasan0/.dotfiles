@@ -60,8 +60,8 @@ export PATH=/home/kamrul/.cargo/bin/:$PATH
 #
 # hxwls <Series Folder With Multiple Link> | rg ".<Extension>$" | xargs wget
 #
-alias yt-v="youtube-dl -f best -o '%(title)s.%(ext)s'"
-alias yt-pl="youtube-dl -o '%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s'"
+alias yt-v="yt-dlp -f best -o '%(title)s.%(ext)s'"
+alias yt-pl="yt-dlp -o '%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s'"
 alias aria2c="aria2c -c -s 16 -x 16 -j 1 -k 1M"
 alias wget-inf="wget -c --retry-connrefused --tries=0"
 
@@ -98,3 +98,4 @@ set_brightness() {
 
 alias brightness_lowest="echo 1 | sudo tee /sys/class/backlight/intel_backlight/brightness 1> /dev/null"
 alias brightness_normal="echo 235 | sudo tee /sys/class/backlight/intel_backlight/brightness 1> /dev/null"
+alias min_music="cvlc --novideo" 

@@ -17,13 +17,11 @@ download_single_file () {
   wget -c $link -P $dir_base
 }
 
-
-
-
-##For seasons in one go:
+download_all_from_page "http://172.22.22.103/ftpdata/cartoon/index.php?dir=Tom%20and%20Jerry%20Cartoons%20Complete%20Collection%20%281940-2007%29%20%5BDVDRip%5D/"
+#For seasons in one go:
 #for i in {01..10}; do
 #  #link=""
-#  link="http://172.22.22.103/ftpdata/tv_shows_eng/Curb%20Your%20Enthusiasm%20%5BComplete%5D/Season%2"$i"/"
+#  link="http://172.22.22.103/ftpdata/tv_shows_eng/index.php?dir=VEEP%20/Veep%20Season%2"$i"/"
 #  #echo $link
 #  download_all_from_page $link
 #done
