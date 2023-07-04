@@ -99,3 +99,10 @@ set_brightness() {
 alias brightness_lowest="echo 1 | sudo tee /sys/class/backlight/intel_backlight/brightness 1> /dev/null"
 alias brightness_normal="echo 235 | sudo tee /sys/class/backlight/intel_backlight/brightness 1> /dev/null"
 alias min_music="cvlc --novideo" 
+
+alias yt_v="yt-dlp -o '%(title)s.%(ext)s'"
+alias yt_pl="yt-dlp -o '%(playlist)s/%(title)s.%(ext)s'"
+alias anki_pic=$HOME/.local/share/Anki2/
+
+export NVM_DIR="/home/kamrul-hasan/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

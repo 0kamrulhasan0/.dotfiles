@@ -164,3 +164,4 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 #cargo
 export PATH=/home/kamrul-hasan/.cargo/bin/:$PATH
+. "$HOME/.cargo/env"

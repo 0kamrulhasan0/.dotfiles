@@ -98,7 +98,7 @@ additional-setup:
 	ln -fs /usr/bin/pip3 /usr/bin/pp
 	ln -fs /usr/local/bin/ipython /usr/local/bin/ipy
 	#Swap Capslock with ESC
-	echo "setxkbmap -option caps:escape" >> $(Home)/.xsession
+	echo "setxkbmap -option caps:escape" >> $(Home)/.profile
 	#Case insensitive:
 	# If completion ignore does not exist add it.
 	if grep -q 'completion' "/etc/inputrc"; then \
@@ -200,9 +200,6 @@ stop-audio-pop:
 	# Stop the loud pop before starting any sound.
 	# For more info check https://major.io/2019/03/04/stop-audio-pops-on-intel-hd-audio/
 	echo "options snd_hda_intel power_save=0" > /etc/modprobe.d/audio_disable_powersave.conf
-	
-swap-capslock-with-esc:
-	echo "setxkbmap -option caps:swapescape" > ~/.profile
 	
 turn-off-startup-slash-screen:
 	# uncomment "GRUB_CMDLINE_LINUX=" line in /etc/default/grub file.

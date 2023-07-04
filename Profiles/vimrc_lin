@@ -48,8 +48,8 @@ syntax on
 
 " Save
 let mapleader=" "
-nnoremap <silent><leader>f :w <CR>
-nnoremap <silent><leader>d :q! <CR>
+"nnoremap <silent><leader>f :w <CR>
+"nnoremap <silent><leader>d :q! <CR>
 nnoremap <silent><leader>t :terminal <CR>
 "Scrolling
 nnoremap K <C-U>
@@ -62,8 +62,12 @@ nnoremap H 0
 " :tabn               new tab
 " :tabe               edit tab
 " :tabc               close new tab
-" gt                  next tab
-" gT                  previous tab
+" nnoremap <Shift>ZZ:save the file and then exit out of it
+" nnoremap <Shift>ZQ:exit out of it without saving
+" nnoremap zz:bring the current line in the middle
+" nnoremap zz:bring the current line in the middle of the screen
+" nnoremap zt:bring the current line at the top of the screen
+" nnoremap zz:bring the current line at the bottom of the screen
 
 "NERDTree like View
 let g:netrw_list_hide = '^\.\.\=/\=$,.DS_Store,.idea,.git,__pycache__,venv,node_modules,*\.o,*\.pyc,.*\.swp'
