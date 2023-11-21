@@ -47,16 +47,24 @@ apt-update:
 	apt --assume-yes autoclean
 
 apt-basic-tools:
-	apt --assume-yes install tmux git-all gdb htop ncdu neofetch feh
-	apt --assume-yes install tldr xclip #html-xml-utils bsdgames tlp ranger conky tint2
+	apt --assume-yes install tmux git-all gdb htop ncdu neofetch feh automake build-essential libpcap-dev libnetfilter-queue-dev
+	apt --assume-yes install tldr xclip copyq #html-xml-utils bsdgames tlp ranger conky tint2
 	apt --assume-yes install wget curl aria2 parallel ffmpeg
 	apt --assume-yes install timeshift trash-cli pwgen testdisk
-	apt --assume-yes install vlc mpv mplayer
+	apt --assume-yes install vlc mpv mplayer qbittorrent firefox chromium-browser qimgv
+	apt --assume-yes install virtualbox qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils wireshark
+	# Docker - System
+	# VSCode
+	# Anki
 	# apt --assume-yes install cmatrix jp2a
 
 apt-programming-languages-tools:
-	apt --assume-yes install clang cmake astyle nodejs cargo
-	apt --assume-yes install openjdk julia
+	apt --assume-yes install clang cmake astyle nodejs cargo golang ninja-build pkg-config
+	apt --assume-yes install build-essential libx11-dev libxft-dev libxinerama-dev libx11-xcb-dev libxcb-res0-dev
+	add-apt-repository ppa:openjdk-r/ppa
+	apt --assume-yes install openjdk julia mysql-server sqlite3
+	add-apt-repository ppa:maarten-fonville/android-studio
+	apt --assume-yes install android-sdk-platform-tools	android-tools-adb android-tools-fastboot
 	apt --assume-yes install python3 python3-pip python3-setuptools python3-dev sqlparse
 	cargo install ripgrep fd-finder bat du-dust grex
 	pip3 install -U pip																									# Update Pip
@@ -79,8 +87,9 @@ apt-programming-languages-tools:
 # Optional
 apt-additional-tools:
 	apt --assume-yes install linux-tools-common													# Perf (Profiler)
+	#apt --assume-yes install burpsuite
 	apt --assume-yes install radare2 foremost
-
+	apt-get install clamav clamav-daemon																# Antivirus
 
 
 
@@ -148,6 +157,9 @@ vifm-clean:
 	apt --assume-yes remove vifm
 	rm -rf $(Home)/.vifm
 
+
+i3-dm:
+	apt --assume-yes install xorg lightdm lightdm-gtk-greeter i3-wm i3lock i3status i3blocks dmenu terminator
 
 
 oh-my-zsh-setup:
