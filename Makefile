@@ -51,8 +51,9 @@ apt-basic-tools:
 	apt --assume-yes install tldr xclip copyq #html-xml-utils bsdgames tlp ranger conky tint2
 	apt --assume-yes install wget curl aria2 parallel ffmpeg
 	apt --assume-yes install timeshift trash-cli pwgen testdisk
-	apt --assume-yes install vlc mpv mplayer qbittorrent firefox chromium-browser qimgv
-	apt --assume-yes install virtualbox qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils wireshark
+	apt --assume-yes install mpv qbittorrent firefox qimgv
+	#apt --assume-yes install vlc mplayer chromium-browser 
+	#apt --assume-yes install virtualbox qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils wireshark
 	# Docker - System
 	# VSCode
 	# Anki
@@ -236,3 +237,9 @@ install-dwm:
 	# coping session info and setting dwmblocks to start
 	sudo cp ~/.dotfiles/DWM_configs/dwm.desktop /usr/share/xsessions/
 	ln -fs ~/.dotfiles/Profiles/profile ~/.profile
+
+install-i3:
+	apt --assume-yes install i3 xautolock
+	mv ~/.config/i3/config ~/.config/i3/config.save
+	ln -fs ~/.dotfiles/i3/config ~/.config/i3/config
+	sudo ln -fs ~/.dotfiles/i3/i3blocks.conf /etc/i3blocks.conf
