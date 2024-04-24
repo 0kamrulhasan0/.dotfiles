@@ -237,6 +237,9 @@ install-dwm:
 	# coping session info and setting dwmblocks to start
 	sudo cp ~/.dotfiles/DWM_configs/dwm.desktop /usr/share/xsessions/
 	ln -fs ~/.dotfiles/Profiles/profile ~/.profile
+	wget "https://raw.githubusercontent.com/Layerex/dmenu-bluetooth/master/dmenu-bluetooth"
+	chmod +x dmenu-bluetooth
+	sudo mv dmenu-bluetooth /usr/local/bin/
 
 install-i3:
 	apt --assume-yes install i3 xautolock

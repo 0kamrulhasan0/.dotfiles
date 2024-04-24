@@ -21,11 +21,15 @@ download_single_file () {
 }
 
 download_aria() {
-  local filename="$1.mp4"
+  local filename="$1"
   #local fullpath="$1.mp4"
   echo $filename 
   aria2c  --continue=true -x 5 -s 5 -d $dir_base -o "$filename" $2 
 }
+
+#https://pandamovies.org/actor/kali-sudhra
+#download_aria "Nina Hartly's Guide to Female Ejaculation.mp4" "https://yeo145l.video-delivery.net/u5kjyee2ppflsdgge5mfsy2einrjq3ttgbnwc6q3c7lqonjzrakw4ngjkhoq/gdmoty429c~Dbjx1b150H?token=lcs8ovdw4w61nwjiezyh09bd&expiry=1706955785693" 
+download_aria "ubuntu.iso" "https://releases.ubuntu.com/22.04.4/ubuntu-22.04.4-live-server-amd64.iso"
 
 #download_all_from_page ""
 #download_all_from_page ""

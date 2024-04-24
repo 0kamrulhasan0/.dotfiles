@@ -157,10 +157,10 @@ bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # My Binding
 bindsym $mod+w exec --no-startup-id firefox
-bindsym $mod+e exec --no-startup-id thunar
+bindsym $mod+e exec --no-startup-id thunar 
 bindsym $mod+t exec --no-startup-id anki
-bindsym $mod+o exec "/usr/sbin/rfkill block wlan"
-bindsym $mod+shift+o exec "/usr/sbin/rfkill unblock wlan"
+bindsym $mod+o exec "st nmtui"
+bindsym $mod+shift+o exec "blueman-manager"
 ##  Screenshots in files
 bindsym Print exec --no-startup-id "flameshot full --path /home/$USER/Pictures"
 bindsym $mod+ctrl+l exec "i3lock -c 000000"
