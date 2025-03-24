@@ -42,8 +42,8 @@ set noerrorbells visualbell t_vb=
 " Default - elflord or koehler
 " Custom  - molokai or gruvbox
 silent! colorscheme molokai
-silent! colorscheme elflord
-silent! colorscheme gruvbox
+"silent! colorscheme elflord
+"silent! colorscheme gruvbox
 syntax on
 
 " Save
@@ -158,6 +158,7 @@ Plugin 'sillybun/vim-repl'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'junegunn/fzf', { 'do': { -> fzf#install() }}
 Plugin 'junegunn/fzf.vim'
+Plugin 'tomasr/molokai'
 " Plugin 'tpope/vim-fugitive'                           "Git diff, Git add, Git commit, GStatus, Gdiffsplit
 call vundle#end()
 filetype plugin indent on

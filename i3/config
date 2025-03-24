@@ -46,7 +46,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Shift+Return exec st
+biNdsym $mod+Shift+Return exec urxvt 
 
 # kill focused window
 bindsym $mod+Shift+c kill
@@ -157,10 +157,10 @@ bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # My Binding
 bindsym $mod+w exec --no-startup-id firefox
-bindsym $mod+e exec --no-startup-id thunar 
+bindsym $mod+e exec --no-startup-id pcmanfm 
 bindsym $mod+t exec --no-startup-id anki
-bindsym $mod+o exec "st nmtui"
-bindsym $mod+shift+o exec "blueman-manager"
+bindsym $mod+o exec "rxvt nmtui"
+bindsym $mod+shift+o exec "blueman-applet"
 ##  Screenshots in files
 bindsym Print exec --no-startup-id "flameshot full --path /home/$USER/Pictures"
 bindsym $mod+ctrl+l exec "i3lock -c 000000"

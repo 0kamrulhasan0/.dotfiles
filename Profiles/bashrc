@@ -149,19 +149,9 @@ alias yt-v="youtube-dl -f best -o '%(title)s.%(ext)s'"
 alias yt-pl="youtube-dl -o '%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s'"
 alias wget-inf="wget -c --retry-connrefused --tries=0"
 
-# Ruby Settings
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
-# Swap Caps-lock and ESC key
-setxkbmap -option caps:swapescape
 
 # FZF Settings
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND="rg --files --follow --glob '!.git'"
 export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
-#cargo
-export PATH=/home/kamrul-hasan/.cargo/bin/:$PATH
-. "$HOME/.cargo/env"
+#_fzf_setup_completion path mpv
