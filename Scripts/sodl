@@ -1,0 +1,170 @@
+#!/bin/bash
+
+# Decode URL function
+urldecode() {
+  local url_encoded="${1//+/ }"
+  printf '%b' "${url_encoded//%/\\x}"
+}
+
+dls() {
+  base="$1"
+  [[ -z "$base" ]] && { echo "Usage: dls <base_url>"; return 1; }
+  
+  domain=$(echo "$base" | sed -E 's#(https?://[^/]+).*#\1#')
+  
+  curl -s --fail --max-time 15 "$base/" \
+    | hxwls \
+    | grep -Ei '\.(webm|mkv|flv|mp4|avi|mov|wmv)$' \
+    | while IFS= read -r path; do
+        if [[ "$path" = /* ]]; then
+          echo "$domain$path"
+        else
+          echo "${base%/}/$path"
+        fi
+      done \
+    | aria2c --file-allocation=none --continue --split=16 -x16 -j1 -k1M --stream-piece-selector=inorder -i -
+}
+
+fetch_and_parse() {
+  local base_url="$1"
+  local pattern="$2"
+
+  local base_domain endpoint_path response raw_href full_url
+
+  base_domain=$(echo "$base_url" | sed -E 's#(https?://[^/]+).*#\1#')
+  endpoint_path=$(echo "$base_url" | sed -E 's#https?://[^/]+(/.*)#\1#')
+  endpoint_path="${endpoint_path%/}/"
+
+  response=$(curl --fail --max-time 15 "${base_url}?" \
+    -X POST \
+    -H "Referer: ${base_url}" \
+    --data-raw "{\"action\":\"get\",\"search\":{\"href\":\"${endpoint_path}\",\"pattern\":\"${pattern}\",\"ignorecase\":true}}")
+
+  if [[ -z "$response" ]]; then
+    echo "Warning: No response from $base_url" >&2
+    return 1
+  fi
+
+  while IFS= read -r raw_href; do
+    full_url="${base_domain}${raw_href}"
+    encoded_urls+=("$full_url")
+  done < <(jq -r '
+    .search[]
+    | select(.href | test("\\.(mkv|mp4|avi|mov|flv|webm|jpg|png)$"; "i") | not)
+    | .href
+  ' <<<"$response")
+}
+
+declare -a BASES=(
+  "http://172.16.50.7/DHAKA-FLIX-7/"
+  "http://172.16.50.12/DHAKA-FLIX-12/"
+  "http://172.16.50.14/DHAKA-FLIX-14/"
+)
+
+echo -n "Enter search pattern: "
+read -r SEARCH_PATTERN
+
+encoded_urls=()
+
+# Fetch and parse results from all base URLs
+for base_url in "${BASES[@]}"; do
+  fetch_and_parse "$base_url" "$SEARCH_PATTERN" || continue
+done
+
+if [[ ${#encoded_urls[@]} -eq 0 ]]; then
+  echo "no results found."
+  exit 0
+fi
+
+# Decode URLs for display
+decoded_urls=()
+for url in "${encoded_urls[@]}"; do
+  decoded_urls+=("$(urldecode "$url")")
+done
+
+# Show fzf with decoded URLs
+fzf_output=$(printf "%s\n" "${decoded_urls[@]}" | fzf --prompt="Select (Enter=download, →=curl POST): " --expect=enter,right)
+
+key=$(head -1 <<< "$fzf_output")
+selected_decoded=$(tail -n +2 <<< "$fzf_output")
+
+if [[ -z "$selected_decoded" ]]; then
+  echo "No selection made."
+  exit 0
+fi
+
+# Find index of selected decoded URL to get original encoded URL
+selected_raw=""
+for i in "${!decoded_urls[@]}"; do
+  if [[ "${decoded_urls[i]}" == "$selected_decoded" ]]; then
+    selected_raw="${encoded_urls[i]}"
+    break
+  fi
+done
+
+case "$key" in
+  enter|"")
+    echo "Downloading via dls: $selected_raw"
+    dls "$selected_raw"
+    ;;
+  right)
+    echo "Performing POST curl to: $selected_raw"
+    base_domain=$(echo "$selected_raw" | sed -E 's#(https?://[^/]+).*#\1#')
+
+    display_urls=()
+    while IFS= read -r line; do
+      display_urls+=("$line")
+    done < <(curl --fail --max-time 15 "${selected_raw}?" 2>/dev/null \
+      | hxwls \
+      | grep -Ev "(jpg|png|ico|css|700|\.\.|h5ai/)$" \
+      | while IFS= read -r path; do
+          if [[ "$path" = /* ]]; then
+            printf '%s\n' "$base_domain$path"
+          else
+            printf '%s\n' "${base_domain%/}/$path"
+          fi
+        done
+    )
+
+    if [[ ${#display_urls[@]} -eq 0 ]]; then
+      echo "No links found."
+      exit 1
+    fi
+
+    # Decode display_urls for fzf display
+    decoded_display_urls=()
+    for url in "${display_urls[@]}"; do
+      decoded_display_urls+=("$(urldecode "$url")")
+    done
+
+    fzf_output=$(printf "%s\n" "${decoded_display_urls[@]}" | fzf --prompt="Select (Enter=download): " --expect=enter)
+
+    key=$(head -1 <<< "$fzf_output")
+    selected_decoded=$(tail -n +2 <<< "$fzf_output")
+
+    if [[ -z "$selected_decoded" ]]; then
+      echo "No selection made."
+      exit 0
+    fi
+
+    # Find raw URL for selected decoded display URL
+    selected_raw=""
+    for i in "${!decoded_display_urls[@]}"; do
+      if [[ "${decoded_display_urls[i]}" == "$selected_decoded" ]]; then
+        selected_raw="${display_urls[i]}"
+        break
+      fi
+    done
+
+    if [[ "$key" == "enter" || -z "$key" ]]; then
+      echo "Downloading via dls: $selected_raw"
+      dls "$selected_raw"
+    else
+      echo "No valid key pressed."
+    fi
+    ;;
+  *)
+    echo "No valid key pressed."
+    ;;
+esac
+
