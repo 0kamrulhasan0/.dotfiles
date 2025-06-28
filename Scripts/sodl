@@ -12,7 +12,7 @@ dls() {
   
   domain=$(echo "$base" | sed -E 's#(https?://[^/]+).*#\1#')
   
-  curl -s --fail --max-time 15 "$base/" \
+  curl --show-error --silent --compressed --fail --max-time 15 "$base/" \
     | hxwls \
     | grep -Ei '\.(webm|mkv|flv|mp4|avi|mov|wmv)$' \
     | while IFS= read -r path; do
@@ -35,7 +35,7 @@ fetch_and_parse() {
   endpoint_path=$(echo "$base_url" | sed -E 's#https?://[^/]+(/.*)#\1#')
   endpoint_path="${endpoint_path%/}/"
 
-  response=$(curl --fail --max-time 15 "${base_url}?" \
+  response=$(curl --show-error --silent --compressed --fail --max-time 15 "${base_url}?" \
     -X POST \
     -H "Referer: ${base_url}" \
     --data-raw "{\"action\":\"get\",\"search\":{\"href\":\"${endpoint_path}\",\"pattern\":\"${pattern}\",\"ignorecase\":true}}")
@@ -53,6 +53,9 @@ fetch_and_parse() {
     | select(.href | test("\\.(mkv|mp4|avi|mov|flv|webm|jpg|png)$"; "i") | not)
     | .href
   ' <<<"$response")
+  for url in "${encoded_urls[@]}"; do
+    echo "$url"
+  done
 }
 
 declare -a BASES=(
@@ -61,15 +64,21 @@ declare -a BASES=(
   "http://172.16.50.14/DHAKA-FLIX-14/"
 )
 
-echo -n "Enter search pattern: "
-read -r SEARCH_PATTERN
-
+SEARCH_PATTERN=$(fzf --print-query --prompt="Search pattern: " --height=2 <<< "")
 encoded_urls=()
 
 # Fetch and parse results from all base URLs
-for base_url in "${BASES[@]}"; do
-  fetch_and_parse "$base_url" "$SEARCH_PATTERN" || continue
-done
+#for base_url in "${BASES[@]}"; do
+#  fetch_and_parse "$base_url" "$SEARCH_PATTERN" || continue
+#done
+
+export -f fetch_and_parse
+export SEARCH_PATTERN
+NUM_PARALLEL_JOBS=4
+while IFS= read -r url; do
+  echo "[RESULT] $url"
+  encoded_urls+=("$url")
+done < <(printf "%s\n" "${BASES[@]}" | gxargs -P "$NUM_PARALLEL_JOBS" -I {} bash -c 'fetch_and_parse "{}" "$SEARCH_PATTERN"')
 
 if [[ ${#encoded_urls[@]} -eq 0 ]]; then
   echo "no results found."
@@ -83,7 +92,7 @@ for url in "${encoded_urls[@]}"; do
 done
 
 # Show fzf with decoded URLs
-fzf_output=$(printf "%s\n" "${decoded_urls[@]}" | fzf --prompt="Select (Enter=download, →=curl POST): " --expect=enter,right)
+fzf_output=$(printf "%s\n" "${decoded_urls[@]}" | fzf --prompt="Select (Enter=download, →=Enter the Folder): " --expect=enter,right)
 
 key=$(head -1 <<< "$fzf_output")
 selected_decoded=$(tail -n +2 <<< "$fzf_output")
@@ -108,13 +117,13 @@ case "$key" in
     dls "$selected_raw"
     ;;
   right)
-    echo "Performing POST curl to: $selected_raw"
+    echo "Enter the URL: $selected_raw"
     base_domain=$(echo "$selected_raw" | sed -E 's#(https?://[^/]+).*#\1#')
 
     display_urls=()
     while IFS= read -r line; do
       display_urls+=("$line")
-    done < <(curl --fail --max-time 15 "${selected_raw}?" 2>/dev/null \
+    done < <(curl --show-error --silent --compressed --fail --max-time 15 "${selected_raw}?" 2>/dev/null \
       | hxwls \
       | grep -Ev "(jpg|png|ico|css|700|\.\.|h5ai/)$" \
       | while IFS= read -r path; do
