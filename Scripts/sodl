@@ -1,4 +1,5 @@
 #!/bin/bash
+DOWNLOAD_LOCATION=$HOME"/Movies"
 
 # Decode URL function
 urldecode() {
@@ -8,6 +9,7 @@ urldecode() {
 
 dls() {
   base="$1"
+  foldername="$2"
   [[ -z "$base" ]] && { echo "Usage: dls <base_url>"; return 1; }
   
   domain=$(echo "$base" | sed -E 's#(https?://[^/]+).*#\1#')
@@ -22,7 +24,7 @@ dls() {
           echo "${base%/}/$path"
         fi
       done \
-    | aria2c --file-allocation=none --continue --split=16 -x16 -j1 -k1M --stream-piece-selector=inorder -i -
+    | aria2c --file-allocation=none --continue --split=16 -x16 -j1 -k1M --stream-piece-selector=inorder --dir "$2" -i -
 }
 
 fetch_and_parse() {
@@ -60,6 +62,7 @@ fetch_and_parse() {
 
 declare -a BASES=(
   "http://172.16.50.7/DHAKA-FLIX-7/"
+  "http://172.16.50.9/DHAKA-FLIX-9/"
   "http://172.16.50.12/DHAKA-FLIX-12/"
   "http://172.16.50.14/DHAKA-FLIX-14/"
 )
@@ -114,11 +117,14 @@ done
 case "$key" in
   enter|"")
     echo "Downloading via dls: $selected_raw"
-    dls "$selected_raw"
+    dls "$selected_raw" "$DOWNLOAD_LOCATION" 
     ;;
   right)
     echo "Enter the URL: $selected_raw"
     base_domain=$(echo "$selected_raw" | sed -E 's#(https?://[^/]+).*#\1#')
+    decoded_folder="$(basename "$selected_raw")"
+    decoded_folder=$(urldecode "$decoded_folder")
+    decoded_folder="$DOWNLOAD_LOCATION""/""$decoded_folder"
 
     display_urls=()
     while IFS= read -r line; do
@@ -167,7 +173,8 @@ case "$key" in
 
     if [[ "$key" == "enter" || -z "$key" ]]; then
       echo "Downloading via dls: $selected_raw"
-      dls "$selected_raw"
+      mkdir "$decoded_folder"
+      dls "$selected_raw" "$decoded_folder"
     else
       echo "No valid key pressed."
     fi
